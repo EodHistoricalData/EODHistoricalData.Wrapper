@@ -21,5 +21,25 @@
         /// 
         /// </summary>
         public Financials? Financials { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public Technicals? Technicals { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public ETFData? ETFData { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public MutualFundData? MutualFund_Data { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public Dictionary<int, Component>? Components { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public Dictionary<int, HistoricalComponent>? HistoricalTickerComponents { get; set; }
     }
 }

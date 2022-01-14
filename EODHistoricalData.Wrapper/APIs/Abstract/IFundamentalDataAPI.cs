@@ -8,10 +8,12 @@
         /// <summary>
         /// To get fundamental data feed
         /// </summary>
-        /// <param name="tiker">consists of two parts: {SYMBOL_NAME}.{EXCHANGE_ID}, 
-        /// then you can use, for example, AAPL.MX for Mexican Stock Exchange. 
-        /// Or AAPL.US for NASDAQ.</param>
-        /// <returns></returns>
-        Task<FundamentalData> GetFundamentalsDataAsync(string tiker);
+        Task<FundamentalData> GetFundamentalsDataAsync(string ticker, string? filters = null);
+
+        /// <summary>
+        /// Bulk Fundamentals Output
+        /// </summary>
+        Task<BulkFundamental> GetBulkFundamentalsDataAsync(string ticker, int? offset = null,
+            int? limit = null, string? symbols = null);
     }
 }

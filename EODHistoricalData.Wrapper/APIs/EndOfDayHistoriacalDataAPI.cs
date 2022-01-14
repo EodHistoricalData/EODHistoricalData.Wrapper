@@ -6,11 +6,11 @@
 
         public EndOfDayHistoriacalDataAPI(string apiKey, bool useProxy) : base(apiKey, useProxy) { }
 
-        public async Task<List<HistoricalStockPrice>> GetDataAsync(string tiker, DateTime from, DateTime to, string period)
+        public async Task<List<HistoricalStockPrice>> GetDataAsync(string ticker, DateTime from, DateTime to, string period)
         {
             object[] args = new object[]
             {
-                tiker,
+                ticker,
                 from.ToString("yyyy-MM-dd"),
                 to.ToString("yyyy-MM-dd"),
                 period

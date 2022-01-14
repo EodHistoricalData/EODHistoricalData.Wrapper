@@ -3,15 +3,12 @@
     internal class IntradayHistoricalDataAPI : BaseAPI, IIntradayHistoricalDataAPI
     {
         private const string source = @"https://eodhistoricaldata.com/api/intraday/{0}?from={1}&to={2}&interval={3}&fmt=json";
-
-        public IntradayHistoricalDataAPI(string apiKey, bool useProxy) : base(apiKey, useProxy) { }
-
-
-        public async Task<List<IntradayHistoricalStockPrice>> GetDataAsync(string tiker, DateTime from, DateTime to, string interval)
+        public IntradayHistoricalDataAPI(string apiKey, System.Net.IWebProxy? proxy) : base(apiKey, proxy) { }
+        public async Task<List<IntradayHistoricalStockPrice>> GetDataAsync(string ticker, DateTime from, DateTime to, string interval)
         {
             object[] args = new object[]
             {
-                tiker,
+                ticker,
                 ((DateTimeOffset)from).ToUnixTimeSeconds(),
                 ((DateTimeOffset)to).ToUnixTimeSeconds(),
                 interval

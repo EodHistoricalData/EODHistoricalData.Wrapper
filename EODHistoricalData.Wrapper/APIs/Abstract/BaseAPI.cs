@@ -10,14 +10,14 @@ namespace EOD.APIs.Abstract
         private readonly HttpClient _httpClient;
 
 
-        public BaseAPI(string apiToken, bool useProxy = false)
+        public BaseAPI(string apiToken, IWebProxy? proxy = null)
         {
             _apiToken = apiToken;
 
-            if (useProxy)
+            if (proxy != null)
             {
                 HttpClientHandler myHandler = new();
-                myHandler.DefaultProxyCredentials = CredentialCache.DefaultCredentials;
+                myHandler.Proxy = proxy;
                 _httpClient = new HttpClient(myHandler);
             }
             else

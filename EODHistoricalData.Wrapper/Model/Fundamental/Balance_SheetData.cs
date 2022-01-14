@@ -40,9 +40,6 @@
         /// <summary>
         /// 
         /// </summary>
-        /// <summary>
-        /// 
-        /// </summary>
         public double? TotalStockholderEquity { get; set; }
         /// <summary>
         /// 

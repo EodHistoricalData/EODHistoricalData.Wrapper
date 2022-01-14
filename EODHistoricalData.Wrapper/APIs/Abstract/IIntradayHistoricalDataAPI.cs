@@ -5,6 +5,6 @@
     /// </summary>
     internal interface IIntradayHistoricalDataAPI
     {
-        Task<List<IntradayHistoricalStockPrice>> GetDataAsync(string tiker, DateTime from, DateTime to, string interval);
+        Task<List<IntradayHistoricalStockPrice>> GetDataAsync(string ticker, DateTime from, DateTime to, string interval);
     }
 }

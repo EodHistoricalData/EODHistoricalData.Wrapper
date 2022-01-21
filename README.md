@@ -15,19 +15,19 @@ Made with Microsoft Visual Studio
 	- [Fundamental and Economic Financial Data APIs](#fundamental-and-economic-financial-data-apis-arrow_up)
 6. [Disclaimer](#disclaimer-arrow_up)
 
-## General description [:arrow_up:](#eod-historical-data-sdk)
+## General description [:arrow_up:](#eodhistoricaldata.wrapper)
 This library is the C# .NET SDK for the EOD Historical data REST API. It's intended to be used for data extraction for financial valuations, macroeconomic analyses, sentiment analysis, option strategies, technical analysis, development of machine learning models, and more!
 
-## Requirements [:arrow_up:](#eod-historical-data-sdk)
+## Requirements [:arrow_up:](#eodhistoricaldata.wrapper)
 - You need to request an API key with the EOD team. Create your account at the following [link](https://eodhistoricaldata.com/)
 	- ***Please be aware of the pricing plans and policies. Different plans have different data accesses.***
 - ```C#``` >= 6.0
 
-## Installation [:arrow_up:](#eod-historical-data-sdk)
+## Installation [:arrow_up:](#eodhistoricaldata.wrapper)
 
-## Demo [:arrow_up:](#eod-historical-data-sdk)
+## Demo [:arrow_up:](#eodhistoricaldata.wrapper)
 
-## Documentation [:arrow_up:](#eod-historical-data-sdk)
+## Documentation [:arrow_up:](#eodhistoricaldata.wrapper)
 
 Please be aware that some descriptions will come directly from the API's documentation because no further explanations were needed for the specific method. Additionally, for the sake of simplicity, I will use the following convention along with the whole document: 
 
@@ -38,7 +38,7 @@ apiToken = "YOUR_API_KEY_GOES_HERE";
 var _api = new API(apiToken);
 ```
 
-### Historical Prices, Splits and Dividends Data APIs [:arrow_up:](#eod-historical-data-sdk)
+### Historical Prices, Splits and Dividends Data APIs [:arrow_up:](#eodhistoricaldata.wrapper)
 
 - **Stock Price Data API (End-Of-Day Historical Data)**: Retrieve end-of-day data for Stocks, ETFs, Mutual Funds, Bonds (Government and Corporate), Cryptocurrencies, and FOREX pairs.
 	- Parameters:
@@ -194,7 +194,81 @@ List<MacroIndicator> response = await _api.GetMacroIndicatorsAsync("CHL", "real_
 	- Usage:
 ```c#
 // Request bonds fundamental data feed for CUSIP: US00213MAS35
-BondsFundamentalData response = await _api.GetBondsFundamendalDataAsync("US00213MAS35")
+BondsFundamentalData response = await _api.GetBondsFundamendalDataAsync("US00213MAS35");
 ```
-## Disclaimer [:arrow_up:](#eod-historical-data-sdk)
+### Exchanges Financial APIs [:arrow_up:](#eodhistoricaldata.wrapper)
+- **Bulk API for EOD, Splits and Dividends**: This method allows you to download the data for an entire exchange for a particular day. It works for end-of-day historical data feed and splits and dividends data as well. You can also use NYSE or NASDAQ as exchange symbols for US tickers to get data only for NYSE or NASDAQ exchange. With this method is no longer necessary to perform thousands and thousands of API requests per day.
+	- Parameters:
+		- ```code```(string): Required - country code or ticker.
+		- ```type```(string): Optional - "splits", "dividends" or empty for end of day data.
+		- ```date```(DateTime): Optional - desired date. By default, the data for last trading day will be downloaded.
+		- ```symbols```(string): Optional - To download last day data for several symbols (example: "MSFT,AAPL,BMW.XETRA,SAP.F")
+	- Usage:
+	```c#
+	// Request returns end-of-day data for US stocks in bulk for a particular day.
+	List<Bulk> response = await _api.GetBulksAsync("US");
+	// Request the latest dividends for the companies that trade in NYSE.
+	List<Bulk> response = await _api.GetBulksAsync("NYSE", "dividends");
+	```
+	- Extented Bulk: if you need an extended dataset, which includes company name, EMA 50 and EMA 200 and average volumes for 14, 50 and 200 days. 
+	```c#
+	// Request returns end-of-day data for selected US symbols.
+	List<ExtendedBulk> response = await _api.GetExtendedBulksAsync("US", null, null, "MSFT, AAPL");
+	```
+- **Exchanges API. Get List of Tickers**: Request available exchanges, and instruments for each exchange or market.
+	- Parameters:
+		- ```code```(string): Required - Name of the exchange or market to request symbols. This parameter is only valid for particular exchanges, check the usage for details.
+	- Usage:
+```c#
+// Request list of available exchanges, this method does not allow any parameter.
+List<Exchange> response = _api.GetExchangeAsync();
+// Request list of Tickers for Borsa Italiana Certificates
+List<ExchangeSymbol> response = _api.GetExchangeSymbolsAsync("ETLX");
+```
+- **Exchanges API. Trading Hours and Market Holidays**
+	- Parameters:
+		- ```code```(string): Required - Name of the exchange.
+		- ```from```(DateTime) and ```to```(DateTime): Optional - the beginning and end of the desired dates. If ```from``` is not provided, 6 months before the current date will be used. If ```to``` is not provided, 6 months after the current date will be used.
+	- Usage:
+```c#
+// Request the London Stock Exchange details
+ExchangeDetail response = await _api.GetExchangeDetailsAsync("LSE");
+```
+- **Financial News API**: The Financial News method is a powerful tool that helps you get company news and filter out them by date, type of news, and specific tickers according to the given parameters. Despite that all parameters are optional, you need to input at least one of them. See the usage for guidance.
+	- Parameters:
+		- ```s```(string): REQUIRED if parameter ```t``` not set. The ticker code to get news for.
+		- ```t```(string): REQUIRED if parameter ```s``` not set. The tag to get news on a given topic. You can find the list of supported tags by following [the link](https://eodhistoricaldata.com/financial-apis/financial-news-api/)
+		- ```from```(DateTime) and ```to```(DateTime): Optional - the beginning and end of the desired dates.
+		- ```limit```(int): Optional - The number of results should be returned with the query. Default value: 50, minimum value: 1, maximum value: 1000.
+		- ```offset```(int): Optional - The offset of the data. Default value: 0, minimum value: 0, maximum value: 100.
+		
+	- Usage:
+```c#
+// Request the news from Anglo American
+List<FinancialNews> response = await _api.GetFinancialNewsAsync("AAL.LSE");
+// Request data for the selected tag
+List<FinancialNews> response = await _api.GetFinancialNewsAsync(null, "net income");
+```
+- **Stock Market Screener API**: is a powerful tool that helps you filter out tickers with the given parameters.
+	- Parameters:
+		- ```filters```(List<(Field, Operation, string)>): Optional - Filters out tickers by different fields.
+		- ```signals```(string): Optional - usage: "signal1,signal2,…,signalN". Filter out tickers by signals, the calculated fields.
+		- ```sort```(string): Optional - sorts all fields with type Number in ascending/descending order. Usage: ```field_name.(asc|desc)```.
+		- ```limit```(int): Optional - the number of results should be returned with the query. Default value: 50, minimum value: 1, maximum value: 100.
+		- ```offset```(int): Optional - the offset of the data. Default value: 0, minimum value: 0, maximum value: 100.
+	- Usage:
+```c#
+// Example of using filters and limit
+var filters = new List<(Field, Operation, string)>
+            {
+                (Field.MarketCapitalization, Operation.More, "1000"),
+                (Field.Name, Operation.Matches, "apple"),
+                (Field.Code, Operation.Equals, "AAPL"),
+                (Field.Exchange, Operation.Equals, "us"),
+                (Field.Sector, Operation.Equals, "Technology")
+            };
+            
+StockMarkerScreener response = await _api.GetStockMarketScreenerAsync(filters, null, null, 10);
+```
+## Disclaimer [:arrow_up:](#eodhistoricaldata.wrapper)
 This document is not an offer to buy or sell financial instruments. Never invest more than you can afford to lose. You should consult a registered professional advisor before making any investment.

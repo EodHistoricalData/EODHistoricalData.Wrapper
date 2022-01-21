@@ -13,6 +13,7 @@ Made with Microsoft Visual Studio
 5. [Documentation](#documentation-arrow_up)
 	- [Historical Prices, Splits and Dividends Data APIs](#historical-prices-splits-and-dividends-data-apis-arrow_up)
 	- [Fundamental and Economic Financial Data APIs](#fundamental-and-economic-financial-data-apis-arrow_up)
+	- [Exchanges Financial APIs](#exchanges-financial-apis-arrow_up)
 6. [Disclaimer](#disclaimer-arrow_up)
 
 ## General description [:arrow_up:](#eodhistoricaldata.wrapper)
@@ -43,7 +44,7 @@ var _api = new API(apiToken);
 - **Stock Price Data API (End-Of-Day Historical Data)**: Retrieve end-of-day data for Stocks, ETFs, Mutual Funds, Bonds (Government and Corporate), Cryptocurrencies, and FOREX pairs.
 	- Parameters:
 		- ```tiker```(string): Required - ticker consists of two parts: {SYMBOL_NAME}.{EXCHANGE_ID}, then you can use, for example, AAPL.MX for Mexican Stock Exchange. or AAPL.US for NASDAQ.
-		- ```from```(DateTime) and ```to```(DateTime): the beginning and end of the desired dates
+		- ```from```(DateTime) and ```to```(DateTime): the beginning and end of the desired dates.
 		- ```period```(HistricalPeriod): search data interval. By default, daily prices will be shown.
 		- ```order```(Order): Optional - sorting data by dates. By default, dates are shown in ascending order.
 	- Usage:
@@ -70,6 +71,218 @@ List<HistoricalDividend>? response = await _api.GetHistoricalDividendsAsync("AAP
 //  An example of historical splits for AAPL (Apple Inc)
 List<HistoricalSplit>? response = await _api.GetHistoricalSplitsAsync("AAPL.US", new DateTime(2000, 1, 1), new DateTime(2022, 01, 1));
 ```
+- **Technical Indicator API**: Retrieve technical data associated with the price action of an instrument. The data is mainly oriented to technical indicators rather than any other price-action methodology (e.g., Elliot Waves, Wyckoff, etc.)
+	- **Split Adjusted Data**: It’s not a technical indicator itself, but we added this function to our API. By default Open, High, Low and Close values (OHLC) we provide 		in raw values and adjust neither for splits nor for dividends. While ‘adjusted_close’ values are adjusted both to splits and dividends. However, if you need only split-	adjusted closes, you can use this function to get the desired time series.
+		- Parameters:
+			- ```ticker```(string): Required - name of the instrument to retrieve data.
+			- ```period```(int): Optional - the number of data points used to calculate each moving average value.
+			- ```from```(DateTime) and ```to```(DateTime): Optional - the beginning and end of the desired dates.
+			- ```order```(Order): Optional – by default, dates are shown in ascending order.
+			- ```historicalPeriod```(HistoricalPeriod): Optional - aggregation period.
+		- Usage:
+		```c#
+		SplitAdjustedData? response = await _api.GetSplitAdjustedDataAsync("AAPL.US", 50, new DateTime(2021, 01, 1), new DateTime(2021, 12, 31));
+		```
+	- **Average Volume (avgvol)**: This function returns the Average Trading Volume.
+		- Parameters:
+			- ```ticker```(string): Required - name of the instrument to retrieve data.
+			- ```period```(int): Optional - the number of data points used to calculate each moving average value.
+			- ```from```(DateTime) and ```to```(DateTime): Optional - the beginning and end of the desired dates.
+			- ```order```(Order): Optional – by default, dates are shown in ascending order.
+		- Usage:
+		```c#
+		AverageVolume? response = await _api.GetAverageVolumeAsync("AAPL.US", 50, new DateTime(2021, 01, 1), new DateTime(2021, 12, 31));
+		```
+	- **Average Volume by Price (avgvolccy)**: This function returns the Average Trading Volume in currency.
+		- Parameters:
+			- ```ticker```(string): Required - name of the instrument to retrieve data.
+			- ```period```(int): Optional - the number of data points used to calculate each moving average value.
+			- ```from```(DateTime) and ```to```(DateTime): Optional - the beginning and end of the desired dates.
+			- ```order```(Order): Optional – by default, dates are shown in ascending order.
+		- Usage:
+		```c#
+		AverageVolumebyPrice? response = await _api.GetAverageVolumebyPriceAsync("AAPL.US", 50, new DateTime(2021, 01, 1), new DateTime(2021, 12, 31));
+		```
+	- **SMA (Simple Moving Average)**: This function returns the Simple Moving Average indicator.
+		- Parameters:
+			- ```ticker```(string): Required - name of the instrument to retrieve data.
+			- ```period```(int): Optional - the number of data points used to calculate each moving average value.
+			- ```from```(DateTime) and ```to```(DateTime): Optional - the beginning and end of the desired dates.
+			- ```order```(Order): Optional – by default, dates are shown in ascending order.
+			- ```historicalPeriod```(HistoricalPeriod): Optional - aggregation period.
+			- ```splitAdjustedOnly```(int): Optional - default value is ‘0’. By default, we calculate data for some functions by closes adjusted with splits and dividends. If you need to calculate the data by closes adjusted only with splits, set this parameter to ‘1’.
+		- Usage:
+		```c#
+		List<SMA>? response = await _api.GetSMAAsync("AAPL.US", 50, new DateTime(2021, 01, 1), new DateTime(2021, 12, 31));
+		```
+	- **EMA (Exponential Moving Average)**: This function returns the Exponential Moving Average indicator
+		- Parameters:
+			- ```ticker```(string): Required - name of the instrument to retrieve data.
+			- ```period```(int): Optional - the number of data points used to calculate each moving average value.
+			- ```from```(DateTime) and ```to```(DateTime): Optional - the beginning and end of the desired dates.
+			- ```order```(Order): Optional – by default, dates are shown in ascending order.
+			- ```historicalPeriod```(HistoricalPeriod): Optional - aggregation period.
+			- ```splitAdjustedOnly```(int): Optional - default value is ‘0’. By default, we calculate data for some functions by closes adjusted with splits and dividends. If you need to calculate the data by closes adjusted only with splits, set this parameter to ‘1’.
+		- Usage:
+		```c#
+		List<EMA>? response = await _api.GetEMAAsync("AAPL.US", 50, new DateTime(2021, 01, 1), new DateTime(2021, 12, 31));
+		```
+	- **WMA (Weighted Moving Average)**: This function returns the Weighted Moving Average indicator
+		- Parameters:
+			- ```ticker```(string): Required - name of the instrument to retrieve data.
+			- ```period```(int): Optional - the number of data points used to calculate each moving average value.
+			- ```from```(DateTime) and ```to```(DateTime): Optional - the beginning and end of the desired dates.
+			- ```order```(Order): Optional – by default, dates are shown in ascending order.
+			- ```historicalPeriod```(HistoricalPeriod): Optional - aggregation period.
+			- ```splitAdjustedOnly```(int): Optional - default value is ‘0’. By default, we calculate data for some functions by closes adjusted with splits and dividends. If you need to calculate the data by closes adjusted only with splits, set this parameter to ‘1’.
+		- Usage:
+		```c#
+		List<WMA>? response = await _api.GetWMAAsync("AAPL.US", 50, new DateTime(2021, 01, 1), new DateTime(2021, 12, 31));
+		```
+	- **Volatility (Variance between returns)**: This function returns the Volatility, a statistical measure of the dispersion of returns for a given security or market index.
+		- Parameters:
+			- ```ticker```(string): Required - name of the instrument to retrieve data.
+			- ```period```(int): Optional - the number of data points used to calculate each moving average value.
+			- ```from```(DateTime) and ```to```(DateTime): Optional - the beginning and end of the desired dates.
+			- ```order```(Order): Optional – by default, dates are shown in ascending order.
+			- ```splitAdjustedOnly```(int): Optional - default value is ‘0’. By default, we calculate data for some functions by closes adjusted with splits and dividends. If you need to calculate the data by closes adjusted only with splits, set this parameter to ‘1’.
+		- Usage:
+		```c#
+		List<Volatility>? response = await _api.GetVolatilityAsync("AAPL.US", 50, new DateTime(2021, 01, 1), new DateTime(2021, 12, 31));
+		```
+	- **Stochastic Technical Indicator**: This function returns Stochastic values.
+		- Parameters:
+			- ```ticker```(string): Required - name of the instrument to retrieve data.
+			- ```period```(int): Optional - the number of data points used to calculate each moving average value.
+			- ```from```(DateTime) and ```to```(DateTime): Optional - the beginning and end of the desired dates.
+			- ```order```(Order): Optional – by default, dates are shown in ascending order.
+			- ```fast_kperiod```(int): Optional - Fast K-period, the default value is 14. Valid range from 2 to 100000.
+			- ```slow_kperiod```(int): Optional - Slow K-period, the default value is 3. Valid range from 2 to 100000.
+			- ```slow_dperiod```(int): Optional - Slow D-period, the default value is 3. Valid range from 2 to 100000.
+		- Usage:
+		```c#
+		List<Stochastic>? response = await _api.GetStochasticAsync("AAPL.US", 50, new DateTime(2021, 01, 1), new DateTime(2021, 12, 31));
+		```
+	- **Relative Strength Index (rsi)**: This function returns the Relative Strength Index (RSI) technical indicator.
+		- Parameters:
+			- ```ticker```(string): Required - name of the instrument to retrieve data.
+			- ```period```(int): Optional - the number of data points used to calculate each moving average value.
+			- ```from```(DateTime) and ```to```(DateTime): Optional - the beginning and end of the desired dates.
+			- ```order```(Order): Optional – by default, dates are shown in ascending order.
+			- ```splitAdjustedOnly```(int): Optional - default value is ‘0’. By default, we calculate data for some functions by closes adjusted with splits and dividends. If you need to calculate the data by closes adjusted only with splits, set this parameter to ‘1’.
+		- Usage:
+		```c#
+		List<RelativeStrengthIndex>? response = await _api.GetRelativeStrengthIndexAsync("AAPL.US", 50, new DateTime(2021, 01, 1), new DateTime(2021, 12, 31));
+		```
+	- **Standard Deviation (stddev)**: This function returns the Standard Deviation (stddev) technical indicator.
+		- Parameters:
+			- ```ticker```(string): Required - name of the instrument to retrieve data.
+			- ```period```(int): Optional - the number of data points used to calculate each moving average value.
+			- ```from```(DateTime) and ```to```(DateTime): Optional - the beginning and end of the desired dates.
+			- ```order```(Order): Optional – by default, dates are shown in ascending order.
+		- Usage:
+		```c#
+		List<StandardDeviation>? response = await _api.GetStandardDeviationAsync("AAPL.US", 50, new DateTime(2021, 01, 1), new DateTime(2021, 12, 31));
+		```
+	- **Stochastic Relative Strength Index**: This function returns Stochastic Relative Strength Index values.
+		- Parameters:
+			- ```ticker```(string): Required - name of the instrument to retrieve data.
+			- ```period```(int): Optional - the number of data points used to calculate each moving average value.
+			- ```from```(DateTime) and ```to```(DateTime): Optional - the beginning and end of the desired dates.
+			- ```order```(Order): Optional – by default, dates are shown in ascending order.
+			- ```fast_kperiod```(int): Optional - Fast K-period, the default value is 14. Valid range from 2 to 100000.
+			- ```fast_dperiod```(int): Optional - Fast D-period, the default value is 14. Valid range from 2 to 100000.
+		- Usage:
+		```c#
+		List<StochasticRelativeStrengthIndex>? response = await _api.GetStochasticRelativeStrengthIndexAsync("AAPL.US", 50, new DateTime(2021, 01, 1), new DateTime(2021, 12, 31));
+		```
+	- **Slope (Linear Regression)**: This function returns the Linear Regression Slope.
+		- Parameters:
+			- ```ticker```(string): Required - name of the instrument to retrieve data.
+			- ```period```(int): Optional - the number of data points used to calculate each moving average value.
+			- ```from```(DateTime) and ```to```(DateTime): Optional - the beginning and end of the desired dates.
+			- ```order```(Order): Optional – by default, dates are shown in ascending order.
+			- ```splitAdjustedOnly```(int): Optional - default value is ‘0’. By default, we calculate data for some functions by closes adjusted with splits and dividends. If you need to calculate the data by closes adjusted only with splits, set this parameter to ‘1’.
+		- Usage:
+		```c#
+		List<Slope>? response = await _api.GetSlopeAsync("AAPL.US", 50, new DateTime(2021, 01, 1), new DateTime(2021, 12, 31));
+		```
+	- **Directional Movement Index (dmi or dx)**: This function returns the Directional Movement Index.
+		- Parameters:
+			- ```ticker```(string): Required - name of the instrument to retrieve data.
+			- ```period```(int): Optional - the number of data points used to calculate each moving average value.
+			- ```from```(DateTime) and ```to```(DateTime): Optional - the beginning and end of the desired dates.
+			- ```order```(Order): Optional – by default, dates are shown in ascending order.
+		- Usage:
+		```c#
+		List<DirectionalMovementIndex>? response = await _api.GetDirectionalMovementIndexAsync("AAPL.US", 50, new DateTime(2021, 01, 1), new DateTime(2021, 12, 31));
+		```
+	- **Average Directional Movement Index (adx)**: This function returns the Average Directional Movement Index.
+		- Parameters:
+			- ```ticker```(string): Required - name of the instrument to retrieve data.
+			- ```period```(int): Optional - the number of data points used to calculate each moving average value.
+			- ```from```(DateTime) and ```to```(DateTime): Optional - the beginning and end of the desired dates.
+			- ```order```(Order): Optional – by default, dates are shown in ascending order.
+		- Usage:
+		```c#
+		List<AverageDirectionalMovementIndex>? response = await _api.GetAverageDirectionalMovementIndexAsync("AAPL.US", 50, new DateTime(2021, 01, 1), new DateTime(2021, 12, 31));
+		```
+	- **Moving Average Convergence/Divergence (macd)**: This function returns Moving Average Convergence/Divergence values.
+		- Parameters:
+			- ```ticker```(string): Required - name of the instrument to retrieve data.
+			- ```period```(int): Optional - the number of data points used to calculate each moving average value.
+			- ```from```(DateTime) and ```to```(DateTime): Optional - the beginning and end of the desired dates.
+			- ```order```(Order): Optional – by default, dates are shown in ascending order.
+			- ```splitAdjustedOnly```(int): Optional - default value is ‘0’. By default, we calculate data for some functions by closes adjusted with splits and dividends. If you need to calculate the data by closes adjusted only with splits, set this parameter to ‘1’.
+			- ```fast_period```(int): Optional - the default value is 12. Valid range from 2 to 100000.
+			- ```slow_period```(int): Optional - the default value is 26. Valid range from 2 to 100000.
+			- ```signal_period```(int): Optional - the default value is 9. Valid range from 2 to 100000.
+		- Usage:
+		```c#
+		List<MovingAverageConvergence>? response = await _api.GetMovingAverageConvergenceAsync("AAPL.US", 50, new DateTime(2021, 01, 1), new DateTime(2021, 12, 31));
+		```
+	- **Average True Range (ATR)**: This function returns the average of true ranges over the specified period.
+		- Parameters:
+			- ```ticker```(string): Required - name of the instrument to retrieve data.
+			- ```period```(int): Optional - the number of data points used to calculate each moving average value.
+			- ```from```(DateTime) and ```to```(DateTime): Optional - the beginning and end of the desired dates.
+			- ```order```(Order): Optional – by default, dates are shown in ascending order.
+		- Usage:
+		```c#
+		List<AverageTrueRange>? response = await _api.GetAverageTrueRangeAsync("AAPL.US", 50, new DateTime(2021, 01, 1), new DateTime(2021, 12, 31));
+		```
+	- **Commodity Channel Index (CCI)**: This function returns the CCI data. The Commodity Channel Index (CCI) is a momentum-based oscillator used to help determine when an investment vehicle is reaching a condition of being overbought or oversold.
+		- Parameters:
+			- ```ticker```(string): Required - name of the instrument to retrieve data.
+			- ```period```(int): Optional - the number of data points used to calculate each moving average value.
+			- ```from```(DateTime) and ```to```(DateTime): Optional - the beginning and end of the desired dates.
+			- ```order```(Order): Optional – by default, dates are shown in ascending order.
+		- Usage:
+		```c#
+		List<CommodityChannelIndex>? response = await _api.GetCommodityChannelIndexAsync("AAPL.US", 50, new DateTime(2021, 01, 1), new DateTime(2021, 12, 31));
+		```
+	- **Parabolic SAR**: This function returns the Parabolic SAR values.
+		- Parameters:
+			- ```ticker```(string): Required - name of the instrument to retrieve data.
+			- ```period```(int): Optional - the number of data points used to calculate each moving average value.
+			- ```from```(DateTime) and ```to```(DateTime): Optional - the beginning and end of the desired dates.
+			- ```order```(Order): Optional – by default, dates are shown in ascending order.
+			- ```acceleration```(double): Optional - Acceleration Factor used up to the Maximum value. Default value – 0.02.
+			- ```maximum```(double): Optional - Acceleration Factor Maximum value. Default value – 0.20.
+		- Usage:
+		```c#
+		List<ParabolicSAR>? response = await _api.GetParabolicSARAsync("AAPL.US", 50, new DateTime(2021, 01, 1), new DateTime(2021, 12, 31));
+		```
+	- **Amibroker File format**: This file format returns the data in AmiBroker File format to import the data into AmiBroker software.
+		- Parameters:
+			- ```ticker```(string): Required - name of the instrument to retrieve data.
+			- ```period```(int): Optional - the number of data points used to calculate each moving average value.
+			- ```from```(DateTime) and ```to```(DateTime): Optional - the beginning and end of the desired dates.
+			- ```order```(Order): Optional – by default, dates are shown in ascending order.
+		- Usage:
+		```c#
+		List<AmiBrokerData>? response = await _api.GetAmiBrokerDataAsync("AAPL.US", 50, new DateTime(2021, 01, 1), new DateTime(2021, 12, 31));
+		```
 - **Intraday Historical Data API**: Get intraday historical stock price data for US (NYSE and NASDAQ), Canada, and MOEX tickers. The 1-minute interval includes the pre-market and after-hours trading data from 2004 (more than 15 years of the data), and for the 5-minute intervals, the data starts from October 2020. For other tickers (mainly for international instruments), it is only available the 5-minute intervals and only from October 2020.
 	- Parameters:
 		- ```symbol```(string): Required - Name of the instrument to retrieve data.
@@ -270,5 +483,5 @@ var filters = new List<(Field, Operation, string)>
             
 StockMarkerScreener response = await _api.GetStockMarketScreenerAsync(filters, null, null, 10);
 ```
-## Disclaimer [:arrow_up:](#eodhistoricaldata.wrapper)
+## Disclaimer [:arrow_up:](#EODHistoricalData.Wrapper)
 This document is not an offer to buy or sell financial instruments. Never invest more than you can afford to lose. You should consult a registered professional advisor before making any investment.

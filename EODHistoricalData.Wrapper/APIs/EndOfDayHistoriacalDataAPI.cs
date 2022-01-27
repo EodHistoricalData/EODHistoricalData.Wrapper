@@ -2,7 +2,7 @@
 {
     internal class EndOfDayHistoriacalDataAPI : BaseAPI, IEndOfDayHistoricalDataAPI
     {
-        private const string source = @"https://eodhistoricaldata.com/api/eod/{0}?from={1}&to{2}&period{3}&fmt=json";
+        private const string source = @"https://eodhistoricaldata.com/api/eod/{0}?from={1}&to={2}&period={3}&fmt=json";
 
         public EndOfDayHistoriacalDataAPI(string apiKey, bool useProxy) : base(apiKey, useProxy) { }
 

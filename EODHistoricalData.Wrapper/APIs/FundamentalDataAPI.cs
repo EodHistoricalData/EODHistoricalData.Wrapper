@@ -4,7 +4,7 @@
     {
         private const string sourceFundamental = @"https://eodhistoricaldata.com/api/fundamentals/{0}";
 
-        public FundamentalDataAPI(string apiKey, System.Net.IWebProxy? proxy) : base(apiKey, proxy) { }
+        public FundamentalDataAPI(string apiKey, System.Net.IWebProxy? proxy, string? source) : base(apiKey, proxy, source) { }
 
         public Task<FundamentalData> GetFundamentalsDataAsync(string ticker, string? filters = null)
         {

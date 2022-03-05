@@ -1,6 +1,8 @@
 ﻿using Newtonsoft.Json;
 
 using System.Net;
+using System.Net.Http.Headers;
+using System.Reflection;
 
 namespace EOD.APIs.Abstract
 {
@@ -10,7 +12,7 @@ namespace EOD.APIs.Abstract
         private readonly HttpClient _httpClient;
 
 
-        public BaseAPI(string apiToken, IWebProxy? proxy = null)
+        public BaseAPI(string apiToken, IWebProxy? proxy = null, string? source = null)
         {
             _apiToken = apiToken;
 
@@ -25,6 +27,14 @@ namespace EOD.APIs.Abstract
                 _httpClient = new HttpClient();
             }
 
+            if (String.IsNullOrEmpty(source))
+            {
+                _httpClient.DefaultRequestHeaders.Add("User-Agent", "eodhistoricaldata.wrapper");
+            }
+            else
+            {
+                _httpClient.DefaultRequestHeaders.Add("User-Agent", source);
+            }
         }
 
         public async Task<T> ExecuteQueryAsync<T>(string uri)
@@ -41,6 +51,7 @@ namespace EOD.APIs.Abstract
                 }
 
             }
+
             HttpResponseMessage? response = await _httpClient.GetAsync(uri);
             if (!response.IsSuccessStatusCode)
             {

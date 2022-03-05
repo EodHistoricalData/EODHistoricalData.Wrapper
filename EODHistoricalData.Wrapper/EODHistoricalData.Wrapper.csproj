@@ -5,7 +5,7 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 		<GenerateDocumentationFile>True</GenerateDocumentationFile>
-		<VersionPrefix>1.1.0</VersionPrefix>
+		<VersionPrefix>1.1.1</VersionPrefix>
 		<Company>EODHistoricalData</Company>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<Description>This library is the C# .NET SDK for the EOD Historical data REST API. It's intended to be used for data extraction for financial valuations, macroeconomic analyses, sentiment analysis, option strategies, technical analysis, development of machine learning models, and more!</Description>

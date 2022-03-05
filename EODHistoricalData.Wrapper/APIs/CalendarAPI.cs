@@ -9,7 +9,7 @@ namespace EOD.APIs
     {
         private const string source = @"https://eodhistoricaldata.com/api/calendar/";
 
-        public CalendarAPI(string apiKey, System.Net.IWebProxy? proxy) : base(apiKey, proxy) { }
+        public CalendarAPI(string apiKey, System.Net.IWebProxy? proxy, string? source) : base(apiKey, proxy, source) { }
         public Task<UpcomingEarning> GetUpcomingEarningsAsync(DateTime? from = null, DateTime? to = null, string? ticker = null)
         {
             string uri = source;

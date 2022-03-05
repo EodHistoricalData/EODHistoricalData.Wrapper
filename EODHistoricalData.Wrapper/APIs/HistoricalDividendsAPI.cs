@@ -4,7 +4,7 @@
     {
         private const string sourceDividends = @"https://eodhistoricaldata.com/api/div/{0}?from={1}&to={2}&fmt=json";
 
-        public HistoricalDividendsAPI(string apiKey, System.Net.IWebProxy? proxy) : base(apiKey, proxy) { }
+        public HistoricalDividendsAPI(string apiKey, System.Net.IWebProxy? proxy, string? source) : base(apiKey, proxy, source) { }
 
 
         public async Task<List<HistoricalDividend>> GetDataAsync(string ticker, DateTime from, DateTime to)

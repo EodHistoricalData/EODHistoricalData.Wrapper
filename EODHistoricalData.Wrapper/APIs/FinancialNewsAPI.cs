@@ -4,7 +4,7 @@
     {
         private const string source = @"https://eodhistoricaldata.com/api/news?";
 
-        public FinancialNewsAPI(string apiKey, System.Net.IWebProxy? proxy) : base(apiKey, proxy) { }
+        public FinancialNewsAPI(string apiKey, System.Net.IWebProxy? proxy, string? source) : base(apiKey, proxy, source) { }
         public async Task<List<FinancialNews>> GetFinancialNewsAsync(string? s = null, string? t = null,
             DateTime? from = null, DateTime? to = null, int? limit = null, int? offset = null)
         {

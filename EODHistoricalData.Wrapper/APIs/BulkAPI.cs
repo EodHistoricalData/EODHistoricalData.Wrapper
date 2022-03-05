@@ -6,7 +6,7 @@ namespace EOD.APIs
     {
         private const string source = @"https://eodhistoricaldata.com/api/eod-bulk-last-day/{0}?&fmt=json";
 
-        public BulkAPI(string apiKey, System.Net.IWebProxy? proxy) : base(apiKey, proxy) { }
+        public BulkAPI(string apiKey, System.Net.IWebProxy? proxy, string? source) : base(apiKey, proxy, source) { }
 
         public async Task<List<Bulk>> GetBulksAsync(string code, string? type, DateTime? date, string? symbols)
         {

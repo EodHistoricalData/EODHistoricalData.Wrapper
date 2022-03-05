@@ -14,6 +14,7 @@ namespace EODHistoricalData.Wrapper.NetCore.Tests
     {
         private readonly API _api;
         private readonly API _apiProxy;
+        private readonly API _apiSource;
 
         public APITest()
         {
@@ -21,6 +22,7 @@ namespace EODHistoricalData.Wrapper.NetCore.Tests
             System.Net.WebProxy proxy = new("localhost:80");
             _api = new API(apiKey);
             _apiProxy = new API(apiKey, proxy);
+            _apiSource = new API(apiKey, null, "EODHistoricalData.Downloader");
         }
 
         [Test]
@@ -82,6 +84,13 @@ namespace EODHistoricalData.Wrapper.NetCore.Tests
         public async Task GetEndOfDayDataAsyncTest_1w()
         {
             var result = await _api.GetEndOfDayHistoricalStockPriceAsync("AAPL.US", new DateTime(2021, 1, 10), new DateTime(2021, 12, 11), API.HistoricalPeriod.Weekly);
+            Assert.IsNotNull(result);
+        }
+
+        [Test]
+        public async Task GetEndOfDayDataAsyncTest_Source()
+        {
+            var result = await _apiSource.GetEndOfDayHistoricalStockPriceAsync("AAPL.US", new DateTime(2021, 1, 10), new DateTime(2021, 12, 11), API.HistoricalPeriod.Weekly);
             Assert.IsNotNull(result);
         }
 

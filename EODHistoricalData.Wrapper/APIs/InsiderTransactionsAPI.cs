@@ -4,7 +4,7 @@
     {
         private const string source = @"https://eodhistoricaldata.com/api/insider-transactions?";
 
-        public InsiderTransactionsAPI(string apiKey, System.Net.IWebProxy? proxy) : base(apiKey, proxy) { }
+        public InsiderTransactionsAPI(string apiKey, System.Net.IWebProxy? proxy, string? source) : base(apiKey, proxy, source) { }
         public Task<List<InsiderTransaction>> GetInsiderTransactionsAsync(int? limit = null, DateTime? from = null, DateTime? to = null, string? ticker = null)
         {
             string uri = source;

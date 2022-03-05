@@ -4,7 +4,7 @@
     {
         private const string source = @"https://eodhistoricaldata.com/api/eod/{0}?from={1}&to={2}&period={3}&fmt=json";
 
-        public EndOfDayHistoriacalDataAPI(string apiKey, System.Net.IWebProxy? proxy) : base(apiKey, proxy) { }
+        public EndOfDayHistoriacalDataAPI(string apiKey, System.Net.IWebProxy? proxy, string? source) : base(apiKey, proxy, source) { }
 
         public async Task<List<HistoricalStockPrice>> GetDataAsync(string ticker, DateTime from, DateTime to, string period)
         {

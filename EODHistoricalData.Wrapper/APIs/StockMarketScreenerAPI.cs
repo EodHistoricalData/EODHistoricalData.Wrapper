@@ -6,7 +6,7 @@ namespace EOD.APIs
     {
         private const string source = @"https://eodhistoricaldata.com/api/screener?";
 
-        public StockMarketScreenerAPI(string apiKey, System.Net.IWebProxy? proxy) : base(apiKey, proxy) { }
+        public StockMarketScreenerAPI(string apiKey, System.Net.IWebProxy? proxy, string? source) : base(apiKey, proxy, source) { }
         public Task<StockMarkerScreener> GetStockMarketScreenerAsync(string? filters = null, string? signals = null,
             string? sort = null, int? limit = null, int? offset = null)
         {

@@ -201,28 +201,29 @@ namespace EOD
         /// </summary>
         /// <param name="apiKey">your api key</param>
         /// <param name="proxy">proxy settings</param>
-        public API(string apiKey, IWebProxy? proxy = null)
+        /// <param name="source">app name</param>
+        public API(string apiKey, IWebProxy? proxy = null, string? source = null)
         {
-            intradayHistoricalDataAPI = new IntradayHistoricalDataAPI(apiKey, proxy);
-            endOfDayHistoricalDataAPI = new EndOfDayHistoriacalDataAPI(apiKey, proxy);
-            fundamentalDataAPI = new FundamentalDataAPI(apiKey, proxy);
-            searchAPI = new SearchAPI(apiKey, proxy);
-            userAPI = new UserAPI(apiKey, proxy);
-            liveStockPricesAPI = new LiveStockPricesAPI(apiKey, proxy);
-            exchangesAPI = new ExchangesAPI(apiKey, proxy);
-            historicalDividendsAPI = new HistoricalDividendsAPI(apiKey, proxy);
-            macroIndicatorsAPI = new MacroIndicatorsAPI(apiKey, proxy);
-            exchangeSymbolsAPI = new ExchangeSymbolsAPI(apiKey, proxy);
-            optionalDataAPI = new OptionsDataAPI(apiKey, proxy);
-            economicEventDataAPI = new EconomicEventDataAPI(apiKey, proxy);
-            insiderTransactionsAPI = new InsiderTransactionsAPI(apiKey, proxy);
-            calendarAPI = new CalendarAPI(apiKey, proxy);
-            bondsFundamentalsAndHistoricalAPI = new BondsFundamentalsAndHistoricalAPI(apiKey, proxy);
-            bulkAPI = new BulkAPI(apiKey, proxy);
-            exchangeDetailsAPI = new ExchangeDetailsAPI(apiKey, proxy);
-            financialNewsAPI = new FinancialNewsAPI(apiKey, proxy);
-            stockMarketScreenerAPI = new StockMarketScreenerAPI(apiKey, proxy);
-            technicalIndicatorAPI = new TechnicalIndicatorAPI(apiKey, proxy);
+            intradayHistoricalDataAPI = new IntradayHistoricalDataAPI(apiKey, proxy, source);
+            endOfDayHistoricalDataAPI = new EndOfDayHistoriacalDataAPI(apiKey, proxy, source);
+            fundamentalDataAPI = new FundamentalDataAPI(apiKey, proxy, source);
+            searchAPI = new SearchAPI(apiKey, proxy, source);
+            userAPI = new UserAPI(apiKey, proxy, source);
+            liveStockPricesAPI = new LiveStockPricesAPI(apiKey, proxy, source);
+            exchangesAPI = new ExchangesAPI(apiKey, proxy, source);
+            historicalDividendsAPI = new HistoricalDividendsAPI(apiKey, proxy, source);
+            macroIndicatorsAPI = new MacroIndicatorsAPI(apiKey, proxy, source);
+            exchangeSymbolsAPI = new ExchangeSymbolsAPI(apiKey, proxy, source);
+            optionalDataAPI = new OptionsDataAPI(apiKey, proxy, source);
+            economicEventDataAPI = new EconomicEventDataAPI(apiKey, proxy, source);
+            insiderTransactionsAPI = new InsiderTransactionsAPI(apiKey, proxy, source);
+            calendarAPI = new CalendarAPI(apiKey, proxy, source);
+            bondsFundamentalsAndHistoricalAPI = new BondsFundamentalsAndHistoricalAPI(apiKey, proxy, source);
+            bulkAPI = new BulkAPI(apiKey, proxy, source);
+            exchangeDetailsAPI = new ExchangeDetailsAPI(apiKey, proxy, source);
+            financialNewsAPI = new FinancialNewsAPI(apiKey, proxy, source);
+            stockMarketScreenerAPI = new StockMarketScreenerAPI(apiKey, proxy, source);
+            technicalIndicatorAPI = new TechnicalIndicatorAPI(apiKey, proxy, source);
         }
 
         /// <summary>

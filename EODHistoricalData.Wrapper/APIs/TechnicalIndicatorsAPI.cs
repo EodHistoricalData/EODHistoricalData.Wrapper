@@ -8,7 +8,7 @@ namespace EOD.APIs
     {
         private const string source = @"https://eodhistoricaldata.com/api/technical/{0}?&fmt=json";
 
-        public TechnicalIndicatorAPI(string apiKey, System.Net.IWebProxy? proxy) : base(apiKey, proxy) { }
+        public TechnicalIndicatorAPI(string apiKey, System.Net.IWebProxy? proxy, string? source) : base(apiKey, proxy, source) { }
         public Task<List<SMA>> GetSMAAsync(string ticker, int? period = null, DateTime? from = null, DateTime? to = null, string? order = null, int? splitAdjustedOnly = null)
         {
             string uri = source;

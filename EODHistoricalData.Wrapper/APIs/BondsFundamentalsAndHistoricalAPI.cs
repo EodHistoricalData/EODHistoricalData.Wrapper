@@ -8,7 +8,7 @@ namespace EOD.APIs
     {
         private const string sourceBondsFundamentals = @"https://eodhistoricaldata.com/api/bond-fundamentals/{0}?";
 
-        public BondsFundamentalsAndHistoricalAPI(string apiKey, IWebProxy? proxy) : base(apiKey, proxy) { }
+        public BondsFundamentalsAndHistoricalAPI(string apiKey, IWebProxy? proxy, string? source) : base(apiKey, proxy, source) { }
 
         public async Task<BondsFundamentalData> GetBondsFundamendalDataAsync(string cusip)
         {

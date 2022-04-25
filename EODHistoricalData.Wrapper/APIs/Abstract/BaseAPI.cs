@@ -1,8 +1,11 @@
 ﻿using Newtonsoft.Json;
 
+using System;
 using System.Net;
+using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Reflection;
+using System.Threading.Tasks;
 
 namespace EOD.APIs.Abstract
 {
@@ -12,13 +15,13 @@ namespace EOD.APIs.Abstract
         private readonly HttpClient _httpClient;
 
 
-        public BaseAPI(string apiToken, IWebProxy? proxy = null, string? source = null)
+        public BaseAPI(string apiToken, IWebProxy proxy = null, string source = null)
         {
             _apiToken = apiToken;
 
             if (proxy != null)
             {
-                HttpClientHandler myHandler = new();
+                HttpClientHandler myHandler = new HttpClientHandler();
                 myHandler.Proxy = proxy;
                 _httpClient = new HttpClient(myHandler);
             }
@@ -41,7 +44,7 @@ namespace EOD.APIs.Abstract
         {
             if (!string.IsNullOrEmpty(_apiToken))
             {
-                if (uri.Contains('?'))
+                if (uri.Contains("?"))
                 {
                     uri += $"&api_token={_apiToken}";
                 }
@@ -52,14 +55,14 @@ namespace EOD.APIs.Abstract
 
             }
 
-            HttpResponseMessage? response = await _httpClient.GetAsync(uri);
+            HttpResponseMessage response = await _httpClient.GetAsync(uri);
             if (!response.IsSuccessStatusCode)
             {
                 throw new HttpRequestException($"There was an error while executing the HTTP query. Reason: {response.ReasonPhrase}");
             }
 
             string content = await response.Content.ReadAsStringAsync();
-            T? result = JsonConvert.DeserializeObject<T>(content);
+            T result = JsonConvert.DeserializeObject<T>(content);
             if (result == null) throw new NullReferenceException();
             return result;
         }

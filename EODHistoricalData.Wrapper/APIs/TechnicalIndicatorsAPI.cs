@@ -1,4 +1,9 @@
-﻿using EOD.Model.TechnicalIndicators;
+﻿using EOD.APIs.Abstract;
+using EOD.Model.TechnicalIndicators;
+
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 using static EOD.API;
 
@@ -8,8 +13,8 @@ namespace EOD.APIs
     {
         private const string source = @"https://eodhistoricaldata.com/api/technical/{0}?&fmt=json";
 
-        public TechnicalIndicatorAPI(string apiKey, System.Net.IWebProxy? proxy, string? source) : base(apiKey, proxy, source) { }
-        public Task<List<SMA>> GetSMAAsync(string ticker, int? period = null, DateTime? from = null, DateTime? to = null, string? order = null, int? splitAdjustedOnly = null)
+        public TechnicalIndicatorAPI(string apiKey, System.Net.IWebProxy proxy, string source) : base(apiKey, proxy, source) { }
+        public Task<List<SMA>> GetSMAAsync(string ticker, int? period = null, DateTime? from = null, DateTime? to = null, string order = null, int? splitAdjustedOnly = null)
         {
             string uri = source;
             uri += $"&function=sma";
@@ -26,7 +31,7 @@ namespace EOD.APIs
             string url = string.Format(uri, args);
             return ExecuteQueryAsync<List<SMA>>(url);
         }
-        public Task<List<EMA>> GetEMAAsync(string ticker, int? period = null, DateTime? from = null, DateTime? to = null, string? order = null, int? splitAdjustedOnly = null)
+        public Task<List<EMA>> GetEMAAsync(string ticker, int? period = null, DateTime? from = null, DateTime? to = null, string order = null, int? splitAdjustedOnly = null)
         {
             string uri = source;
             uri += $"&function=ema";
@@ -43,7 +48,7 @@ namespace EOD.APIs
             string url = string.Format(uri, args);
             return ExecuteQueryAsync<List<EMA>>(url);
         }
-        public Task<List<WMA>> GetWMAAsync(string ticker, int? period = null, DateTime? from = null, DateTime? to = null, string? order = null, int? splitAdjustedOnly = null)
+        public Task<List<WMA>> GetWMAAsync(string ticker, int? period = null, DateTime? from = null, DateTime? to = null, string order = null, int? splitAdjustedOnly = null)
         {
             string uri = source;
             uri += $"&function=wma";
@@ -61,7 +66,7 @@ namespace EOD.APIs
             return ExecuteQueryAsync<List<WMA>>(url);
         }
         public Task<List<SplitAdjustedData>> GetSplitAdjustedDataAsync(string ticker, int? period = null, DateTime? from = null, DateTime? to = null,
-            string? order = null, HistoricalPeriod? historicalPeriod = null)
+            string order = null, HistoricalPeriod? historicalPeriod = null)
         {
             string uri = source;
             uri += $"&function=splitadjusted";
@@ -78,7 +83,7 @@ namespace EOD.APIs
             string url = string.Format(uri, args);
             return ExecuteQueryAsync<List<SplitAdjustedData>>(url);
         }
-        public Task<List<AverageVolume>> GetAverageVolumeAsync(string ticker, int? period = null, DateTime? from = null, DateTime? to = null, string? order = null)
+        public Task<List<AverageVolume>> GetAverageVolumeAsync(string ticker, int? period = null, DateTime? from = null, DateTime? to = null, string order = null)
         {
             string uri = source;
             uri += $"&function=avgvol";
@@ -95,7 +100,7 @@ namespace EOD.APIs
             return ExecuteQueryAsync<List<AverageVolume>>(url);
         }
         public Task<List<AverageVolumebyPrice>> GetAverageVolumebyPriceAsync(string ticker, int? period = null, DateTime? from = null, DateTime? to = null,
-            string? order = null)
+            string order = null)
         {
             string uri = source;
             uri += $"&function=avgvolccy";
@@ -112,7 +117,7 @@ namespace EOD.APIs
             return ExecuteQueryAsync<List<AverageVolumebyPrice>>(url);
         }
         public Task<List<Volatility>> GetVolatilityAsync(string ticker, int? period = null, DateTime? from = null, DateTime? to = null,
-            string? order = null, int? splitAdjustedOnly = null)
+            string order = null, int? splitAdjustedOnly = null)
         {
             string uri = source;
             uri += $"&function=volatility";
@@ -130,7 +135,7 @@ namespace EOD.APIs
             return ExecuteQueryAsync<List<Volatility>>(url);
         }
         public Task<List<Stochastic>> GetStochasticAsync(string ticker, int? period = null, DateTime? from = null, DateTime? to = null,
-            string? order = null, int? fast_kperiod = null, int? slow_kperiod = null, int? slow_dperiod = null)
+            string order = null, int? fast_kperiod = null, int? slow_kperiod = null, int? slow_dperiod = null)
         {
             string uri = source;
             uri += $"&function=stochastic";
@@ -150,7 +155,7 @@ namespace EOD.APIs
             return ExecuteQueryAsync<List<Stochastic>>(url);
         }
         public Task<List<RelativeStrengthIndex>> GetRelativeStrengthIndexAsync(string ticker, int? period = null, DateTime? from = null, DateTime? to = null,
-            string? order = null, int? splitAdjustedOnly = null)
+            string order = null, int? splitAdjustedOnly = null)
         {
             string uri = source;
             uri += $"&function=rsi";
@@ -168,7 +173,7 @@ namespace EOD.APIs
             return ExecuteQueryAsync<List<RelativeStrengthIndex>>(url);
         }
         public Task<List<StandardDeviation>> GetStandardDeviationAsync(string ticker, int? period = null, DateTime? from = null, DateTime? to = null,
-            string? order = null)
+            string order = null)
         {
             string uri = source;
             uri += $"&function=stddev";
@@ -185,7 +190,7 @@ namespace EOD.APIs
             return ExecuteQueryAsync<List<StandardDeviation>>(url);
         }
         public Task<List<StochasticRelativeStrengthIndex>> GetStochasticRelativeStrengthIndexAsync(string ticker, int? period = null, DateTime? from = null, DateTime? to = null,
-            string? order = null, int? fast_kperiod = null, int? fast_dperiod = null)
+            string order = null, int? fast_kperiod = null, int? fast_dperiod = null)
         {
             string uri = source;
             uri += $"&function=stochrsi";
@@ -204,7 +209,7 @@ namespace EOD.APIs
             return ExecuteQueryAsync<List<StochasticRelativeStrengthIndex>>(url);
         }
         public Task<List<Slope>> GetSlopeAsync(string ticker, int? period = null, DateTime? from = null, DateTime? to = null,
-            string? order = null, int? splitAdjustedOnly = null)
+            string order = null, int? splitAdjustedOnly = null)
         {
             string uri = source;
             uri += $"&function=slope";
@@ -222,7 +227,7 @@ namespace EOD.APIs
             return ExecuteQueryAsync<List<Slope>>(url);
         }
         public Task<List<DirectionalMovementIndex>> GetDirectionalMovementIndexAsync(string ticker, int? period = null, DateTime? from = null, DateTime? to = null,
-            string? order = null)
+            string order = null)
         {
             string uri = source;
             uri += $"&function=dmi";
@@ -239,7 +244,7 @@ namespace EOD.APIs
             return ExecuteQueryAsync<List<DirectionalMovementIndex>>(url);
         }
         public Task<List<AverageDirectionalMovementIndex>> GetAverageDirectionalMovementIndexAsync(string ticker, int? period = null, DateTime? from = null,
-            DateTime? to = null, string? order = null)
+            DateTime? to = null, string order = null)
         {
             string uri = source;
             uri += $"&function=adx";
@@ -256,7 +261,7 @@ namespace EOD.APIs
             return ExecuteQueryAsync<List<AverageDirectionalMovementIndex>>(url);
         }
         public Task<List<MovingAverageConvergence>> GetMovingAverageConvergenceAsync(string ticker, int? period = null, DateTime? from = null, DateTime? to = null,
-            string? order = null, int? splitAdjustedOnly = null, int? fast_period = null, int? slow_period = null, int? signal_period = null)
+            string order = null, int? splitAdjustedOnly = null, int? fast_period = null, int? slow_period = null, int? signal_period = null)
         {
             string uri = source;
             uri += $"&function=macd";
@@ -277,7 +282,7 @@ namespace EOD.APIs
             return ExecuteQueryAsync<List<MovingAverageConvergence>>(url);
         }
         public Task<List<AverageTrueRange>> GetAverageTrueRangeAsync(string ticker, int? period = null, DateTime? from = null,
-            DateTime? to = null, string? order = null)
+            DateTime? to = null, string order = null)
         {
             string uri = source;
             uri += $"&function=atr";
@@ -294,7 +299,7 @@ namespace EOD.APIs
             return ExecuteQueryAsync<List<AverageTrueRange>>(url);
         }
         public Task<List<CommodityChannelIndex>> GetCommodityChannelIndexAsync(string ticker, int? period = null, DateTime? from = null,
-            DateTime? to = null, string? order = null)
+            DateTime? to = null, string order = null)
         {
             string uri = source;
             uri += $"&function=cci";
@@ -311,7 +316,7 @@ namespace EOD.APIs
             return ExecuteQueryAsync<List<CommodityChannelIndex>>(url);
         }
         public Task<List<ParabolicSAR>> GetParabolicSARAsync(string ticker, int? period = null, DateTime? from = null,
-            DateTime? to = null, string? order = null, double? acceleration = null, double? maximum = null)
+            DateTime? to = null, string order = null, double? acceleration = null, double? maximum = null)
         {
             string uri = source;
             uri += $"&function=sar";
@@ -330,7 +335,7 @@ namespace EOD.APIs
             return ExecuteQueryAsync<List<ParabolicSAR>>(url);
         }
         public Task<List<AmiBrokerData>> GetAmiBrokerDataAsync(string ticker, int? period = null, DateTime? from = null,
-            DateTime? to = null, string? order = null)
+            DateTime? to = null, string order = null)
         {
             string uri = source;
             uri += $"&function=format_amibroker";

@@ -1,4 +1,8 @@
-﻿namespace EOD.APIs.Abstract
+﻿using EOD.Model;
+
+using System.Threading.Tasks;
+
+namespace EOD.APIs.Abstract
 {
     /// <summary>
     /// User API

@@ -1,12 +1,16 @@
-﻿using EOD.Model.OptionsData;
+﻿using EOD.APIs.Abstract;
+using EOD.Model.OptionsData;
+
+using System;
+using System.Threading.Tasks;
 
 namespace EOD.APIs
 {
     internal class OptionsDataAPI : BaseAPI, IOptionalDataAPI
     {
         private const string source = @"https://eodhistoricaldata.com/api/options/{0}?";
-        public OptionsDataAPI(string apiKey, System.Net.IWebProxy? proxy, string? source) : base(apiKey, proxy, source) { }
-        public Task<OptionsData> GetOptionsDataAsync(string ticker, DateTime? from = null, DateTime? to = null, DateTime? trade_date_from = null, DateTime? trade_date_to = null, string? contract_name = null)
+        public OptionsDataAPI(string apiKey, System.Net.IWebProxy proxy, string source) : base(apiKey, proxy, source) { }
+        public Task<OptionsData> GetOptionsDataAsync(string ticker, DateTime? from = null, DateTime? to = null, DateTime? trade_date_from = null, DateTime? trade_date_to = null, string contract_name = null)
         {
             string uri = source;
             if (from != null) uri += $"from={from?.ToString("yyyy-MM-dd")}";

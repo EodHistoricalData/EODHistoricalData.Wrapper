@@ -1,4 +1,6 @@
-﻿namespace EOD.Model
+﻿using System;
+
+namespace EOD.Model
 {
     /// <summary>
     /// 

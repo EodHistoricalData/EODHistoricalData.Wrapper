@@ -1,4 +1,6 @@
-﻿namespace EOD.Model.Bulks
+﻿using System;
+
+namespace EOD.Model.Bulks
 {
     /// <summary>
     /// 
@@ -8,11 +10,11 @@
         /// <summary>
         /// 
         /// </summary>
-        public string? Code { get; set; }
+        public string Code { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public string? ExchangeShortName { get; set; }
+        public string ExchangeShortName { get; set; }
         /// <summary>
         /// 
         /// </summary>

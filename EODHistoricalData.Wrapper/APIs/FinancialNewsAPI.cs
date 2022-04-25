@@ -1,11 +1,18 @@
-﻿namespace EOD.APIs
+﻿using EOD.APIs.Abstract;
+using EOD.Model;
+
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+
+namespace EOD.APIs
 {
     internal class FinancialNewsAPI : BaseAPI, IFinancialNewsAPI
     {
         private const string source = @"https://eodhistoricaldata.com/api/news?";
 
-        public FinancialNewsAPI(string apiKey, System.Net.IWebProxy? proxy, string? source) : base(apiKey, proxy, source) { }
-        public async Task<List<FinancialNews>> GetFinancialNewsAsync(string? s = null, string? t = null,
+        public FinancialNewsAPI(string apiKey, System.Net.IWebProxy proxy, string source) : base(apiKey, proxy, source) { }
+        public async Task<List<FinancialNews>> GetFinancialNewsAsync(string s = null, string t = null,
             DateTime? from = null, DateTime? to = null, int? limit = null, int? offset = null)
         {
             string uri = source;

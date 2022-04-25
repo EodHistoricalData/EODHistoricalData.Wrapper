@@ -1,4 +1,7 @@
-﻿namespace EOD.Model.Fundamental
+﻿using System;
+using System.Collections.Generic;
+
+namespace EOD.Model.Fundamental
 {
     /// <summary>
     /// 
@@ -8,10 +11,10 @@
         /// <summary>
         /// 
         /// </summary>
-        public Dictionary<DateTime, EarningsHistoryData>? History { get; set; }
+        public Dictionary<DateTime, EarningsHistoryData> History { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public Dictionary<DateTime, EarningsTrendData>? Trend { get; set; }
+        public Dictionary<DateTime, EarningsTrendData> Trend { get; set; }
     }
 }

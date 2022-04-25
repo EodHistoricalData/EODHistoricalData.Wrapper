@@ -1,4 +1,6 @@
-﻿namespace EOD.Model.UpcomingEarnings
+﻿using System.Collections.Generic;
+
+namespace EOD.Model.UpcomingEarnings
 {
     /// <summary>
     /// 
@@ -8,19 +10,19 @@
         /// <summary>
         /// 
         /// </summary>
-        public string? Type { get; set; }
+        public string Type { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public string? Description { get; set; }
+        public string Description { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public string? Symbols { get; set; }
+        public string Symbols { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public List<Earning>? Earning { get; set; }
+        public List<Earning> Earning { get; set; }
     }
 }
 

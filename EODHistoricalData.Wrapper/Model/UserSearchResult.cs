@@ -8,14 +8,14 @@
         /// <summary>
         /// 
         /// </summary>
-        public string? Code { get; set; }
+        public string Code { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public string? Exchange { get; set; }
+        public string Exchange { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public string? Name { get; set; }
+        public string Name { get; set; }
     }
 }

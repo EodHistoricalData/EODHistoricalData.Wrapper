@@ -1,5 +1,8 @@
 ﻿using EOD.Model.ExchangeDetails;
 
+using System;
+using System.Threading.Tasks;
+
 namespace EOD.APIs.Abstract
 {
     internal interface IExchangeDetailsAPI

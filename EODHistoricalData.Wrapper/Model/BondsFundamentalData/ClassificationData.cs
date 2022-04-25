@@ -8,26 +8,26 @@
         /// <summary>
         /// 
         /// </summary>
-        public string? BondType { get; set; }
+        public string BondType { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public string? DebtType { get; set; }
+        public string DebtType { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public string? IndustryGroup { get; set; }
+        public string IndustryGroup { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public string? IndustrySubGroup { get; set; }
+        public string IndustrySubGroup { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public string? SubProductAsset { get; set; }
+        public string SubProductAsset { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public string? SubProductAssetType { get; set; }
+        public string SubProductAssetType { get; set; }
     }
 }

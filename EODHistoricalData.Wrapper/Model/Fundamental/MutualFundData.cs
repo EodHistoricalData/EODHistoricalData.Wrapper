@@ -1,4 +1,7 @@
-﻿namespace EOD.Model.Fundamental
+﻿using System;
+using System.Collections.Generic;
+
+namespace EOD.Model.Fundamental
 {
     /// <summary>
     /// 
@@ -8,11 +11,11 @@
         /// <summary>
         /// 
         /// </summary>
-        public string? Fund_Category { get; set; }
+        public string Fund_Category { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public string? Fund_Style { get; set; }
+        public string Fund_Style { get; set; }
         /// <summary>
         /// 
         /// </summary>
@@ -52,11 +55,11 @@
         /// <summary>
         /// 
         /// </summary>
-        public string? Currency { get; set; }
+        public string Currency { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public string? Domicile { get; set; }
+        public string Domicile { get; set; }
         /// <summary>
         /// 
         /// </summary>
@@ -88,27 +91,27 @@
         /// <summary>
         /// 
         /// </summary>
-        public Dictionary<int, AssetAllocation>? Asset_Allocation { get; set; }
+        public Dictionary<int, AssetAllocation> Asset_Allocation { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public Dictionary<int, ValueGrowth>? Value_Growth { get; set; }
+        public Dictionary<int, ValueGrowth> Value_Growth { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public Dictionary<int, TopHoldings>? Top_Holdings { get; set; }
+        public Dictionary<int, TopHoldings> Top_Holdings { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public Dictionary<int, MarketCapitalization>? Market_Capitalization { get; set; }
+        public Dictionary<int, MarketCapitalization> Market_Capitalization { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public Dictionary<string, Dictionary<int, SectorWeights>>? Sector_Weights { get; set; }
+        public Dictionary<string, Dictionary<int, SectorWeights>> Sector_Weights { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public Dictionary<string, Dictionary<int, WorldRegion>>? World_Regions { get; set; }
+        public Dictionary<string, Dictionary<int, WorldRegion>> World_Regions { get; set; }
     }
 }
 

@@ -1,14 +1,22 @@
-﻿using EOD.Model.BondsFundamentalData;
+﻿using EOD.APIs;
+using EOD.APIs.Abstract;
+using EOD.Model;
+using EOD.Model.BondsFundamentalData;
 using EOD.Model.Bulks;
 using EOD.Model.EarningTrends;
 using EOD.Model.ExchangeDetails;
+using EOD.Model.Fundamental;
 using EOD.Model.IPOs;
 using EOD.Model.OptionsData;
 using EOD.Model.Screener;
 using EOD.Model.TechnicalIndicators;
 using EOD.Model.UpcomingEarnings;
 using EOD.Model.UpcomingSplits;
+
+using System;
+using System.Collections.Generic;
 using System.Net;
+using System.Threading.Tasks;
 
 namespace EOD
 {
@@ -202,7 +210,7 @@ namespace EOD
         /// <param name="apiKey">your api key</param>
         /// <param name="proxy">proxy settings</param>
         /// <param name="source">app name</param>
-        public API(string apiKey, IWebProxy? proxy = null, string? source = null)
+        public API(string apiKey, IWebProxy proxy = null, string source = null)
         {
             intradayHistoricalDataAPI = new IntradayHistoricalDataAPI(apiKey, proxy, source);
             endOfDayHistoricalDataAPI = new EndOfDayHistoriacalDataAPI(apiKey, proxy, source);
@@ -239,13 +247,23 @@ namespace EOD
         {
             CheckTicker(ticker);
 
-            string intervalToString = interval switch
+            string intervalToString;
+
+            switch (interval)
             {
-                IntradayHistoricalInterval.OneMinute => "1m",
-                IntradayHistoricalInterval.FiveMinutes => "5m",
-                IntradayHistoricalInterval.OneHour => "1h",
-                _ => "1m",
-            };
+                case IntradayHistoricalInterval.OneMinute:
+                    intervalToString = "1m";
+                    break;
+                case IntradayHistoricalInterval.FiveMinutes:
+                    intervalToString = "5m";
+                    break;
+                case IntradayHistoricalInterval.OneHour:
+                    intervalToString = "1h";
+                    break;
+                default:
+                    intervalToString = "1m";
+                    break;
+            }
 
             return await intradayHistoricalDataAPI.GetDataAsync(ticker, from, to, intervalToString);
         }
@@ -263,13 +281,22 @@ namespace EOD
         {
             CheckTicker(ticker);
 
-            string periodToString = period switch
+            string periodToString;
+            switch (period)
             {
-                HistoricalPeriod.Daily => "d",
-                HistoricalPeriod.Weekly => "w",
-                HistoricalPeriod.Monthly => "m",
-                _ => "d",
-            };
+                case HistoricalPeriod.Daily:
+                    periodToString = "d";
+                    break;
+                case HistoricalPeriod.Weekly:
+                    periodToString = "w";
+                    break;
+                case HistoricalPeriod.Monthly:
+                    periodToString = "m";
+                    break;
+                default:
+                    periodToString = "d";
+                    break;
+            }
 
             return await endOfDayHistoricalDataAPI.GetDataAsync(ticker, from, to, periodToString);
         }
@@ -281,7 +308,7 @@ namespace EOD
         /// <param name="filters">supports several, comma-separated, filters (for example: filter=Financials::Balance_Sheet::yearly or filter=General::Code,General,Earnings)</param>
         /// <returns></returns>
         /// <exception cref="ArgumentException"></exception>
-        public async Task<FundamentalData> GetFundamentalDataAsync(string ticker, string? filters = null)
+        public async Task<FundamentalData> GetFundamentalDataAsync(string ticker, string filters = null)
         {
             CheckTicker(ticker);
 
@@ -299,7 +326,7 @@ namespace EOD
         /// in this case, the exchange code will be ignored</param>
         /// <returns></returns>
         /// <exception cref="ArgumentNullException"></exception>
-        public async Task<BulkFundamental> GetBulkFundamentalsDataAsync(string ticker, int? offset = null, int? limit = null, string? symbols = null)
+        public async Task<BulkFundamental> GetBulkFundamentalsDataAsync(string ticker, int? offset = null, int? limit = null, string symbols = null)
         {
             if (ticker == string.Empty) throw new ArgumentNullException(nameof(ticker));
 
@@ -419,7 +446,7 @@ namespace EOD
         /// <param name="contract_name">returns only the data for particular contract.</param>
         /// <returns></returns>
         /// <exception cref="ArgumentException"></exception>
-        public async Task<OptionsData> GetOptionsDataAsync(string ticker, DateTime? from, DateTime? to, DateTime? trade_date_from, DateTime? trade_date_to, string? contract_name)
+        public async Task<OptionsData> GetOptionsDataAsync(string ticker, DateTime? from, DateTime? to, DateTime? trade_date_from, DateTime? trade_date_to, string contract_name)
         {
             CheckTicker(ticker);
 
@@ -437,18 +464,28 @@ namespace EOD
         /// <param name="limit">OPTIONAL. POssible values from 0 to 1000.</param>
         /// <returns></returns>
         /// <exception cref="ArgumentOutOfRangeException"></exception>
-        public async Task<List<EconomicEventData>> GetEconomicEventsDataAsync(DateTime? from, DateTime? to, string? country, Comparison? comparison, int? offset, int? limit)
+        public async Task<List<EconomicEventData>> GetEconomicEventsDataAsync(DateTime? from, DateTime? to, string country, Comparison? comparison, int? offset, int? limit)
         {
             if (offset < 0 && offset > 1000) throw new ArgumentOutOfRangeException(nameof(offset));
             if (limit < 0 && limit > 1000) throw new ArgumentOutOfRangeException(nameof(offset));
 
-            string? comparisonToString = comparison switch
+            string comparisonToString;
+
+            switch (comparison)
             {
-                Comparison.MoM => "mom",
-                Comparison.QoQ => "qoq",
-                Comparison.YoY => "yoy",
-                _ => null,
-            };
+                case Comparison.MoM:
+                    comparisonToString = "mom";
+                    break;
+                case Comparison.QoQ:
+                    comparisonToString = "qoq";
+                    break;
+                case Comparison.YoY:
+                    comparisonToString = "yoy";
+                    break;
+                default:
+                    comparisonToString = null;
+                    break;
+            }
 
             return await economicEventDataAPI.GetEconomicEventsDataAsync(from, to, country, comparisonToString, offset, limit);
         }
@@ -462,7 +499,7 @@ namespace EOD
         /// <param name="ticker">OPTIONAL. To get the data only for Apple Inc (AAPL), use AAPL.US or AAPL ticker code. By default, all possible symbols will be displayed.</param>
         /// <returns></returns>
         /// <exception cref="ArgumentOutOfRangeException"></exception>
-        public async Task<List<InsiderTransaction>> GetInsiderTransactionsAsync(int? limit, DateTime? from, DateTime? to, string? ticker)
+        public async Task<List<InsiderTransaction>> GetInsiderTransactionsAsync(int? limit, DateTime? from, DateTime? to, string ticker)
         {
             if (limit < 1 && limit > 1000) throw new ArgumentOutOfRangeException(nameof(limit));
 
@@ -477,7 +514,7 @@ namespace EOD
         /// <param name="ticker">OPTIONAL. You can request specific symbols to get historical and upcoming data. If ‘symbols’ used, then ‘from’ and ‘to’ parameters will be ignored.
         /// You can use one symbol: ‘AAPL.US’ or several symbols separated by a comma: ‘AAPL.US, MS’</param>
         /// <returns></returns>
-        public async Task<UpcomingEarning> GetUpcomingEarningsAsync(DateTime? from, DateTime? to, string? ticker)
+        public async Task<UpcomingEarning> GetUpcomingEarningsAsync(DateTime? from, DateTime? to, string ticker)
         {
             return await calendarAPI.GetUpcomingEarningsAsync(from, to, ticker);
         }
@@ -545,20 +582,25 @@ namespace EOD
         {
             if (code == string.Empty) throw new ArgumentNullException(nameof(code));
 
-            string? orderToString = order switch
-            {
-                Order.Ascending => "a",
-                Order.Descending => "d",
-                _ => null,
-            };
+            string orderToString= GetOrderSwitch(order);
 
-            string periodToString = period switch
+            string periodToString;
+
+            switch (period)
             {
-                HistoricalPeriod.Daily => "d",
-                HistoricalPeriod.Weekly => "w",
-                HistoricalPeriod.Monthly => "m",
-                _ => "d",
-            };
+                case HistoricalPeriod.Daily:
+                    periodToString = "d";
+                    break;
+                case HistoricalPeriod.Weekly:
+                    periodToString = "w";
+                    break;
+                case HistoricalPeriod.Monthly:
+                    periodToString = "m";
+                    break;
+                default:
+                    periodToString = "d";
+                    break;
+            }
 
             return await bondsFundamentalsAndHistoricalAPI.GetBondHistoricalDataAsync(code, from, to, orderToString, periodToString);
         }
@@ -584,7 +626,7 @@ namespace EOD
         /// <param name="date">if you need any specific date</param>
         /// <param name="symbols">To download last day data for several symbols, for example, for MSFT and AAPL</param>
         /// <returns></returns>
-        public async Task<List<Bulk>> GetBulksAsync(string code, string? type, DateTime? date, string? symbols)
+        public async Task<List<Bulk>> GetBulksAsync(string code, string type, DateTime? date, string symbols)
         {
             return await bulkAPI.GetBulksAsync(code, type, date, symbols);
         }
@@ -597,7 +639,7 @@ namespace EOD
         /// <param name="date">if you need any specific date</param>
         /// <param name="symbols">To download last day data for several symbols (example: MSFT,AAPL,BMW.XETRA,SAP.F)</param>
         /// <returns></returns>
-        public async Task<List<ExtendedBulk>> GetExtendedBulksAsync(string code, string? type, DateTime? date, string? symbols)
+        public async Task<List<ExtendedBulk>> GetExtendedBulksAsync(string code, string type, DateTime? date, string symbols)
         {
             return await bulkAPI.GetExtendedBulksAsync(code, type, date, symbols);
         }
@@ -632,7 +674,7 @@ namespace EOD
         /// <returns></returns>
         /// <exception cref="ArgumentException"></exception>
         /// <exception cref="ArgumentOutOfRangeException"></exception>
-        public async Task<List<FinancialNews>> GetFinancialNewsAsync(string? s = null, string? t = null,
+        public async Task<List<FinancialNews>> GetFinancialNewsAsync(string s = null, string t = null,
             DateTime? from = null, DateTime? to = null, int? limit = null, int? offset = null)
         {
             if (!(t != null ^ s != null)) throw new ArgumentException("One of the parameters (s or t) must be set");
@@ -652,8 +694,8 @@ namespace EOD
         /// <param name="offset">OPTIONAL. The offset of the data. Default value: 0</param>
         /// <returns></returns>
         /// <exception cref="ArgumentOutOfRangeException"></exception>
-        public async Task<StockMarkerScreener> GetStockMarketScreenerAsync(List<(Field, Operation, string)>? filters = null, string? signals = null,
-            string? sort = null, int? limit = null, int? offset = null)
+        public async Task<StockMarkerScreener> GetStockMarketScreenerAsync(List<(Field, Operation, string)> filters = null, string signals = null,
+            string sort = null, int? limit = null, int? offset = null)
         {
             if (offset < 0 && offset > 1000) throw new ArgumentOutOfRangeException(nameof(offset));
             if (limit < 1 && limit > 100) throw new ArgumentOutOfRangeException(nameof(offset));
@@ -679,32 +721,70 @@ namespace EOD
 
             for (int i = 0; i < filters.Count; i++)
             {
-                string field = filters[i].Item1 switch
-                {
-                    Field.Code => "\"code\"",
-                    Field.Name => "\"name\"",
-                    Field.Exchange => "\"exchange\"",
-                    Field.Sector => "\"sector\"",
-                    Field.Industry => "\"industry\"",
-                    Field.MarketCapitalization => "\"market_capitalization\"",
-                    Field.EarningsShare => "\"earnings_share\"",
-                    Field.DividendYield => "\"dividend_yield\"",
-                    Field.Refund1dP => "\"refund_1d_p\"",
-                    Field.Refund5dP => "\"refund_5d_p\"",
-                    _ => throw new NotImplementedException()
-                };
+                string field;
 
-                string operation = filters[i].Item2 switch
+                switch (filters[i].Item1)
                 {
-                    Operation.Matches => "\"match\"",
-                    Operation.Equals => "\"=\"",
-                    Operation.More => "\">\"",
-                    Operation.Less => "\"<\"",
-                    Operation.NotLess => "\">=\"",
-                    Operation.NotMore => "\"<=\"",
-                    Operation.NotEquals => "\"!=\"",
-                    _ => throw new NotImplementedException()
-                };
+                    case Field.Code:
+                        field = "\"code\"";
+                        break;
+                    case Field.Name:
+                        field = "\"name\"";
+                        break;
+                    case Field.Exchange:
+                        field = "\"exchange\"";
+                        break;
+                    case Field.Sector:
+                        field = "\"sector\"";
+                        break;
+                    case Field.Industry:
+                        field = "\"industry\"";
+                        break;
+                    case Field.MarketCapitalization:
+                        field = "\"market_capitalization\"";
+                        break;
+                    case Field.EarningsShare:
+                        field = "\"earnings_share\"";
+                        break;
+                    case Field.DividendYield:
+                        field = "\"dividend_yield\"";
+                        break;
+                    case Field.Refund1dP:
+                        field = "\"refund_1d_p\"";
+                        break;
+                    case Field.Refund5dP:
+                        field = "\"refund_5d_p\"";
+                        break;
+                    default:
+                        throw new NotImplementedException();
+                }
+
+                string operation = string.Empty;
+
+                switch (filters[i].Item2)
+                {
+                    case Operation.Matches:
+                        operation = "\"match\"";
+                        break;
+                    case Operation.Equals:
+                        operation = "\"=\"";
+                        break;
+                    case Operation.More:
+                        operation = "\">\"";
+                        break;
+                    case Operation.Less:
+                        operation = "\"<\"";
+                        break;
+                    case Operation.NotLess:
+                        operation = "\">=\"";
+                        break;
+                    case Operation.NotMore:
+                        operation = "\"<=\"";
+                        break;
+                    case Operation.NotEquals:
+                        operation = "\"!=\"";
+                        throw new NotImplementedException();
+                }
 
                 if (Double.TryParse(filters[i].Item3, out _))
                 {
@@ -742,12 +822,19 @@ namespace EOD
             CheckTicker(ticker);
             CheckPeriod(period);
             CheckSplitAdjustedOnly(splitAdjustedOnly);
-            string? orderToString = order switch
+            string orderToString;
+            switch (order)
             {
-                Order.Ascending => "a",
-                Order.Descending => "d",
-                _ => null,
-            };
+                case Order.Ascending:
+                    orderToString = "a";
+                    break;
+                case Order.Descending:
+                    orderToString = "d";
+                    break;
+                default:
+                    orderToString = null;
+                    break;
+            }
 
             return await technicalIndicatorAPI.GetSMAAsync(ticker, period, from, to, orderToString, splitAdjustedOnly);
         }
@@ -773,12 +860,7 @@ namespace EOD
             CheckTicker(ticker);
             CheckPeriod(period);
             CheckSplitAdjustedOnly(splitAdjustedOnly);
-            string? orderToString = order switch
-            {
-                Order.Ascending => "a",
-                Order.Descending => "d",
-                _ => null,
-            };
+            string orderToString= GetOrderSwitch(order);
 
             return await technicalIndicatorAPI.GetEMAAsync(ticker, period, from, to, orderToString, splitAdjustedOnly);
         }
@@ -804,12 +886,7 @@ namespace EOD
             CheckTicker(ticker);
             CheckPeriod(period);
             CheckSplitAdjustedOnly(splitAdjustedOnly);
-            string? orderToString = order switch
-            {
-                Order.Ascending => "a",
-                Order.Descending => "d",
-                _ => null,
-            };
+            string orderToString = GetOrderSwitch(order);
 
             return await technicalIndicatorAPI.GetWMAAsync(ticker, period, from, to, orderToString, splitAdjustedOnly);
         }
@@ -836,12 +913,7 @@ namespace EOD
             CheckTicker(ticker);
             CheckPeriod(period);
 
-            string? orderToString = order switch
-            {
-                Order.Ascending => "a",
-                Order.Descending => "d",
-                _ => null,
-            };
+            string orderToString= GetOrderSwitch(order);
 
             return await technicalIndicatorAPI.GetSplitAdjustedDataAsync(ticker, period, from, to, orderToString, historicalPeriod);
         }
@@ -865,12 +937,7 @@ namespace EOD
             CheckTicker(ticker);
             CheckPeriod(period);
 
-            string? orderToString = order switch
-            {
-                Order.Ascending => "a",
-                Order.Descending => "d",
-                _ => null,
-            };
+            string orderToString=GetOrderSwitch(order);
 
             return await technicalIndicatorAPI.GetAverageVolumeAsync(ticker, period, from, to, orderToString);
         }
@@ -894,12 +961,7 @@ namespace EOD
             CheckTicker(ticker);
             CheckPeriod(period);
 
-            string? orderToString = order switch
-            {
-                Order.Ascending => "a",
-                Order.Descending => "d",
-                _ => null,
-            };
+            string orderToString= GetOrderSwitch(order);
 
             return await technicalIndicatorAPI.GetAverageVolumebyPriceAsync(ticker, period, from, to, orderToString);
         }
@@ -925,12 +987,7 @@ namespace EOD
             CheckTicker(ticker);
             CheckPeriod(period);
             CheckSplitAdjustedOnly(splitAdjustedOnly);
-            string? orderToString = order switch
-            {
-                Order.Ascending => "a",
-                Order.Descending => "d",
-                _ => null,
-            };
+            string orderToString= GetOrderSwitch(order);
 
             return await technicalIndicatorAPI.GetVolatilityAsync(ticker, period, from, to, orderToString, splitAdjustedOnly);
         }
@@ -961,12 +1018,7 @@ namespace EOD
             if (slow_kperiod != null && (slow_kperiod < 2 || slow_kperiod > 100000)) throw new ArgumentOutOfRangeException(nameof(slow_kperiod));
             if (slow_dperiod != null && (slow_dperiod < 2 || slow_dperiod > 100000)) throw new ArgumentOutOfRangeException(nameof(slow_dperiod));
 
-            string? orderToString = order switch
-            {
-                Order.Ascending => "a",
-                Order.Descending => "d",
-                _ => null,
-            };
+            string orderToString= GetOrderSwitch(order);
 
             return await technicalIndicatorAPI.GetStochasticAsync(ticker, period, from, to, orderToString, fast_kperiod, slow_kperiod, slow_dperiod);
         }
@@ -992,12 +1044,7 @@ namespace EOD
             CheckTicker(ticker);
             CheckPeriod(period);
             CheckSplitAdjustedOnly(splitAdjustedOnly);
-            string? orderToString = order switch
-            {
-                Order.Ascending => "a",
-                Order.Descending => "d",
-                _ => null,
-            };
+            string orderToString = GetOrderSwitch(order);
 
             return await technicalIndicatorAPI.GetRelativeStrengthIndexAsync(ticker, period, from, to, orderToString, splitAdjustedOnly);
         }
@@ -1021,12 +1068,19 @@ namespace EOD
             CheckTicker(ticker);
             CheckPeriod(period);
 
-            string? orderToString = order switch
+            string orderToString;
+            switch (order)
             {
-                Order.Ascending => "a",
-                Order.Descending => "d",
-                _ => null,
-            };
+                case Order.Ascending:
+                    orderToString = "a";
+                    break;
+                case Order.Descending:
+                    orderToString = "d";
+                    break;
+                default:
+                    orderToString = null;
+                    break;
+            }
 
             return await technicalIndicatorAPI.GetStandardDeviationAsync(ticker, period, from, to, orderToString);
         }
@@ -1055,12 +1109,19 @@ namespace EOD
             if (fast_kperiod != null && (fast_kperiod < 2 || fast_kperiod > 100000)) throw new ArgumentOutOfRangeException(nameof(fast_kperiod));
             if (fast_dperiod != null && (fast_dperiod < 2 || fast_dperiod > 100000)) throw new ArgumentOutOfRangeException(nameof(fast_dperiod));
 
-            string? orderToString = order switch
+            string orderToString;
+            switch (order)
             {
-                Order.Ascending => "a",
-                Order.Descending => "d",
-                _ => null,
-            };
+                case Order.Ascending:
+                    orderToString = "a";
+                    break;
+                case Order.Descending:
+                    orderToString = "d";
+                    break;
+                default:
+                    orderToString = null;
+                    break;
+            }
 
             return await technicalIndicatorAPI.GetStochasticRelativeStrengthIndexAsync(ticker, period, from, to, orderToString, fast_kperiod, fast_dperiod);
         }
@@ -1086,12 +1147,7 @@ namespace EOD
             CheckTicker(ticker);
             CheckPeriod(period);
             CheckSplitAdjustedOnly(splitAdjustedOnly);
-            string? orderToString = order switch
-            {
-                Order.Ascending => "a",
-                Order.Descending => "d",
-                _ => null,
-            };
+            string orderToString = GetOrderSwitch(order);
 
             return await technicalIndicatorAPI.GetSlopeAsync(ticker, period, from, to, orderToString, splitAdjustedOnly);
         }
@@ -1115,12 +1171,7 @@ namespace EOD
         {
             CheckTicker(ticker);
             CheckPeriod(period);
-            string? orderToString = order switch
-            {
-                Order.Ascending => "a",
-                Order.Descending => "d",
-                _ => null,
-            };
+            string orderToString = GetOrderSwitch(order);
 
             return await technicalIndicatorAPI.GetDirectionalMovementIndexAsync(ticker, period, from, to, orderToString);
         }
@@ -1144,12 +1195,7 @@ namespace EOD
         {
             CheckTicker(ticker);
             CheckPeriod(period);
-            string? orderToString = order switch
-            {
-                Order.Ascending => "a",
-                Order.Descending => "d",
-                _ => null,
-            };
+            string orderToString = GetOrderSwitch(order);
 
             return await technicalIndicatorAPI.GetAverageDirectionalMovementIndexAsync(ticker, period, from, to, orderToString);
         }
@@ -1184,12 +1230,7 @@ namespace EOD
             if (slow_period != null && (slow_period < 2 || slow_period > 100000)) throw new ArgumentOutOfRangeException(nameof(slow_period));
             if (signal_period != null && (signal_period < 2 || signal_period > 100000)) throw new ArgumentOutOfRangeException(nameof(period));
 
-            string? orderToString = order switch
-            {
-                Order.Ascending => "a",
-                Order.Descending => "d",
-                _ => null,
-            };
+            string orderToString = GetOrderSwitch(order);
 
             return await technicalIndicatorAPI.GetMovingAverageConvergenceAsync(ticker, period, from, to, orderToString, splitAdjustedOnly, fast_period, slow_period, signal_period);
         }
@@ -1214,12 +1255,7 @@ namespace EOD
             CheckTicker(ticker);
             CheckPeriod(period);
 
-            string? orderToString = order switch
-            {
-                Order.Ascending => "a",
-                Order.Descending => "d",
-                _ => null,
-            };
+            string orderToString = GetOrderSwitch(order); 
 
             return await technicalIndicatorAPI.GetAverageTrueRangeAsync(ticker, period, from, to, orderToString);
         }
@@ -1245,12 +1281,7 @@ namespace EOD
             CheckTicker(ticker);
             CheckPeriod(period);
 
-            string? orderToString = order switch
-            {
-                Order.Ascending => "a",
-                Order.Descending => "d",
-                _ => null,
-            };
+            string orderToString = GetOrderSwitch(order);
 
             return await technicalIndicatorAPI.GetCommodityChannelIndexAsync(ticker, period, from, to, orderToString);
         }
@@ -1277,12 +1308,7 @@ namespace EOD
             CheckTicker(ticker);
             CheckPeriod(period);
 
-            string? orderToString = order switch
-            {
-                Order.Ascending => "a",
-                Order.Descending => "d",
-                _ => null,
-            };
+            string orderToString = GetOrderSwitch(order);
 
             return await technicalIndicatorAPI.GetParabolicSARAsync(ticker, period, from, to, orderToString, acceleration, maximum);
         }
@@ -1307,12 +1333,7 @@ namespace EOD
             CheckTicker(ticker);
             CheckPeriod(period);
 
-            string? orderToString = order switch
-            {
-                Order.Ascending => "a",
-                Order.Descending => "d",
-                _ => null,
-            };
+            string orderToString = GetOrderSwitch(order);
 
             return await technicalIndicatorAPI.GetAmiBrokerDataAsync(ticker, period, from, to, orderToString);
         }
@@ -1324,7 +1345,7 @@ namespace EOD
         /// <returns>bool</returns>
         private static void CheckTicker(string ticker)
         {
-            if ((ticker == string.Empty || !ticker.Contains('.')))
+            if ((ticker == string.Empty || !ticker.Contains(".")))
             {
                 throw new ArgumentException("Ticker is empty or has no splitter.", nameof(ticker));
             }
@@ -1349,6 +1370,25 @@ namespace EOD
         {
             if (splitAdjustedOnly != null && (splitAdjustedOnly != 0 & splitAdjustedOnly != 1))
                 throw new ArgumentException("splitAdjustedOnly must be 0 or 1", nameof(splitAdjustedOnly));
+        }
+
+
+        private string GetOrderSwitch(Order? order)
+        {
+            string orderToString;
+            switch (order)
+            {
+                case Order.Ascending:
+                    orderToString = "a";
+                    break;
+                case Order.Descending:
+                    orderToString = "d";
+                    break;
+                default:
+                    orderToString = null;
+                    break;
+            }
+            return orderToString;
         }
     }
 }

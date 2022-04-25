@@ -1,4 +1,7 @@
-﻿namespace EOD.Model.Fundamental
+﻿using System;
+using System.Collections.Generic;
+
+namespace EOD.Model.Fundamental
 {
     /// <summary>
     /// Balance Sheet
@@ -8,47 +11,47 @@
         /// <summary>
         /// Currency_symbol
         /// </summary>
-        public string? Currency_symbol { get; set; }
+        public string Currency_symbol { get; set; }
         /// <summary>
         /// Quarterly
         /// </summary>
-        public Dictionary<DateTime, Balance_SheetData>? Quarterly { get; set; }
+        public Dictionary<DateTime, Balance_SheetData> Quarterly { get; set; }
         /// <summary>
         /// Yearly
         /// </summary>
-        public Dictionary<DateTime, Balance_SheetData>? Yearly { get; set; }
+        public Dictionary<DateTime, Balance_SheetData> Yearly { get; set; }
         /// <summary>
         /// For bulk
         /// </summary>
-        public Balance_SheetData? Quarterly_last_0 { get; set; }
+        public Balance_SheetData Quarterly_last_0 { get; set; }
         /// <summary>
         /// For bulk
         /// </summary>
-        public Balance_SheetData? Quarterly_last_1 { get; set; }
+        public Balance_SheetData Quarterly_last_1 { get; set; }
         /// <summary>
         /// For bulk
         /// </summary>
-        public Balance_SheetData? Quarterly_last_2 { get; set; }
+        public Balance_SheetData Quarterly_last_2 { get; set; }
         /// <summary>
         /// For bulk
         /// </summary>
-        public Balance_SheetData? Quarterly_last_3 { get; set; }
+        public Balance_SheetData Quarterly_last_3 { get; set; }
         /// <summary>
         /// For bulk
         /// </summary>
-        public Balance_SheetData? Yearly_last_0 { get; set; }
+        public Balance_SheetData Yearly_last_0 { get; set; }
         /// <summary>
         /// For bulk
         /// </summary>
-        public Balance_SheetData? Yearly_last_1 { get; set; }
+        public Balance_SheetData Yearly_last_1 { get; set; }
         /// <summary>
         /// For bulk
         /// </summary>
-        public Balance_SheetData? Yearly_last_2 { get; set; }
+        public Balance_SheetData Yearly_last_2 { get; set; }
         /// <summary>
         /// For bulk
         /// </summary>
-        public Balance_SheetData? Yearly_last_3 { get; set; }
+        public Balance_SheetData Yearly_last_3 { get; set; }
 
 
     }

@@ -1,4 +1,6 @@
-﻿namespace EOD.Model.UpcomingSplits
+﻿using System;
+
+namespace EOD.Model.UpcomingSplits
 {
     /// <summary>
     /// 
@@ -8,7 +10,7 @@
         /// <summary>
         /// 
         /// </summary>
-        public string? Code { get; set; }
+        public string Code { get; set; }
         /// <summary>
         /// 
         /// </summary>
@@ -16,7 +18,7 @@
         /// <summary>
         /// 
         /// </summary>
-        public string? Optionable { get; set; }
+        public string Optionable { get; set; }
         /// <summary>
         /// 
         /// </summary>

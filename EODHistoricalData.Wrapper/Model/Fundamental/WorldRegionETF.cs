@@ -8,42 +8,42 @@
         /// <summary>
         /// 
         /// </summary>
-        public WorldData? NorthAmerica { get; set; }
+        public WorldData NorthAmerica { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public WorldData? UnitedKingdom { get; set; }
+        public WorldData UnitedKingdom { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public WorldData? EuropeDeveloped { get; set; }
+        public WorldData EuropeDeveloped { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public WorldData? EuropeEmerging { get; set; }
+        public WorldData EuropeEmerging { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public WorldData? AfricaMiddleEast { get; set; }
+        public WorldData AfricaMiddleEast { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public WorldData? Japan { get; set; }
+        public WorldData Japan { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public WorldData? Australasia { get; set; }
+        public WorldData Australasia { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public WorldData? AsiaDeveloped { get; set; }
+        public WorldData AsiaDeveloped { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public WorldData? AsiaEmerging { get; set; }
+        public WorldData AsiaEmerging { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public WorldData? LatinAmerica { get; set; }
+        public WorldData LatinAmerica { get; set; }
     }
 }

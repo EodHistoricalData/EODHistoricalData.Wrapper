@@ -1,4 +1,6 @@
-﻿namespace EOD.Model
+﻿using System;
+
+namespace EOD.Model
 {
     /// <summary>
     /// 
@@ -8,19 +10,19 @@
         /// <summary>
         /// 
         /// </summary>
-        public string? Type { get; set; }
+        public string Type { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public string? Comparison { get; set; }
+        public string Comparison { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public string? Period { get; set; }
+        public string Period { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public string? Country { get; set; }
+        public string Country { get; set; }
         /// <summary>
         /// 
         /// </summary>

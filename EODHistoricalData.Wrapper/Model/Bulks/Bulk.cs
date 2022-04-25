@@ -1,4 +1,6 @@
-﻿namespace EOD.Model.Bulks
+﻿using System.Collections.Generic;
+
+namespace EOD.Model.Bulks
 {
     /// <summary>
     /// 
@@ -8,6 +10,6 @@
         /// <summary>
         /// 
         /// </summary>
-        public List<Data>? Data { get; set; }
+        public List<Data> Data { get; set; }
     }
 }

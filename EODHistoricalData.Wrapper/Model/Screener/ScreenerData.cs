@@ -1,4 +1,6 @@
-﻿namespace EOD.Model.Screener
+﻿using System;
+
+namespace EOD.Model.Screener
 {
     /// <summary>
     /// 
@@ -8,11 +10,11 @@
         /// <summary>
         /// 
         /// </summary>
-        public string? Code { get; set; }
+        public string Code { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public string? Name { get; set; }
+        public string Name { get; set; }
         /// <summary>
         /// 
         /// </summary>
@@ -43,11 +45,11 @@
         /// <summary>
         /// 
         /// </summary>
-        public string? Exchange { get; set; }
+        public string Exchange { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public string? CurrencySymbol { get; set; }
+        public string CurrencySymbol { get; set; }
         /// <summary>
         /// 
         /// </summary>
@@ -63,11 +65,11 @@
         /// <summary>
         /// 
         /// </summary>
-        public string? Sector { get; set; }
+        public string Sector { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public string? Industry { get; set; }
+        public string Industry { get; set; }
 
     }
 }

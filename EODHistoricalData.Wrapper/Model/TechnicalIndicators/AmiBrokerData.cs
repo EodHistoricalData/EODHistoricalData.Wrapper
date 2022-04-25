@@ -8,11 +8,11 @@
         /// <summary>
         /// 
         /// </summary>
-        public string? Ticker { get; set; }
+        public string Ticker { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public string? Date { get; set; }
+        public string Date { get; set; }
         /// <summary>
         /// 
         /// </summary>

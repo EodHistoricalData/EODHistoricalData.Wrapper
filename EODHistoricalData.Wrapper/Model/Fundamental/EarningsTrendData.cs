@@ -1,4 +1,6 @@
-﻿namespace EOD.Model.Fundamental
+﻿using System;
+
+namespace EOD.Model.Fundamental
 {
     /// <summary>
     /// 
@@ -12,7 +14,7 @@
         /// <summary>
         /// 
         /// </summary>
-        public string? Period { get; set; }
+        public string Period { get; set; }
         /// <summary>
         /// 
         /// </summary>

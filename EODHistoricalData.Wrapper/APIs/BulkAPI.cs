@@ -1,4 +1,9 @@
-﻿using EOD.Model.Bulks;
+﻿using EOD.APIs.Abstract;
+using EOD.Model.Bulks;
+
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace EOD.APIs
 {
@@ -6,9 +11,9 @@ namespace EOD.APIs
     {
         private const string source = @"https://eodhistoricaldata.com/api/eod-bulk-last-day/{0}?&fmt=json";
 
-        public BulkAPI(string apiKey, System.Net.IWebProxy? proxy, string? source) : base(apiKey, proxy, source) { }
+        public BulkAPI(string apiKey, System.Net.IWebProxy proxy, string source) : base(apiKey, proxy, source) { }
 
-        public async Task<List<Bulk>> GetBulksAsync(string code, string? type, DateTime? date, string? symbols)
+        public async Task<List<Bulk>> GetBulksAsync(string code, string type, DateTime? date, string symbols)
         {
             string uri = source;
             if (type != null) uri += $"&type={type}";
@@ -24,7 +29,7 @@ namespace EOD.APIs
             return await ExecuteQueryAsync<List<Bulk>>(url);
         }
 
-        public async Task<List<ExtendedBulk>> GetExtendedBulksAsync(string code, string? type, DateTime? date, string? symbols)
+        public async Task<List<ExtendedBulk>> GetExtendedBulksAsync(string code, string type, DateTime? date, string symbols)
         {
             string uri = source;
             uri += "&filter=extended";

@@ -1,4 +1,6 @@
-﻿namespace EOD.Model.ExchangeDetails
+﻿using System.Collections.Generic;
+
+namespace EOD.Model.ExchangeDetails
 {
     /// <summary>
     /// 
@@ -8,31 +10,31 @@
         /// <summary>
         /// 
         /// </summary>
-        public string? Name { get; set; }
+        public string Name { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public string? Code { get; set; }
+        public string Code { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public string? OperatingMIC { get; set; }
+        public string OperatingMIC { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public string? Country { get; set; }
+        public string Country { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public string? Currency { get; set; }
+        public string Currency { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public string? Timezone { get; set; }
+        public string Timezone { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public Dictionary<int, ExchangeHolidays>? ExchangeHolidays { get; set; }
+        public Dictionary<int, ExchangeHolidays> ExchangeHolidays { get; set; }
         /// <summary>
         /// 
         /// </summary>
@@ -40,7 +42,7 @@
         /// <summary>
         /// 
         /// </summary>
-        public TradingHours? TradingHours { get; set; }
+        public TradingHours TradingHours { get; set; }
         /// <summary>
         /// 
         /// </summary>

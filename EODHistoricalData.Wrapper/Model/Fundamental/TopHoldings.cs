@@ -8,15 +8,15 @@
         /// <summary>
         /// 
         /// </summary>
-        public string? Name { get; set; }
+        public string Name { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public string? Owned { get; set; }
+        public string Owned { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public string? Change { get; set; }
+        public string Change { get; set; }
         /// <summary>
         /// 
         /// </summary>

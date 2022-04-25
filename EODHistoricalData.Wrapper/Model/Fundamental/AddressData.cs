@@ -8,22 +8,22 @@
         /// <summary>
         /// Street
         /// </summary>
-        public string? Street { get; set; }
+        public string Street { get; set; }
         /// <summary>
         /// City
         /// </summary>
-        public string? City { get; set; }
+        public string City { get; set; }
         /// <summary>
         /// State
         /// </summary>
-        public string? State { get; set; }
+        public string State { get; set; }
         /// <summary>
         /// Country
         /// </summary>
-        public string? Country { get; set; }
+        public string Country { get; set; }
         /// <summary>
         /// ZIP
         /// </summary>
-        public string? ZIP { get; set; }
+        public string ZIP { get; set; }
     }
 }

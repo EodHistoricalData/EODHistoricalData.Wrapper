@@ -12,7 +12,7 @@
         /// <summary>
         /// 
         /// </summary>
-        public string? Category_Benchmark { get; set; }
+        public string Category_Benchmark { get; set; }
         /// <summary>
         /// 
         /// </summary>

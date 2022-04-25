@@ -1,4 +1,6 @@
-﻿namespace EOD.Model.BondsFundamentalData
+﻿using System;
+
+namespace EOD.Model.BondsFundamentalData
 {
     /// <summary>
     /// 
@@ -8,7 +10,7 @@
         /// <summary>
         /// 
         /// </summary>
-        public string? MoodyRating { get; set; }
+        public string MoodyRating { get; set; }
         /// <summary>
         /// 
         /// </summary>
@@ -16,7 +18,7 @@
         /// <summary>
         /// 
         /// </summary>
-        public string? SPRating { get; set; }
+        public string SPRating { get; set; }
         /// <summary>
         /// 
         /// </summary>

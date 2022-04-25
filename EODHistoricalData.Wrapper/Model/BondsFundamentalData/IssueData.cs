@@ -1,4 +1,6 @@
-﻿namespace EOD.Model.BondsFundamentalData
+﻿using System;
+
+namespace EOD.Model.BondsFundamentalData
 {
     /// <summary>
     /// 
@@ -24,22 +26,22 @@
         /// <summary>
         /// 
         /// </summary>
-        public string? CouponPaymentFrequency { get; set; }
+        public string CouponPaymentFrequency { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public string? Issuer { get; set; }
+        public string Issuer { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public string? IssuerDescription { get; set; }
+        public string IssuerDescription { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public string? IssuerCountry { get; set; }
+        public string IssuerCountry { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public string? IssuerURL { get; set; }
+        public string IssuerURL { get; set; }
     }
 }

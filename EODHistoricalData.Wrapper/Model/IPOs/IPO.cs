@@ -1,4 +1,6 @@
-﻿namespace EOD.Model.IPOs
+﻿using System;
+
+namespace EOD.Model.IPOs
 {
     /// <summary>
     /// 
@@ -8,19 +10,19 @@
         /// <summary>
         /// 
         /// </summary>
-        public string? Code { get; set; }
+        public string Code { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public string? Name { get; set; }
+        public string Name { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public string? Exchange { get; set; }
+        public string Exchange { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public string? Currency { get; set; }
+        public string Currency { get; set; }
         /// <summary>
         /// 
         /// </summary>

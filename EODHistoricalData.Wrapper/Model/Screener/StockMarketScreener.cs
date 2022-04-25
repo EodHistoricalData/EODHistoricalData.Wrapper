@@ -1,4 +1,6 @@
-﻿namespace EOD.Model.Screener
+﻿using System.Collections.Generic;
+
+namespace EOD.Model.Screener
 {
     /// <summary>
     /// 
@@ -8,7 +10,7 @@
         /// <summary>
         /// 
         /// </summary>
-        public List<ScreenerData>? Data { get; set; }
+        public List<ScreenerData> Data { get; set; }
     }
 }
 

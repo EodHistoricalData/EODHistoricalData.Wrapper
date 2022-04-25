@@ -1,4 +1,6 @@
-﻿namespace EOD.Model
+﻿using System;
+
+namespace EOD.Model
 {
     /// <summary>
     /// 
@@ -8,19 +10,19 @@
         /// <summary>
         /// 
         /// </summary>
-        public string? Name { get; set; }
+        public string Name { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public string? Email { get; set; }
+        public string Email { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public string? SubscriptionType { get; set; }
+        public string SubscriptionType { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public string? PaymentMethod { get; set; }
+        public string PaymentMethod { get; set; }
         /// <summary>
         /// 
         /// </summary>
@@ -36,7 +38,7 @@
         /// <summary>
         /// 
         /// </summary>
-        public string? InviteToken { get; set; }
+        public string InviteToken { get; set; }
         /// <summary>
         /// 
         /// </summary>

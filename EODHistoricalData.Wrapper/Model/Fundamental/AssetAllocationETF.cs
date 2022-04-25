@@ -8,27 +8,27 @@
         /// <summary>
         /// 
         /// </summary>
-        public AssetAllocationData? Cash { get; set; }
+        public AssetAllocationData Cash { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public AssetAllocationData? NotClassified { get; set; }
+        public AssetAllocationData NotClassified { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public AssetAllocationData? StocknonUS { get; set; }
+        public AssetAllocationData StocknonUS { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public AssetAllocationData? Other { get; set; }
+        public AssetAllocationData Other { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public AssetAllocationData? StockUS { get; set; }
+        public AssetAllocationData StockUS { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public AssetAllocationData? Bond { get; set; }
+        public AssetAllocationData Bond { get; set; }
     }
 }
 

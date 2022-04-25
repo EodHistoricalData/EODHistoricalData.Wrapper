@@ -1,4 +1,7 @@
-﻿namespace EOD.Model.OptionsData
+﻿using System;
+using System.Collections.Generic;
+
+namespace EOD.Model.OptionsData
 {
     /// <summary>
     /// 
@@ -8,11 +11,11 @@
         /// <summary>
         /// 
         /// </summary>
-        public string? Code { get; set; }
+        public string Code { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public string? Exchange { get; set; }
+        public string Exchange { get; set; }
         /// <summary>
         /// 
         /// </summary>
@@ -24,6 +27,6 @@
         /// <summary>
         /// 
         /// </summary>
-        public List<Data>? Data { get; set; }
+        public List<Data> Data { get; set; }
     }
 }

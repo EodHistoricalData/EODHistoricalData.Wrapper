@@ -1,4 +1,7 @@
-﻿namespace EOD.Model.Fundamental
+﻿using System;
+using System.Collections.Generic;
+
+namespace EOD.Model.Fundamental
 {
     /// <summary>
     /// 
@@ -8,46 +11,46 @@
         /// <summary>
         /// 
         /// </summary>
-        public string? Currency_symbol { get; set; }
+        public string Currency_symbol { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public Dictionary<DateTime, Cash_FlowData>? Quarterly { get; set; }
+        public Dictionary<DateTime, Cash_FlowData> Quarterly { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public Dictionary<DateTime, Cash_FlowData>? Yearly { get; set; }
+        public Dictionary<DateTime, Cash_FlowData> Yearly { get; set; }
         /// <summary>
         /// For bulk
         /// </summary>
-        public Cash_FlowData? Quarterly_last_0 { get; set; }
+        public Cash_FlowData Quarterly_last_0 { get; set; }
         /// <summary>
         /// For bulk
         /// </summary>
-        public Cash_FlowData? Quarterly_last_1 { get; set; }
+        public Cash_FlowData Quarterly_last_1 { get; set; }
         /// <summary>
         /// For bulk
         /// </summary>
-        public Cash_FlowData? Quarterly_last_2 { get; set; }
+        public Cash_FlowData Quarterly_last_2 { get; set; }
         /// <summary>
         /// For bulk
         /// </summary>
-        public Cash_FlowData? Quarterly_last_3 { get; set; }
+        public Cash_FlowData Quarterly_last_3 { get; set; }
         /// <summary>
         /// For bulk
         /// </summary>
-        public Cash_FlowData? Yearly_last_0 { get; set; }
+        public Cash_FlowData Yearly_last_0 { get; set; }
         /// <summary>
         /// For bulk
         /// </summary>
-        public Cash_FlowData? Yearly_last_1 { get; set; }
+        public Cash_FlowData Yearly_last_1 { get; set; }
         /// <summary>
         /// For bulk
         /// </summary>
-        public Cash_FlowData? Yearly_last_2 { get; set; }
+        public Cash_FlowData Yearly_last_2 { get; set; }
         /// <summary>
         /// For bulk
         /// </summary>
-        public Cash_FlowData? Yearly_last_3 { get; set; }
+        public Cash_FlowData Yearly_last_3 { get; set; }
     }
 }

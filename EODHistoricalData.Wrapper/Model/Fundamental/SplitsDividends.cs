@@ -1,4 +1,6 @@
-﻿namespace EOD.Model.Fundamental
+﻿using System;
+
+namespace EOD.Model.Fundamental
 {
     /// <summary>
     /// 
@@ -28,7 +30,7 @@
         /// <summary>
         /// 
         /// </summary>
-        public string? LastSplitFactor { get; set; }
+        public string LastSplitFactor { get; set; }
         /// <summary>
         /// 
         /// </summary>

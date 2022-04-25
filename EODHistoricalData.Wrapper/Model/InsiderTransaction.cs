@@ -1,4 +1,6 @@
-﻿namespace EOD.Model
+﻿using System;
+
+namespace EOD.Model
 {
     /// <summary>
     /// 
@@ -8,11 +10,11 @@
         /// <summary>
         /// 
         /// </summary>
-        public string? Code { get; set; }
+        public string Code { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public string? Exchange { get; set; }
+        public string Exchange { get; set; }
         /// <summary>
         /// 
         /// </summary>
@@ -28,15 +30,15 @@
         /// <summary>
         /// 
         /// </summary>
-        public string? OwnerName { get; set; }
+        public string OwnerName { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public string? OwnerRelationship { get; set; }
+        public string OwnerRelationship { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public string? OwnerTitle { get; set; }
+        public string OwnerTitle { get; set; }
         /// <summary>
         /// 
         /// </summary>
@@ -44,7 +46,7 @@
         /// <summary>
         /// 
         /// </summary>
-        public string? TransactionCode { get; set; }
+        public string TransactionCode { get; set; }
         /// <summary>
         /// 
         /// </summary>
@@ -56,7 +58,7 @@
         /// <summary>
         /// 
         /// </summary>
-        public string? TransactionAcquiredDisposed { get; set; }
+        public string TransactionAcquiredDisposed { get; set; }
         /// <summary>
         /// 
         /// </summary>
@@ -64,7 +66,7 @@
         /// <summary>
         /// 
         /// </summary>
-        public string? Link { get; set; }
+        public string Link { get; set; }
     }
 }
 

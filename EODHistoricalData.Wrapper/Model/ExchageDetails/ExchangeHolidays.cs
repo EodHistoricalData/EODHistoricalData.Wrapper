@@ -1,4 +1,6 @@
-﻿namespace EOD.Model.ExchangeDetails
+﻿using System;
+
+namespace EOD.Model.ExchangeDetails
 {
     /// <summary>
     /// 
@@ -8,7 +10,7 @@
         /// <summary>
         /// 
         /// </summary>
-        public string? Holiday { get; set; }
+        public string Holiday { get; set; }
         /// <summary>
         /// 
         /// </summary>
@@ -16,6 +18,6 @@
         /// <summary>
         /// 
         /// </summary>
-        public string? Type { get; set; }
+        public string Type { get; set; }
     }
 }

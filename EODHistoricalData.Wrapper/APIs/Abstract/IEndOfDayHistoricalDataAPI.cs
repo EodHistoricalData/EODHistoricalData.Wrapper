@@ -1,4 +1,10 @@
-﻿namespace EOD.APIs.Abstract
+﻿using EOD.Model;
+
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+
+namespace EOD.APIs.Abstract
 {
     /// <summary>
     /// End-Of-Day Historical Stock Market Data API

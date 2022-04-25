@@ -1,4 +1,6 @@
-﻿namespace EOD.Model.OptionsData
+﻿using System;
+
+namespace EOD.Model.OptionsData
 {
     /// <summary>
     /// 
@@ -8,31 +10,31 @@
         /// <summary>
         /// 
         /// </summary>
-        public string? ContractName { get; set; }
+        public string ContractName { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public string? ContractSize { get; set; }
+        public string ContractSize { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public string? ContractPeriod { get; set; }
+        public string ContractPeriod { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public string? Currency { get; set; }
+        public string Currency { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public string? Type { get; set; }
+        public string Type { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public string? InTheMoney { get; set; }
+        public string InTheMoney { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public string? LastTradeDateTime { get; set; }
+        public string LastTradeDateTime { get; set; }
         /// <summary>
         /// 
         /// </summary>

@@ -1,4 +1,6 @@
-﻿namespace EOD.Model.TechnicalIndicators
+﻿using System;
+
+namespace EOD.Model.TechnicalIndicators
 {
     /// <summary>
     /// 

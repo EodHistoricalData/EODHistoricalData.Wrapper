@@ -8,30 +8,30 @@
         /// <summary>
         /// 
         /// </summary>
-        public string? Code { get; set; }
+        public string Code { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public string? Name { get; set; }
+        public string Name { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public string? Country { get; set; }
+        public string Country { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public string? Exchange { get; set; }
+        public string Exchange { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public string? Currency { get; set; }
+        public string Currency { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public string? Type { get; set; }
+        public string Type { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public string? Isin { get; set; }
+        public string Isin { get; set; }
     }
 }

@@ -1,4 +1,6 @@
-﻿namespace EOD.Model.Fundamental
+﻿using System;
+
+namespace EOD.Model.Fundamental
 {
     /// <summary>
     /// 
@@ -16,11 +18,11 @@
         /// <summary>
         /// 
         /// </summary>
-        public string? BeforeAfterMarket { get; set; }
+        public string BeforeAfterMarket { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public string? Currency { get; set; }
+        public string Currency { get; set; }
         /// <summary>
         /// 
         /// </summary>

@@ -1,4 +1,6 @@
-﻿namespace EOD.Model.Fundamental
+﻿using System;
+
+namespace EOD.Model.Fundamental
 {
     /// <summary>
     /// 
@@ -16,7 +18,7 @@
         /// <summary>
         /// 
         /// </summary>
-        public string? Currency_symbol { get; set; }
+        public string Currency_symbol { get; set; }
         /// <summary>
         /// 
         /// </summary>

@@ -1,4 +1,6 @@
-﻿namespace EOD.Model.UpcomingEarnings
+﻿using System;
+
+namespace EOD.Model.UpcomingEarnings
 {
     /// <summary>
     /// 
@@ -8,7 +10,7 @@
         /// <summary>
         /// 
         /// </summary>
-        public string? Code { get; set; }
+        public string Code { get; set; }
         /// <summary>
         /// 
         /// </summary>
@@ -20,11 +22,11 @@
         /// <summary>
         /// 
         /// </summary>
-        public string? BeforeAfterMarket { get; set; }
+        public string BeforeAfterMarket { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public string? Currency { get; set; }
+        public string Currency { get; set; }
         /// <summary>
         /// 
         /// </summary>

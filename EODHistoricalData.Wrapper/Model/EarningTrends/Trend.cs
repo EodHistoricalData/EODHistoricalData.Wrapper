@@ -1,4 +1,6 @@
-﻿namespace EOD.Model.EarningTrends
+﻿using System;
+
+namespace EOD.Model.EarningTrends
 {
     /// <summary>
     /// 
@@ -8,7 +10,7 @@
         /// <summary>
         /// 
         /// </summary>
-        public string? Code { get; set; }
+        public string Code { get; set; }
         /// <summary>
         /// 
         /// </summary>
@@ -16,7 +18,7 @@
         /// <summary>
         /// 
         /// </summary>
-        public string? Period { get; set; }
+        public string Period { get; set; }
         /// <summary>
         /// 
         /// </summary>

@@ -1,4 +1,7 @@
-﻿namespace EOD.Model.OptionsData
+﻿using System;
+using System.Collections.Generic;
+
+namespace EOD.Model.OptionsData
 {
     /// <summary>
     /// 
@@ -44,6 +47,6 @@
         /// <summary>
         /// 
         /// </summary>
-        public Dictionary<string, List<ContractData>?>? Options { get; set; }
+        public Dictionary<string, List<ContractData>> Options { get; set; }
     }
 }

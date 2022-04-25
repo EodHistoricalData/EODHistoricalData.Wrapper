@@ -1,4 +1,7 @@
-﻿using EOD.Model.Screener;
+﻿using EOD.APIs.Abstract;
+using EOD.Model.Screener;
+
+using System.Threading.Tasks;
 
 namespace EOD.APIs
 {
@@ -6,9 +9,9 @@ namespace EOD.APIs
     {
         private const string source = @"https://eodhistoricaldata.com/api/screener?";
 
-        public StockMarketScreenerAPI(string apiKey, System.Net.IWebProxy? proxy, string? source) : base(apiKey, proxy, source) { }
-        public Task<StockMarkerScreener> GetStockMarketScreenerAsync(string? filters = null, string? signals = null,
-            string? sort = null, int? limit = null, int? offset = null)
+        public StockMarketScreenerAPI(string apiKey, System.Net.IWebProxy proxy, string source) : base(apiKey, proxy, source) { }
+        public Task<StockMarkerScreener> GetStockMarketScreenerAsync(string filters = null, string signals = null,
+            string sort = null, int? limit = null, int? offset = null)
         {
             string uri = source;
             if (filters != null) uri += $"&filters={filters}";

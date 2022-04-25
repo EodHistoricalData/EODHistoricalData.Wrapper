@@ -1,7 +1,11 @@
-﻿using EOD.Model.EarningTrends;
+﻿using EOD.APIs.Abstract;
+using EOD.Model.EarningTrends;
 using EOD.Model.IPOs;
 using EOD.Model.UpcomingEarnings;
 using EOD.Model.UpcomingSplits;
+
+using System;
+using System.Threading.Tasks;
 
 namespace EOD.APIs
 {
@@ -9,8 +13,8 @@ namespace EOD.APIs
     {
         private const string source = @"https://eodhistoricaldata.com/api/calendar/";
 
-        public CalendarAPI(string apiKey, System.Net.IWebProxy? proxy, string? source) : base(apiKey, proxy, source) { }
-        public Task<UpcomingEarning> GetUpcomingEarningsAsync(DateTime? from = null, DateTime? to = null, string? ticker = null)
+        public CalendarAPI(string apiKey, System.Net.IWebProxy proxy, string source) : base(apiKey, proxy, source) { }
+        public Task<UpcomingEarning> GetUpcomingEarningsAsync(DateTime? from = null, DateTime? to = null, string ticker = null)
         {
             string uri = source;
             uri += "earnings?&fmt=json";

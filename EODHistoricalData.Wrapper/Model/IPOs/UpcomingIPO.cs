@@ -1,4 +1,7 @@
-﻿namespace EOD.Model.IPOs
+﻿using System;
+using System.Collections.Generic;
+
+namespace EOD.Model.IPOs
 {
     /// <summary>
     /// 
@@ -8,11 +11,11 @@
         /// <summary>
         /// 
         /// </summary>
-        public string? Type { get; set; }
+        public string Type { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public string? Description { get; set; }
+        public string Description { get; set; }
         /// <summary>
         /// 
         /// </summary>
@@ -24,7 +27,7 @@
         /// <summary>
         /// 
         /// </summary>
-        public List<IPO>? IPOs { get; set; }
+        public List<IPO> IPOs { get; set; }
     }
 }
 

@@ -1,6 +1,11 @@
-﻿using EOD.Model.BondsFundamentalData;
+﻿using EOD.APIs.Abstract;
+using EOD.Model;
+using EOD.Model.BondsFundamentalData;
 
+using System;
+using System.Collections.Generic;
 using System.Net;
+using System.Threading.Tasks;
 
 namespace EOD.APIs
 {
@@ -8,7 +13,7 @@ namespace EOD.APIs
     {
         private const string sourceBondsFundamentals = @"https://eodhistoricaldata.com/api/bond-fundamentals/{0}?";
 
-        public BondsFundamentalsAndHistoricalAPI(string apiKey, IWebProxy? proxy, string? source) : base(apiKey, proxy, source) { }
+        public BondsFundamentalsAndHistoricalAPI(string apiKey, IWebProxy proxy, string source) : base(apiKey, proxy, source) { }
 
         public async Task<BondsFundamentalData> GetBondsFundamendalDataAsync(string cusip)
         {
@@ -22,7 +27,7 @@ namespace EOD.APIs
 
         private const string sourceBondHistoricalData = @"https://eodhistoricaldata.com/api/eod/{0}?&fmt=json";
 
-        public async Task<List<BondHistoricalData>> GetBondHistoricalDataAsync(string code, DateTime? from = null, DateTime? to = null, string? order = null, string? period = null)
+        public async Task<List<BondHistoricalData>> GetBondHistoricalDataAsync(string code, DateTime? from = null, DateTime? to = null, string order = null, string period = null)
         {
             string uri = sourceBondHistoricalData;
             if (from != null) uri += $"&from={from?.ToString("yyyy-MM-dd")}";

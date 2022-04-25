@@ -1,10 +1,17 @@
-﻿namespace EOD.APIs
+﻿using EOD.APIs.Abstract;
+using EOD.Model;
+
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+
+namespace EOD.APIs
 {
     internal class HistoricalDividendsAPI : BaseAPI, IHistoricalDividendsAPI
     {
         private const string sourceDividends = @"https://eodhistoricaldata.com/api/div/{0}?from={1}&to={2}&fmt=json";
 
-        public HistoricalDividendsAPI(string apiKey, System.Net.IWebProxy? proxy, string? source) : base(apiKey, proxy, source) { }
+        public HistoricalDividendsAPI(string apiKey, System.Net.IWebProxy proxy, string source) : base(apiKey, proxy, source) { }
 
 
         public async Task<List<HistoricalDividend>> GetDataAsync(string ticker, DateTime from, DateTime to)

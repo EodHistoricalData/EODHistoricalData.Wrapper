@@ -1,4 +1,7 @@
-﻿namespace EOD.Model.UpcomingSplits
+﻿using System;
+using System.Collections.Generic;
+
+namespace EOD.Model.UpcomingSplits
 {
     /// <summary>
     /// 
@@ -8,11 +11,11 @@
         /// <summary>
         /// 
         /// </summary>
-        public string? Type { get; set; }
+        public string Type { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public string? Description { get; set; }
+        public string Description { get; set; }
         /// <summary>
         /// 
         /// </summary>
@@ -24,7 +27,7 @@
         /// <summary>
         /// 
         /// </summary>
-        public List<Split>? Splits { get; set; }
+        public List<Split> Splits { get; set; }
     }
 }
 

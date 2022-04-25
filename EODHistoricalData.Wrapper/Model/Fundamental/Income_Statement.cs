@@ -1,4 +1,7 @@
-﻿namespace EOD.Model.Fundamental
+﻿using System;
+using System.Collections.Generic;
+
+namespace EOD.Model.Fundamental
 {
     /// <summary>
     /// 
@@ -8,46 +11,46 @@
         /// <summary>
         /// 
         /// </summary>
-        public string? Currency_symbol { get; set; }
+        public string Currency_symbol { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public Dictionary<DateTime, Income_StatementData>? Quarterly { get; set; }
+        public Dictionary<DateTime, Income_StatementData> Quarterly { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public Dictionary<DateTime, Income_StatementData>? Yearly { get; set; }
+        public Dictionary<DateTime, Income_StatementData> Yearly { get; set; }
         /// <summary>
         /// For bulk
         /// </summary>
-        public Income_StatementData? Quarterly_last_0 { get; set; }
+        public Income_StatementData Quarterly_last_0 { get; set; }
         /// <summary>
         /// For bulk
         /// </summary>
-        public Income_StatementData? Quarterly_last_1 { get; set; }
+        public Income_StatementData Quarterly_last_1 { get; set; }
         /// <summary>
         /// For bulk
         /// </summary>
-        public Income_StatementData? Quarterly_last_2 { get; set; }
+        public Income_StatementData Quarterly_last_2 { get; set; }
         /// <summary>
         /// For bulk
         /// </summary>
-        public Income_StatementData? Quarterly_last_3 { get; set; }
+        public Income_StatementData Quarterly_last_3 { get; set; }
         /// <summary>
         /// For bulk
         /// </summary>
-        public Income_StatementData? Yearly_last_0 { get; set; }
+        public Income_StatementData Yearly_last_0 { get; set; }
         /// <summary>
         /// For bulk
         /// </summary>
-        public Income_StatementData? Yearly_last_1 { get; set; }
+        public Income_StatementData Yearly_last_1 { get; set; }
         /// <summary>
         /// For bulk
         /// </summary>
-        public Income_StatementData? Yearly_last_2 { get; set; }
+        public Income_StatementData Yearly_last_2 { get; set; }
         /// <summary>
         /// For bulk
         /// </summary>
-        public Income_StatementData? Yearly_last_3 { get; set; }
+        public Income_StatementData Yearly_last_3 { get; set; }
     }
 }

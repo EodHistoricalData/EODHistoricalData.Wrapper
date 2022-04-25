@@ -1,4 +1,6 @@
-﻿namespace EOD.Model
+﻿using System;
+
+namespace EOD.Model
 {
     /// <summary>
     /// 
@@ -24,7 +26,7 @@
         /// <summary>
         /// 
         /// </summary>
-        public string? Period { get; set; }
+        public string Period { get; set; }
         /// <summary>
         /// 
         /// </summary>
@@ -36,6 +38,6 @@
         /// <summary>
         /// 
         /// </summary>
-        public string? Currency { get; set; }
+        public string Currency { get; set; }
     }
 }

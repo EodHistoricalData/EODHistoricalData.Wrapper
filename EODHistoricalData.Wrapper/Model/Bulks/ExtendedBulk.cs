@@ -1,4 +1,6 @@
-﻿namespace EOD.Model.Bulks
+﻿using System.Collections.Generic;
+
+namespace EOD.Model.Bulks
 {
     /// <summary>
     /// 
@@ -8,6 +10,6 @@
         /// <summary>
         /// 
         /// </summary>
-        public List<ExtendedData>? ExtendedData { get; set; }
+        public List<ExtendedData> ExtendedData { get; set; }
     }
 }

@@ -19,7 +19,7 @@ namespace EODHistoricalData.Wrapper.NetCore.Tests
         public APITest()
         {
             string apiKey = "OeAFFmMliFG5orCUuwAKQ8l4WWFQ67YX";
-            System.Net.WebProxy proxy = new("localhost:80");
+            System.Net.WebProxy proxy = new System.Net.WebProxy("localhost:80");
             _api = new API(apiKey);
             _apiProxy = new API(apiKey, proxy);
             _apiSource = new API(apiKey, null, "EODHistoricalData.Downloader");

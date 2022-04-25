@@ -1,4 +1,6 @@
-﻿namespace EOD.Model.EarningTrends
+﻿using System.Collections.Generic;
+
+namespace EOD.Model.EarningTrends
 {
     /// <summary>
     /// 
@@ -8,6 +10,6 @@
         /// <summary>
         /// 
         /// </summary>
-        public List<Trend>? Trends { get; set; }
+        public List<Trend> Trends { get; set; }
     }
 }

@@ -1,5 +1,8 @@
 ﻿using EOD.Model.OptionsData;
 
+using System;
+using System.Threading.Tasks;
+
 namespace EOD.APIs.Abstract
 {
     /// <summary>
@@ -19,6 +22,6 @@ namespace EOD.APIs.Abstract
         /// <param name="trade_date_to">filters OPTIONS by lastTradeDateTime. Default value: NONE.</param>
         /// <param name="contract_name">returns only the data for particular contract.</param>
         /// <returns></returns>
-        Task<OptionsData> GetOptionsDataAsync(string ticker, DateTime? from = null, DateTime? to = null, DateTime? trade_date_from = null, DateTime? trade_date_to = null, string? contract_name = null);
+        Task<OptionsData> GetOptionsDataAsync(string ticker, DateTime? from = null, DateTime? to = null, DateTime? trade_date_from = null, DateTime? trade_date_to = null, string contract_name = null);
     }
 }

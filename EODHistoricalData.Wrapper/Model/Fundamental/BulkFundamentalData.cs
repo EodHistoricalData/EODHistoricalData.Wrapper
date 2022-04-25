@@ -1,4 +1,6 @@
-﻿namespace EOD.Model.Fundamental
+﻿using System.Collections.Generic;
+
+namespace EOD.Model.Fundamental
 {
     /// <summary>
     /// 
@@ -8,27 +10,27 @@
         /// <summary>
         /// 
         /// </summary>
-        public General? General { get; set; }
+        public General General { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public Highlights? Highlights { get; set; }
+        public Highlights Highlights { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public Valuation? Valuation { get; set; }
+        public Valuation Valuation { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public SplitsDividends? SplitsDividends { get; set; }
+        public SplitsDividends SplitsDividends { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public Dictionary<string, BulkEarnings>? Earnings { get; set; }
+        public Dictionary<string, BulkEarnings> Earnings { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public Dictionary<string, Financials>? Financials { get; set; }
+        public Dictionary<string, Financials> Financials { get; set; }
     }
 }
 

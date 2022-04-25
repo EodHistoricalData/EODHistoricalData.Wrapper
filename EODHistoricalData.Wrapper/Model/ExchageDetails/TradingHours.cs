@@ -8,22 +8,22 @@
         /// <summary>
         /// 
         /// </summary>
-        public string? Open { get; set; }
+        public string Open { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public string? Close { get; set; }
+        public string Close { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public string? OpenUTC { get; set; }
+        public string OpenUTC { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public string? CloseUTC { get; set; }
+        public string CloseUTC { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public string? WorkingDays { get; set; }
+        public string WorkingDays { get; set; }
     }
 }

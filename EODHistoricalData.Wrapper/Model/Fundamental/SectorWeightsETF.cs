@@ -8,39 +8,39 @@
         /// <summary>
         /// 
         /// </summary>
-        public WorldData? BasicMaterials { get; set; }
+        public WorldData BasicMaterials { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public WorldData? ConsumerCyclisials { get; set; }
+        public WorldData ConsumerCyclisials { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public WorldData? FinancialServices { get; set; }
+        public WorldData FinancialServices { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public WorldData? Energy { get; set; }
+        public WorldData Energy { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public WorldData? Industrials { get; set; }
+        public WorldData Industrials { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public WorldData? Technology { get; set; }
+        public WorldData Technology { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public WorldData? ConsumerDefencive { get; set; }
+        public WorldData ConsumerDefencive { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public WorldData? Healthcare { get; set; }
+        public WorldData Healthcare { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public WorldData? Utilities { get; set; }
+        public WorldData Utilities { get; set; }
     }
 }
 

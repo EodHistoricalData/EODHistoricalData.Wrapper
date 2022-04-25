@@ -1,4 +1,6 @@
-﻿namespace EOD.Model.BondsFundamentalData
+﻿using System;
+
+namespace EOD.Model.BondsFundamentalData
 {
     /// <summary>
     /// 
@@ -8,15 +10,15 @@
         /// <summary>
         /// 
         /// </summary>
-        public string? Isin { get; set; }
+        public string Isin { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public string? Cusip { get; set; }
+        public string Cusip { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public string? Name { get; set; }
+        public string Name { get; set; }
         /// <summary>
         /// 
         /// </summary>
@@ -24,19 +26,19 @@
         /// <summary>
         /// 
         /// </summary>
-        public string? Wkn { get; set; }
+        public string Wkn { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public string? Sedol { get; set; }
+        public string Sedol { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public string? FIGI { get; set; }
+        public string FIGI { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public string? Currency { get; set; }
+        public string Currency { get; set; }
         /// <summary>
         /// 
         /// </summary>
@@ -60,7 +62,7 @@
         /// <summary>
         /// 
         /// </summary>
-        public string? Callable { get; set; }
+        public string Callable { get; set; }
         /// <summary>
         /// 
         /// </summary>
@@ -68,23 +70,23 @@
         /// <summary>
         /// 
         /// </summary>
-        public string? MinimumSettlementAmount { get; set; }
+        public string MinimumSettlementAmount { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public string? ParIntegralMultiple { get; set; }
+        public string ParIntegralMultiple { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public ClassificationData? ClassificationData { get; set; }
+        public ClassificationData ClassificationData { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public Rating? Rating { get; set; }
+        public Rating Rating { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public IssueData? IssueData { get; set; }
+        public IssueData IssueData { get; set; }
     }
 }
 

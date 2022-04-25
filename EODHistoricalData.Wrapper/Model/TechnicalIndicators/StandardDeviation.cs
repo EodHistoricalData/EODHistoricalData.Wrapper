@@ -1,4 +1,6 @@
-﻿namespace EOD.Model.TechnicalIndicators
+﻿using System;
+
+namespace EOD.Model.TechnicalIndicators
 {
     /// <summary>
     /// 
@@ -12,6 +14,6 @@
         /// <summary>
         /// 
         /// </summary>
-        public string? Stddev { get; set; }
+        public string Stddev { get; set; }
     }
 }

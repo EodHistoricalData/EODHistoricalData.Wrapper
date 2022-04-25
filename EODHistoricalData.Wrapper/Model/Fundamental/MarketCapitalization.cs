@@ -8,7 +8,7 @@
         /// <summary>
         /// 
         /// </summary>
-        public string? Size { get; set; }
+        public string Size { get; set; }
         /// <summary>
         /// 
         /// </summary>

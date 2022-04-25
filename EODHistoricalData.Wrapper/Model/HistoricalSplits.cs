@@ -1,4 +1,6 @@
-﻿namespace EOD.Model
+﻿using System;
+
+namespace EOD.Model
 {
     /// <summary>
     /// 
@@ -12,6 +14,6 @@
         /// <summary>
         /// 
         /// </summary>
-        public string? Split { get; set; }
+        public string Split { get; set; }
     }
 }

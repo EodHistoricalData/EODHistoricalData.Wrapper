@@ -14,7 +14,7 @@ namespace EOD.Model.Bulks
         /// <summary>
         /// 
         /// </summary>
-        public string ExchangeShortName { get; set; }
+        public string Exchange_Short_Name { get; set; }
         /// <summary>
         /// 
         /// </summary>
@@ -38,7 +38,7 @@ namespace EOD.Model.Bulks
         /// <summary>
         /// 
         /// </summary>
-        public double? AdjustedClose { get; set; }
+        public double? Adjusted_Close { get; set; }
         /// <summary>
         /// 
         /// </summary>

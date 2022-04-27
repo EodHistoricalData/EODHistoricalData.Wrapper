@@ -14,7 +14,7 @@ namespace EOD.Model.UpcomingEarnings
         /// <summary>
         /// 
         /// </summary>
-        public DateTime? ReportDate { get; set; }
+        public DateTime? Report_Date { get; set; }
         /// <summary>
         /// 
         /// </summary>
@@ -22,7 +22,7 @@ namespace EOD.Model.UpcomingEarnings
         /// <summary>
         /// 
         /// </summary>
-        public string BeforeAfterMarket { get; set; }
+        public string Before_After_Market { get; set; }
         /// <summary>
         /// 
         /// </summary>

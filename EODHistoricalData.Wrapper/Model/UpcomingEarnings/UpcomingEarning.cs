@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace EOD.Model.UpcomingEarnings
 {
@@ -15,6 +16,14 @@ namespace EOD.Model.UpcomingEarnings
         /// 
         /// </summary>
         public string Description { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public DateTime? From { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public DateTime? To { get; set; }
         /// <summary>
         /// 
         /// </summary>

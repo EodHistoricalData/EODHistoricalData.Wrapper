@@ -30,7 +30,7 @@ namespace EOD.Model
         /// <summary>
         /// 
         /// </summary>
-        public double? AdjustedClose { get; set; }
+        public double? Adjusted_Close { get; set; }
         /// <summary>
         /// 
         /// </summary>

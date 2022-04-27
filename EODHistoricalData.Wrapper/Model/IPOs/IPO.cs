@@ -26,27 +26,27 @@ namespace EOD.Model.IPOs
         /// <summary>
         /// 
         /// </summary>
-        public DateTime? StartDate { get; set; }
+        public DateTime? Start_Date { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public DateTime? FillingDate { get; set; }
+        public DateTime? Filling_Date { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public DateTime? AmendedDate { get; set; }
+        public DateTime? Amended_Date { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public double? PriceFrom { get; set; }
+        public double? Price_From { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public double? PriceTo { get; set; }
+        public double? Price_To { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public double? OfferPrice { get; set; }
+        public double? Offer_Price { get; set; }
         /// <summary>
         /// 
         /// </summary>
@@ -54,6 +54,6 @@ namespace EOD.Model.IPOs
         /// <summary>
         /// 
         /// </summary>
-        public double? DealType { get; set; }
+        public double? Deal_Type { get; set; }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 
 namespace EOD.Model.TechnicalIndicators
 {
@@ -14,6 +15,7 @@ namespace EOD.Model.TechnicalIndicators
         /// <summary>
         /// 
         /// </summary>
+        [JsonProperty("wma")]
         public double? WMAData { get; set; }
     }
 }

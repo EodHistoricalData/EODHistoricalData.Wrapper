@@ -14,7 +14,7 @@ namespace EOD.Model.UpcomingSplits
         /// <summary>
         /// 
         /// </summary>
-        public DateTime? SplitDate { get; set; }
+        public DateTime? Split_Date { get; set; }
         /// <summary>
         /// 
         /// </summary>
@@ -22,10 +22,10 @@ namespace EOD.Model.UpcomingSplits
         /// <summary>
         /// 
         /// </summary>
-        public long? OldShares { get; set; }
+        public long? Old_Shares { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public int? NewShares { get; set; }
+        public int? New_Shares { get; set; }
     }
 }

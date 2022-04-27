@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 
 namespace EOD.Model.TechnicalIndicators
 {
@@ -14,10 +15,12 @@ namespace EOD.Model.TechnicalIndicators
         /// <summary>
         /// 
         /// </summary>
+        [JsonProperty("k_values")]
         public double? Kvalues { get; set; }
         /// <summary>
         /// 
         /// </summary>
+        [JsonProperty("d_values")]
         public double? Dvalues { get; set; }
     }
 }

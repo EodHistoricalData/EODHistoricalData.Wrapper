@@ -18,30 +18,30 @@ namespace EOD.Model.Screener
         /// <summary>
         /// 
         /// </summary>
-        public DateTime? LastDayDataDate { get; set; }
+        public DateTime? Last_Day_Data_Date { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public double? AdjustedClose { get; set; }
+        public double? Adjusted_Close { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public double? Refund1d { get; set; }
+        public double? Refund_1d { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        public double? Refund1dP { get; set; }
+        public double? Refund_1dP { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        public double? Refund5d { get; set; }
+        public double? Refund_5d { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        public decimal? Refund5dP { get; set; }
+        public decimal? Refund_5dP { get; set; }
         /// <summary>
         /// 
         /// </summary>
@@ -49,19 +49,19 @@ namespace EOD.Model.Screener
         /// <summary>
         /// 
         /// </summary>
-        public string CurrencySymbol { get; set; }
+        public string Currency_Symbol { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public decimal? MarketCapitalization { get; set; }
+        public decimal? Market_Capitalization { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public double? EarningsShare { get; set; }
+        public double? Earnings_Share { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public double? DividendYield { get; set; }
+        public double? Dividend_Yield { get; set; }
         /// <summary>
         /// 
         /// </summary>

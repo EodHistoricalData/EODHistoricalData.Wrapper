@@ -32,6 +32,6 @@
         /// <summary>
         /// 
         /// </summary>
-        public long? Volume { get; set; }
+        public string Volume { get; set; }
     }
 }

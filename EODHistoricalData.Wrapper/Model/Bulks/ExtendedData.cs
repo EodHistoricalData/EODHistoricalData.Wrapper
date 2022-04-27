@@ -18,7 +18,7 @@ namespace EOD.Model.Bulks
         /// <summary>
         /// 
         /// </summary>
-        public string ExchangeShortName { get; set; }
+        public string Exchange_Short_Name { get; set; }
         /// <summary>
         /// 
         /// </summary>
@@ -46,7 +46,7 @@ namespace EOD.Model.Bulks
         /// <summary>
         /// 
         /// </summary>
-        public double? AdjustedClose { get; set; }
+        public double? Adjusted_Close { get; set; }
         /// <summary>
         /// 
         /// </summary>
@@ -54,23 +54,23 @@ namespace EOD.Model.Bulks
         /// <summary>
         /// 
         /// </summary>
-        public double? Ema50d { get; set; }
+        public double? Ema_50d { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public double? Ema200d { get; set; }
+        public double? Ema_200d { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public double? Hi250d { get; set; }
+        public double? Hi_250d { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public double? Lo250d { get; set; }
+        public double? Lo_250d { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public double? PrevClose { get; set; }
+        public double? Prev_Close { get; set; }
         /// <summary>
         /// 
         /// </summary>
@@ -78,19 +78,19 @@ namespace EOD.Model.Bulks
         /// <summary>
         /// 
         /// </summary>
-        public double? ChangeP { get; set; }
+        public double? Change_P { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public decimal? Avgvol14d { get; set; }
+        public decimal? Avgvol_14d { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public decimal? Avgvol50d { get; set; }
+        public decimal? Avgvol_50d { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public decimal? Avgvol200d { get; set; }
+        public decimal? Avgvol_200d { get; set; }
     }
 }
 

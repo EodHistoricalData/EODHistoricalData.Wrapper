@@ -46,6 +46,6 @@ namespace EOD.Model
         /// <summary>
         /// 
         /// </summary>
-        public double? ChangePercentage { get; set; }
+        public double? Change_Percentage { get; set; }
     }
 }

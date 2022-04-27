@@ -1,4 +1,6 @@
-﻿namespace EOD.Model.Fundamental
+﻿using Newtonsoft.Json;
+
+namespace EOD.Model.Fundamental
 {
     /// <summary>
     /// 
@@ -36,7 +38,8 @@
         /// <summary>
         /// 
         /// </summary>
-        public double? AssetsPercentage { get; set; }
+        [JsonProperty("Assets_%")]
+        public double? AssetsPercent { get; set; }
 
     }
 }

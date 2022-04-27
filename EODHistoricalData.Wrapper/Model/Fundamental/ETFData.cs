@@ -91,7 +91,7 @@ namespace EOD.Model.Fundamental
         /// <summary>
         /// 
         /// </summary>
-        public Dictionary<string, WorldData> Fixed_Income { get; set; }
+        public Dictionary<string, FixedIncomeData> Fixed_Income { get; set; }
         /// <summary>
         /// 
         /// </summary>

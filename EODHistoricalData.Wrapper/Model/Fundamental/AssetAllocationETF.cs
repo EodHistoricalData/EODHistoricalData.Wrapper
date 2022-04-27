@@ -1,4 +1,6 @@
-﻿namespace EOD.Model.Fundamental
+﻿using Newtonsoft.Json;
+
+namespace EOD.Model.Fundamental
 {
     /// <summary>
     /// 
@@ -16,6 +18,7 @@
         /// <summary>
         /// 
         /// </summary>
+        [JsonProperty("Stock non-US")]
         public AssetAllocationData StocknonUS { get; set; }
         /// <summary>
         /// 
@@ -24,6 +27,7 @@
         /// <summary>
         /// 
         /// </summary>
+        [JsonProperty("Stock US")]
         public AssetAllocationData StockUS { get; set; }
         /// <summary>
         /// 

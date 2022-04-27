@@ -5,13 +5,13 @@ namespace EOD.Model.Fundamental
     /// <summary>
     /// 
     /// </summary>
-    public class WorldData
+    public class FixedIncomeData
     {
         /// <summary>
         /// 
         /// </summary>
-        [JsonProperty("Equity_%")]
-        public double? EquityPercent { get; set; }
+        [JsonProperty("Fund_%")]
+        public double? FundPercent { get; set; }
         /// <summary>
         /// 
         /// </summary>

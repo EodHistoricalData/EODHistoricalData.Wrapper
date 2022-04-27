@@ -8,18 +8,18 @@
         /// <summary>
         /// 
         /// </summary>
-        public ValuationsRatesData ValuationsRatesPortfolio { get; set; }
+        public ValuationsRatesData Valuations_Rates_Portfolio { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public ValuationsRatesData ValuationsRatesToCategory { get; set; }
+        public ValuationsRatesData Valuations_Rates_To_Category { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public GrowthRateData GrowthRatesPortfolio { get; set; }
+        public GrowthRateData Growth_Rates_Portfolio { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public GrowthRateData GrowthRatesToCategory { get; set; }
+        public GrowthRateData Growth_Rates_To_Category { get; set; }
     }
 }

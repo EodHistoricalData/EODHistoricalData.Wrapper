@@ -14,7 +14,7 @@ namespace EOD.APIs
         public Task<FundamentalData> GetFundamentalsDataAsync(string ticker, string filters = null)
         {
             string uri = string.Format(sourceFundamental, ticker);
-            if (filters != null) uri += $"&filters={filters}";
+            if (filters != null) uri += $"&filter={filters}";
             return ExecuteQueryAsync<FundamentalData>(uri);
         }
 

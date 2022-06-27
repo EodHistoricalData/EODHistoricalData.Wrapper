@@ -10,6 +10,7 @@ using static EOD.API;
 
 namespace EODHistoricalData.Wrapper.NetCore.Tests
 {
+    [Microsoft.VisualStudio.TestTools.UnitTesting.TestClass()]
     public class APITest
     {
         private readonly API _api;
@@ -23,6 +24,13 @@ namespace EODHistoricalData.Wrapper.NetCore.Tests
             _api = new API(apiKey);
             _apiProxy = new API(apiKey, proxy);
             _apiSource = new API(apiKey, null, "EODHistoricalData.Downloader");
+        }
+
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethod()]
+        public async Task GetFundamentalDataAsyncTest()
+        {
+            var result = await _api.GetFundamentalDataAsync("AAPL.US", "Highlights,Technicals");
+            Assert.IsNotNull(result);
         }
 
         [Test]

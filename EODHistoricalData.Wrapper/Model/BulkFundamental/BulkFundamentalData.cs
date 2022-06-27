@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace EOD.Model.Fundamental
+namespace EOD.Model.BulkFundamental
 {
     /// <summary>
     /// 
@@ -22,6 +22,10 @@ namespace EOD.Model.Fundamental
         /// <summary>
         /// 
         /// </summary>
+        public Technicals Technicals { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
         public SplitsDividends SplitsDividends { get; set; }
         /// <summary>
         /// 
@@ -30,7 +34,7 @@ namespace EOD.Model.Fundamental
         /// <summary>
         /// 
         /// </summary>
-        public Dictionary<string, Financials> Financials { get; set; }
+        public Financials Financials { get; set; }
     }
 }
 

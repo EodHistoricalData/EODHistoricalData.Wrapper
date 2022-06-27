@@ -1,4 +1,4 @@
-﻿namespace EOD.Model.Fundamental
+﻿namespace EOD.Model.BulkFundamental
 {
     /// <summary>
     /// 

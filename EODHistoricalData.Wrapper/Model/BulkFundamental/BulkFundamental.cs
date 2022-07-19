@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace EOD.Model.Fundamental
+namespace EOD.Model.BulkFundamental
 {
     /// <summary>
     /// 
@@ -10,6 +10,6 @@ namespace EOD.Model.Fundamental
         /// <summary>
         /// 
         /// </summary>
-        public Dictionary<int, BulkFundamentalData> BulkFundamentalData { get; set; }
+        public Dictionary<string, BulkFundamentalData> BulkFundamentalData { get; set; }
     }
 }

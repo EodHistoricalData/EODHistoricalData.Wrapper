@@ -33,6 +33,13 @@ namespace EODHistoricalData.Wrapper.NetCore.Tests
             Assert.IsNotNull(result);
         }
 
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethod()]
+        public async Task GetBulkFundamentalDataAsyncTest_NASDAQ()
+        {
+            var result = await _api.GetBulkFundamentalsDataAsync("NASDAQ", 500, 5);
+            Assert.IsNotNull(result);
+        }
+
         [Test]
         public async Task GetIntadayDataAsyncTest_ErrorTicker()
         {
@@ -148,13 +155,6 @@ namespace EODHistoricalData.Wrapper.NetCore.Tests
         public async Task GetFundamentalDataAsyncTest_GSPC()
         {
             var result = await _api.GetFundamentalDataAsync("GSPC.INDX");
-            Assert.IsNotNull(result);
-        }
-
-        [Test]
-        public async Task GetBulkFundamentalDataAsyncTest_NASDAQ()
-        {
-            var result = await _api.GetBulkFundamentalsDataAsync("NASDAQ", 500, 5);
             Assert.IsNotNull(result);
         }
 

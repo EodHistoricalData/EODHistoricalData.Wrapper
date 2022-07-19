@@ -1,5 +1,6 @@
-﻿using EOD.Model.Fundamental;
-
+﻿using EOD.Model.BulkFundamental;
+using EOD.Model.Fundamental;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace EOD.APIs.Abstract
@@ -17,7 +18,7 @@ namespace EOD.APIs.Abstract
         /// <summary>
         /// Bulk Fundamentals Output
         /// </summary>
-        Task<BulkFundamental> GetBulkFundamentalsDataAsync(string ticker, int? offset = null,
+        Task<Dictionary<string, BulkFundamentalData>> GetBulkFundamentalsDataAsync(string ticker, int? offset = null,
             int? limit = null, string symbols = null);
     }
 }

@@ -2,6 +2,7 @@
 using EOD.APIs.Abstract;
 using EOD.Model;
 using EOD.Model.BondsFundamentalData;
+using EOD.Model.BulkFundamental;
 using EOD.Model.Bulks;
 using EOD.Model.EarningTrends;
 using EOD.Model.ExchangeDetails;
@@ -326,7 +327,7 @@ namespace EOD
         /// in this case, the exchange code will be ignored</param>
         /// <returns></returns>
         /// <exception cref="ArgumentNullException"></exception>
-        public async Task<BulkFundamental> GetBulkFundamentalsDataAsync(string ticker, int? offset = null, int? limit = null, string symbols = null)
+        public async Task<Dictionary<string, BulkFundamentalData>> GetBulkFundamentalsDataAsync(string ticker, int? offset = null, int? limit = null, string symbols = null)
         {
             if (ticker == string.Empty) throw new ArgumentNullException(nameof(ticker));
 

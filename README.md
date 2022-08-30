@@ -353,7 +353,7 @@ FundamentalData? response = await _api.GetFundamentalDataAsync("VTI.US");
 	- Usage:
 ```c#
 // An example of bulk fundamental data feed for NASDAQ exchange
-BulkFundamental? response = await _api.GetBulkFundamentalsDataAsync("NASDAQ", 500, 500);
+Dictionary<string, BulkFundamentalData>? response = await _api.GetBulkFundamentalsDataAsync("NASDAQ", 500, 500);
 ```
 - **Calendar API. Upcoming Earnings, Trends, IPOs and Splits**
 	- **Upcoming Earnings**

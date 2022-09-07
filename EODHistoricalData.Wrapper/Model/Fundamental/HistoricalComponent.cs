@@ -18,11 +18,11 @@ namespace EOD.Model.Fundamental
         /// <summary>
         /// 
         /// </summary>
-        public DateTime? StartDate { get; set; }
+        public string StartDate { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public DateTime? EndDate { get; set; }
+        public string EndDate { get; set; }
         /// <summary>
         /// 
         /// </summary>

@@ -22,6 +22,6 @@ namespace EOD.Model.EarningTrends
         /// <summary>
         /// 
         /// </summary>
-        public Dictionary<string, CompanyTrend[]> Trends { get; set; }
+        public List<List<Trend>> Trends { get; set; }
     }
 }

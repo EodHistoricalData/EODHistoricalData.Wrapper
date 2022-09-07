@@ -43,7 +43,7 @@ namespace EOD.Model.Fundamental
         /// <summary>
         /// 
         /// </summary>
-        public DateTime? Inception_Date { get; set; }
+        public string Inception_Date { get; set; }
         /// <summary>
         /// 
         /// </summary>
@@ -55,7 +55,7 @@ namespace EOD.Model.Fundamental
         /// <summary>
         /// 
         /// </summary>
-        public DateTime? Date_Ongoing_Charge { get; set; }
+        public string Date_Ongoing_Charge { get; set; }
         /// <summary>
         /// 
         /// </summary>

@@ -25,5 +25,13 @@
         /// 
         /// </summary>
         public string Currency { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public string CountryISO2 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public string CountryISO3 { get; set; }
     }
 }

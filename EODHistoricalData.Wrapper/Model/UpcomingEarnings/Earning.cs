@@ -14,11 +14,11 @@ namespace EOD.Model.UpcomingEarnings
         /// <summary>
         /// 
         /// </summary>
-        public DateTime? Report_Date { get; set; }
+        public string Report_Date { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public DateTime? Date { get; set; }
+        public string Date { get; set; }
         /// <summary>
         /// 
         /// </summary>

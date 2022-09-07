@@ -1,4 +1,7 @@
-﻿namespace EOD.Model.Fundamental
+﻿using Newtonsoft.Json;
+using System.Collections.Generic;
+
+namespace EOD.Model.Fundamental
 {
     /// <summary>
     /// 
@@ -8,27 +11,33 @@
         /// <summary>
         /// 
         /// </summary>
-        public double? NetPercentage { get; set; }
+        [JsonProperty("Net_%")]
+        public string NetPercentage { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public double? LongPercentage { get; set; }
+        [JsonProperty("Long_%")]
+        public string LongPercentage { get; set; }
         /// <summary>
         /// 
         /// </summary>
+        [JsonProperty("Type")]
         public string Type { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public double? ShortPercentage { get; set; }
+        [JsonProperty("Short_%")]
+        public string ShortPercentage { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public double? Category_Average { get; set; }
+        [JsonProperty("Category_Average")]
+        public string Category_Average { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public double? Benchmark { get; set; }
+        [JsonProperty("Benchmark")]
+        public string Benchmark { get; set; }
     }
 }
 

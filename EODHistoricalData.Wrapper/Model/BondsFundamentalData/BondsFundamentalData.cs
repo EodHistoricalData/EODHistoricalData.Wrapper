@@ -54,7 +54,7 @@ namespace EOD.Model.BondsFundamentalData
         /// <summary>
         /// 
         /// </summary>
-        public DateTime? MaturityDate { get; set; }
+        public DateTime? Maturity_Date { get; set; }
         /// <summary>
         /// 
         /// </summary>

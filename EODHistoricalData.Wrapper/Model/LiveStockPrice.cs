@@ -45,5 +45,9 @@
         /// 
         /// </summary>
         public double? Change { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public double? Change_p { get; set; }
     }
 }

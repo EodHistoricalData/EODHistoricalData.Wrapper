@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 
 namespace EOD.Model.Fundamental
@@ -27,7 +28,7 @@ namespace EOD.Model.Fundamental
         /// <summary>
         /// 
         /// </summary>
-        public DateTime? Update_Date { get; set; }
+        public string Update_Date { get; set; }
         /// <summary>
         /// 
         /// </summary>
@@ -51,7 +52,7 @@ namespace EOD.Model.Fundamental
         /// <summary>
         /// 
         /// </summary>
-        public DateTime? Inception_Date { get; set; }
+        public string Inception_Date { get; set; }
         /// <summary>
         /// 
         /// </summary>
@@ -87,11 +88,18 @@ namespace EOD.Model.Fundamental
         /// <summary>
         /// 
         /// </summary>
-        public DateTime? Expense_Ratio_Date { get; set; }
+        public string Expense_Ratio_Date { get; set; }
         /// <summary>
         /// 
         /// </summary>
+        [JsonProperty("Asset_Allocation")] 
         public Dictionary<int, AssetAllocation> Asset_Allocation { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        [JsonProperty("asset_allocation")]
+        public string Asset_allocation { get; set; }
+
         /// <summary>
         /// 
         /// </summary>
@@ -103,7 +111,13 @@ namespace EOD.Model.Fundamental
         /// <summary>
         /// 
         /// </summary>
+        [JsonProperty("Market_Capitalization")]
         public Dictionary<int, MarketCapitalization> Market_Capitalization { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        [JsonProperty("market_capitalization")]
+        public string Market_capitalization { get; set; }
         /// <summary>
         /// 
         /// </summary>
@@ -111,7 +125,17 @@ namespace EOD.Model.Fundamental
         /// <summary>
         /// 
         /// </summary>
+        [JsonProperty("sector_weights")]
+        public string Sector_weights { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
         public Dictionary<string, Dictionary<int, WorldRegion>> World_Regions { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        [JsonProperty("world_regions")]
+        public string World_regions { get; set; }
     }
 }
 

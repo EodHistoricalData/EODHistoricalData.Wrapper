@@ -10,7 +10,7 @@ namespace EOD.Model.BulkFundamental
         /// <summary>
         /// 
         /// </summary>
-        public DateTime? Date { get; set; }
+        public string Date { get; set; }
         /// <summary>
         /// 
         /// </summary>

@@ -62,7 +62,7 @@ namespace EOD.Model.BulkFundamental
         /// <summary>
         /// 
         /// </summary>
-        public DateTime? MostRecentQuarter { get; set; }
+        public string MostRecentQuarter { get; set; }
         /// <summary>
         /// 
         /// </summary>

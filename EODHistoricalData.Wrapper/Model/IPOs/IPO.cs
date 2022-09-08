@@ -54,6 +54,6 @@ namespace EOD.Model.IPOs
         /// <summary>
         /// 
         /// </summary>
-        public double? Deal_Type { get; set; }
+        public string Deal_Type { get; set; }
     }
 }

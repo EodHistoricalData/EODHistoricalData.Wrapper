@@ -19,19 +19,11 @@ namespace EOD.Model.UpcomingEarnings
         /// <summary>
         /// 
         /// </summary>
-        public DateTime? From { get; set; }
-        /// <summary>
-        /// 
-        /// </summary>
-        public DateTime? To { get; set; }
-        /// <summary>
-        /// 
-        /// </summary>
         public string Symbols { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public List<Earning> Earning { get; set; }
+        public List<Earning> Earnings { get; set; }
     }
 }
 

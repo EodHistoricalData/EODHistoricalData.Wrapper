@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace EOD.Model.Fundamental
 {
@@ -30,10 +31,11 @@ namespace EOD.Model.Fundamental
         /// <summary>
         /// 
         /// </summary>
-        public ETFData ETFData { get; set; }
+        public ETFData ETF_Data { get; set; }
         /// <summary>
         /// 
         /// </summary>
+        [JsonProperty("MutualFund_Data")] 
         public MutualFundData MutualFund_Data { get; set; }
         /// <summary>
         /// 

@@ -165,7 +165,15 @@ namespace EOD
             /// <summary>
             /// Number - The last 5 days gain/loss in percent. Useful to get top gainers, losers for the past week.
             /// </summary>
-            Refund5dP
+            Refund5dP,
+            /// <summary>
+            /// Number - The last day volume.
+            /// </summary>
+            Avgvol1d,
+            /// <summary>
+            /// Number - The average last 200 days volume.
+            /// </summary>
+            Avgvol200d
         }
 
         /// <summary>
@@ -201,6 +209,45 @@ namespace EOD
             /// to compare numbers
             /// </summary>
             NotEquals
+        }
+
+        /// <summary>
+        /// Screener API supported signals. Filter out tickers by signals, the calculated fields.
+        /// </summary>
+        public enum Signal
+        {
+            /// <summary>
+            /// Filters tickers that have new 50 days lows
+            /// </summary>
+            New_50d_low,
+            /// <summary>
+            /// Filters tickers that have new 50 days highs
+            /// </summary>
+            New_50d_hi,
+            /// <summary>
+            /// Filters tickers that have new 200 days lows
+            /// </summary>
+            New_200d_low,
+            /// <summary>
+            /// Filters tickers that have new 200 days highs
+            /// </summary>
+            New_200d_hi,
+            /// <summary>
+            /// Filters tickers with Negative Book Value
+            /// </summary>
+            Bookvalue_neg,
+            /// <summary>
+            /// Filters tickers with Positive Book Value
+            /// </summary>
+            Bookvalue_pos,
+            /// <summary>
+            /// Filters tickers that have a price lower than expected by Wall Street analysts
+            /// </summary>
+            Wallstreet_low,
+            /// <summary>
+            /// Filters tickers that have a price higher than expected by Wall Street analysts
+            /// </summary>
+            Wallstreet_hi
         }
 
         #endregion
@@ -416,7 +463,7 @@ namespace EOD
         /// <param name="to">date to with format “Y-m-d”</param>
         /// <returns></returns>
         /// <exception cref="ArgumentException"></exception>
-        public async Task<List<HistoricalSplit>> GetHistoricalSplitsAsync(string ticker, DateTime from, DateTime to)
+        public async Task<List<HistoricalSplit>> GetHistoricalSplitsAsync(string ticker, DateTime? from, DateTime? to)
         {
             CheckTicker(ticker);
 
@@ -695,19 +742,29 @@ namespace EOD
         /// <param name="offset">OPTIONAL. The offset of the data. Default value: 0</param>
         /// <returns></returns>
         /// <exception cref="ArgumentOutOfRangeException"></exception>
-        public async Task<StockMarkerScreener> GetStockMarketScreenerAsync(List<(Field, Operation, string)> filters = null, string signals = null,
-            string sort = null, int? limit = null, int? offset = null)
+        public async Task<StockMarkerScreener> GetStockMarketScreenerAsync(List<(Field, Operation, string)> filters = null, List<Signal> signals = null,
+            (Field, Order)? sort = null, int? limit = null, int? offset = null)
         {
             if (offset < 0 && offset > 1000) throw new ArgumentOutOfRangeException(nameof(offset));
             if (limit < 1 && limit > 100) throw new ArgumentOutOfRangeException(nameof(offset));
 
-            string filterstring = "";
+            string filterstring = null;
             if (filters != null)
             {
                 filterstring = FiltersToString(filters);
             }
+            string signalstring = null;
+            if (signals != null)
+            {
+                signalstring = SignalsToString(signals);
+            }
+            string sortstring = null;
+            if (sort != null)
+            {
+                sortstring = SortToString(((Field, Order))sort);
+            }
 
-            return await stockMarketScreenerAPI.GetStockMarketScreenerAsync(filterstring, signals, sort, limit, offset);
+            return await stockMarketScreenerAPI.GetStockMarketScreenerAsync(filterstring, signalstring, sortstring, limit, offset);
         }
 
         /// <summary>
@@ -784,22 +841,138 @@ namespace EOD
                         break;
                     case Operation.NotEquals:
                         operation = "\"!=\"";
+                        break;
+                    default:
                         throw new NotImplementedException();
                 }
 
                 if (Double.TryParse(filters[i].Item3, out _))
                 {
-                    filterstring += "[" + field + "," + operation + "," + filters[i].Item3 + "],";
+                    filterstring += '[' + field + ',' + operation + ',' + filters[i].Item3 + "],";
                 }
                 else
                 {
-                    filterstring += "[" + field + "," + operation + ",\"" + filters[i].Item3 + "\"],";
+                    filterstring += '[' + field + ',' + operation + ",\"" + filters[i].Item3 + "\"],";
                 }
             }
 
             filterstring = filterstring.Remove(filterstring.Length - 1);
-            filterstring += "]";
+            filterstring += ']';
             return filterstring;
+        }
+
+        /// <summary>
+        /// Collects a string from a list of Signals
+        /// </summary>
+        /// <param name="signals"></param>
+        /// <returns>String</returns>
+        /// <exception cref="NotImplementedException"></exception>
+        private static string SignalsToString(List<Signal> signals)
+        {
+            string signalstring = string.Empty;
+            for (int i = 0; i < signals.Count; i++)
+            {
+                string signal;
+                switch (signals[i])
+                {
+                    case Signal.New_50d_low:
+                        signal = "50d_new_lo";
+                        break;
+                    case Signal.New_50d_hi:
+                        signal = "50d_new_hi";
+                        break;
+                    case Signal.New_200d_low:
+                        signal = "200d_new_lo";
+                        break;
+                    case Signal.New_200d_hi:
+                        signal = "200d_new_hi";
+                        break;
+                    case Signal.Bookvalue_neg:
+                        signal = "bookvalue_neg";
+                        break;
+                    case Signal.Bookvalue_pos:
+                        signal = "bookvalue_pos";
+                        break;
+                    case Signal.Wallstreet_low:
+                        signal = "wallstreet_lo";
+                        break;
+                    case Signal.Wallstreet_hi:
+                        signal = "wallstreet_hi";
+                        break;
+                    default:
+                        throw new NotImplementedException();
+                }
+                signalstring += signal + ',';
+            }
+
+            signalstring = signalstring.Remove(signalstring.Length - 1);
+            return signalstring;
+        }
+
+        /// <summary>
+        /// Collects a string from a tuple of Field and Order
+        /// </summary>
+        /// <param name="sort"></param>
+        /// <returns>String</returns>
+        /// <exception cref="NotImplementedException"></exception>
+        private static string SortToString((Field, Order) sort)
+        {
+            string sortfield;
+            switch (sort.Item1)
+            {
+                case Field.Code:
+                    sortfield = "code";
+                    break;
+                case Field.Name:
+                    sortfield = "name";
+                    break;
+                case Field.Exchange:
+                    sortfield = "exchange";
+                    break;
+                case Field.Sector:
+                    sortfield = "sector";
+                    break;
+                case Field.Industry:
+                    sortfield = "industry";
+                    break;
+                case Field.MarketCapitalization:
+                    sortfield = "market_capitalization";
+                    break;
+                case Field.EarningsShare:
+                    sortfield = "earnings_share";
+                    break;
+                case Field.DividendYield:
+                    sortfield = "dividend_yield";
+                    break;
+                case Field.Refund1dP:
+                    sortfield = "refund_1d_p";
+                    break;
+                case Field.Refund5dP:
+                    sortfield = "refund_5d_p";
+                    break;
+                case Field.Avgvol1d:
+                    sortfield = "avgvol_1d";
+                    break;
+                case Field.Avgvol200d:
+                    sortfield = "avgvol_200d";
+                    break;
+                default:
+                    throw new NotImplementedException();
+            }
+            string sortorder;
+            switch(sort.Item2)
+            {
+                case Order.Ascending:
+                    sortorder = "asc";
+                    break;
+                case Order.Descending:
+                    sortorder = "desc";
+                    break;
+                default:
+                    throw new NotImplementedException();
+            }
+            string sortstring = sortfield + '.' + sortorder;
+            return sortstring;
         }
 
         /// <summary>

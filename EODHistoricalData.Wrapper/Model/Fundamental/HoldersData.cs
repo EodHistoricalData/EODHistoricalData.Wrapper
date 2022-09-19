@@ -1,37 +1,39 @@
-﻿namespace EOD.Model.Fundamental
+﻿using System;
+
+namespace EOD.Model.Fundamental
 {
     /// <summary>
     /// 
     /// </summary>
-    public class Valuation
+    public class HoldersData
     {
         /// <summary>
         /// 
         /// </summary>
-        public double? TrailingPE { get; set; }
+        public string Name { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public double? ForwardPE { get; set; }
+        public DateTime? Date { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public double? PriceSalesTTM { get; set; }
+        public double? TotalShares { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public double? PriceBookMRQ { get; set; }
+        public double? TotalAssets { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public long? EnterpriseValue { get; set; }
+        public long? CurrentShares { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public double? EnterpriseValueRevenue { get; set; }
+        public long? Change { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public double? EnterpriseValueEbitda { get; set; }
+        public double? Change_p { get; set; }
     }
 }

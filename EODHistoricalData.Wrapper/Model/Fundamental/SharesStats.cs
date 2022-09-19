@@ -1,45 +1,49 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text;
 
 namespace EOD.Model.Fundamental
 {
     /// <summary>
     /// 
     /// </summary>
-    public class SplitsDividends
+    public class SharesStats
     {
         /// <summary>
         /// 
         /// </summary>
-        public double? ForwardAnnualDividendRate { get; set; }
+        public long? SharesOutstanding { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public double? ForwardAnnualDividendYield { get; set; }
+        public long? SharesFloat { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public double? PayoutRatio { get; set; }
+        public decimal? PercentInsiders { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public DateTime? DividendDate { get; set; }
+        public double? PercentInstitutions { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public DateTime? ExDividendDate { get; set; }
+        public double? SharesShort { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public string LastSplitFactor { get; set; }
+        public double? SharesShortPriorMonth { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public DateTime? LastSplitDate { get; set; }
+        public double? ShortRatio { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public Dictionary<string, NumberDividendsByYear> NumberDividendsByYear { get; set; }
+        public double? ShortPercentOutstanding { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public double? ShortPercentFloat { get; set; }
     }
 }
-

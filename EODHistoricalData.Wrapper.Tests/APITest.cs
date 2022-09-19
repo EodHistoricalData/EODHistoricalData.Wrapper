@@ -29,8 +29,8 @@ namespace EODHistoricalData.Wrapper.NetCore.Tests
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethod()]
         public async Task GetFundamentalDataAsyncTest()
         {
-            var result = await _api.GetFundamentalDataAsync("AAPL.US", "Highlights,Technicals");
-            Assert.IsNotNull(result); // (06.09.2022) ok
+            var result = await _api.GetFundamentalDataAsync("AAPL.US");
+            Assert.IsNotNull(result); // (19.09.2022) ok
         }
 
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethod()]

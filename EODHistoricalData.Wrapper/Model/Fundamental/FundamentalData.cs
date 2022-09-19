@@ -19,6 +19,38 @@ namespace EOD.Model.Fundamental
         /// <summary>
         /// 
         /// </summary>
+        public Valuation Valuation { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public SharesStats SharesStats { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public SplitsDividends SplitsDividends { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public AnalystRatings AnalystRatings { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public Holders Holders { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public Dictionary<string, InsiderTransactions> InsiderTransactions { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public ESGScores ESGScores { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public OutstandingShares OutstandingShares { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
         public Earnings Earnings { get; set; }
         /// <summary>
         /// 

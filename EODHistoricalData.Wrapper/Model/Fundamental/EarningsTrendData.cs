@@ -1,4 +1,6 @@
-﻿using System;
+﻿using EOD.Utils;
+using Newtonsoft.Json;
+using System;
 
 namespace EOD.Model.Fundamental
 {
@@ -10,7 +12,13 @@ namespace EOD.Model.Fundamental
         /// <summary>
         /// 
         /// </summary>
-        public DateTime? Date { get; set; }
+        [JsonProperty("Date")]
+        private string DateJSON { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        [JsonProperty("none0")]
+        public DateTime? Date { get => GetDate.ParseDate(DateJSON); }
         /// <summary>
         /// 
         /// </summary>

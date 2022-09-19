@@ -1,4 +1,6 @@
-﻿using System;
+﻿using EOD.Utils;
+using Newtonsoft.Json;
+using System;
 
 namespace EOD.Model.Fundamental
 {
@@ -66,7 +68,16 @@ namespace EOD.Model.Fundamental
         /// <summary>
         /// 
         /// </summary>
-        public DateTime? MostRecentQuarter { get; set; }
+        [JsonProperty("MostRecentQuarter")]
+        private string MostRecentQuarterJSON { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        [JsonProperty("none0")]
+        public DateTime? MostRecentQuarter
+        {
+            get => GetDate.ParseDate(MostRecentQuarterJSON);
+        }
         /// <summary>
         /// 
         /// </summary>

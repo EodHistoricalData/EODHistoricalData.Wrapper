@@ -1,4 +1,6 @@
-﻿using System;
+﻿using EOD.Utils;
+using Newtonsoft.Json;
+using System;
 
 namespace EOD.Model.Fundamental
 {
@@ -50,9 +52,6 @@ namespace EOD.Model.Fundamental
         /// <summary>
         /// 
         /// </summary>
-        /// <summary>
-        /// 
-        /// </summary>
         public string CUSIP { get; set; }
         /// <summary>
         /// 
@@ -69,7 +68,16 @@ namespace EOD.Model.Fundamental
         /// <summary>
         /// 
         /// </summary>
-        public DateTime? IPODate { get; set; }
+        [JsonProperty("IPODate")]
+        private string IPODateJSON { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        [JsonProperty("none0")]
+        public DateTime? IPODate
+        {
+            get => GetDate.ParseDate(IPODateJSON);
+        }
         /// <summary>
         /// 
         /// </summary>
@@ -137,7 +145,16 @@ namespace EOD.Model.Fundamental
         /// <summary>
         /// 
         /// </summary>
-        public DateTime? UpdatedAt { get; set; }
+        [JsonProperty("UpdatedAt")]
+        private string UpdatedAtJSON { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        [JsonProperty("none1")]
+        public DateTime? UpdatedAt
+        {
+            get => GetDate.ParseDate(UpdatedAtJSON);
+        }
         /// <summary>
         /// 
         /// </summary>

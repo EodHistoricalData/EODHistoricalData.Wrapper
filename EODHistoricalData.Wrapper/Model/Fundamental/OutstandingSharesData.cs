@@ -1,4 +1,6 @@
-﻿using System;
+﻿using EOD.Utils;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -16,7 +18,13 @@ namespace EOD.Model.Fundamental
         /// <summary>
         /// 
         /// </summary>
-        public DateTime? DateFormatted { get; set; }
+        [JsonProperty("DateFormatted")]
+        private string DateFormattedJSON { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        [JsonProperty("none0")]
+        public DateTime? DateFormatted { get => GetDate.ParseDate(DateFormattedJSON); }
         /// <summary>
         /// 
         /// </summary>

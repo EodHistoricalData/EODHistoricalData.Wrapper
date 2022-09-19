@@ -14,6 +14,9 @@ namespace EOD.Model.Fundamental
         /// 
         /// </summary>
         public Dictionary<string, HoldersData> Institutions { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
         public Dictionary<string, HoldersData> Funds { get; set; }
     }
 }

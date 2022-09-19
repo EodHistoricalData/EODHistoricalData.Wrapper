@@ -16,5 +16,9 @@ namespace EOD.Model.Fundamental
         /// 
         /// </summary>
         public Dictionary<DateTime, EarningsTrendData> Trend { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public Dictionary<DateTime, EarningsAnnualData> Annual { get; set; }
     }
 }

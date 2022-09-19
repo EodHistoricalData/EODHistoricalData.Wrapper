@@ -1,4 +1,6 @@
-﻿using System;
+﻿using EOD.Utils;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -16,7 +18,13 @@ namespace EOD.Model.Fundamental
         /// <summary>
         /// 
         /// </summary>
-        public DateTime? RatingDate { get; set; }
+        [JsonProperty("RatingDate")]
+        private string RatingDateJSON { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        [JsonProperty("none0")]
+        public DateTime? RatingDate { get => GetDate.ParseDate(RatingDateJSON); }
         /// <summary>
         /// 
         /// </summary>

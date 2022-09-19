@@ -1,4 +1,6 @@
-﻿using System;
+﻿using EOD.Utils;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 
 namespace EOD.Model.Fundamental
@@ -23,11 +25,29 @@ namespace EOD.Model.Fundamental
         /// <summary>
         /// 
         /// </summary>
-        public DateTime? DividendDate { get; set; }
+        [JsonProperty("DividendDate")]
+        private string DividendDateJSON { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public DateTime? ExDividendDate { get; set; }
+        [JsonProperty("none0")]
+        public DateTime? DividendDate
+        {
+            get => GetDate.ParseDate(DividendDateJSON);
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        [JsonProperty("ExDividendDate")]
+        private string ExDividendDateJSON { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        [JsonProperty("none1")]
+        public DateTime? ExDividendDate
+        {
+            get => GetDate.ParseDate(ExDividendDateJSON);
+        }
         /// <summary>
         /// 
         /// </summary>
@@ -35,7 +55,13 @@ namespace EOD.Model.Fundamental
         /// <summary>
         /// 
         /// </summary>
-        public DateTime? LastSplitDate { get; set; }
+        [JsonProperty("LastSplitDate")]
+        private string LastSplitDateJSON { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        [JsonProperty("none2")]
+        public DateTime? LastSplitDate { get => GetDate.ParseDate(LastSplitDateJSON); }
         /// <summary>
         /// 
         /// </summary>

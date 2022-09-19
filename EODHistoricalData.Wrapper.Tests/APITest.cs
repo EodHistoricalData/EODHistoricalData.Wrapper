@@ -4,6 +4,7 @@ using NUnit.Framework;
 
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Threading.Tasks;
 
 using static EOD.API;
@@ -19,8 +20,20 @@ namespace EODHistoricalData.Wrapper.NetCore.Tests
 
         public APITest()
         {
-            string apiKey = "OeAFFmMliFG5orCUuwAKQ8l4WWFQ67YX";
-            System.Net.WebProxy proxy = new System.Net.WebProxy("localhost:80");
+            string apiKey = null;
+            try
+            {
+                apiKey = File.ReadAllText(@"D:\EOD files\apikey.txt");
+            }
+            catch
+            {
+                throw;
+            }
+            finally
+            {
+                apiKey ??= "demo";
+            }
+            System.Net.WebProxy proxy = new("localhost:80");
             _api = new API(apiKey);
             _apiProxy = new API(apiKey, proxy);
             _apiSource = new API(apiKey, null, "EODHistoricalData.Downloader");
@@ -30,7 +43,16 @@ namespace EODHistoricalData.Wrapper.NetCore.Tests
         public async Task GetFundamentalDataAsyncTest()
         {
             var result = await _api.GetFundamentalDataAsync("AAPL.US");
+            DateTime? IPO_Date = result.General.IPODate;
             Assert.IsNotNull(result); // (19.09.2022) ok
+        }
+
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethod()]
+        public async Task GetFundamentalDataAsyncTest_GN()
+        {
+            var result = await _api.GetFundamentalDataAsync("GN1.IR");
+            DateTime? mrq = result.Highlights.MostRecentQuarter;
+            Assert.IsNull(mrq); // (19.09.2022) ok
         }
 
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethod()]
@@ -45,7 +67,7 @@ namespace EODHistoricalData.Wrapper.NetCore.Tests
         {
             var result = await _api.GetExchangeDetailsAsync("US");
             var holidaysDictionary = result.ExchangeHolidays;
-            List<(DateTime?, string, string)> holidaysList = new List<(DateTime?, string, string)>();
+            List<(DateTime?, string, string)> holidaysList = new();
             foreach (var holiday in holidaysDictionary)
             {
                 DateTime? holidayDate = holiday.Value.Date;

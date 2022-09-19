@@ -28,6 +28,10 @@ namespace EOD.Model.Fundamental
         /// <summary>
         /// 
         /// </summary>
+        public int? Hold { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
         public int? Sell { get; set; }
         /// <summary>
         /// 

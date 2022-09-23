@@ -56,6 +56,13 @@ namespace EODHistoricalData.Wrapper.NetCore.Tests
         }
 
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethod()]
+        public async Task GetFundamentalDataAsyncTest_BNT()
+        {
+            var result = await _api.GetFundamentalDataAsync("BNT1.f");
+            Assert.IsNotNull(result); // (23.09.2022) ok
+        }
+
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethod()]
         public async Task GetBulkFundamentalDataAsyncTest_NASDAQ()
         {
             var result = await _api.GetBulkFundamentalsDataAsync("NASDAQ", 500, 5);

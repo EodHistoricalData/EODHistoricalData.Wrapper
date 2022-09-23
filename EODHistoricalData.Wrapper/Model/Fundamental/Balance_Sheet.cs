@@ -15,11 +15,11 @@ namespace EOD.Model.Fundamental
         /// <summary>
         /// Quarterly
         /// </summary>
-        public Dictionary<DateTime, Balance_SheetData> Quarterly { get; set; }
+        public Dictionary<string, Balance_SheetData> Quarterly { get; set; }
         /// <summary>
         /// Yearly
         /// </summary>
-        public Dictionary<DateTime, Balance_SheetData> Yearly { get; set; }
+        public Dictionary<string, Balance_SheetData> Yearly { get; set; }
         /// <summary>
         /// For bulk
         /// </summary>

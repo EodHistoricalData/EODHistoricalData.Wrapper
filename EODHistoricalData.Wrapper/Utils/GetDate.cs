@@ -11,16 +11,16 @@ namespace EOD.Utils
         /// Parse string into date
         /// </summary>
         /// <param name="dateStr">Date in string format</param>
-        /// <returns>Null, if the string is equals to '0000-00-00'</returns>
+        /// <returns></returns>
         internal static DateTime? ParseDate(string dateStr)
         {
-            if (dateStr == "0000-00-00")
+            if (DateTime.TryParse(dateStr, out var date))
             {
-                return null;
+                return date;
             }
             else
             {
-                return DateTime.Parse(dateStr);
+                return null;
             }
         }
     }

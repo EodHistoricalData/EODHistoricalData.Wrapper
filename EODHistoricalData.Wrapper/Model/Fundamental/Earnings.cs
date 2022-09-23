@@ -11,14 +11,14 @@ namespace EOD.Model.Fundamental
         /// <summary>
         /// 
         /// </summary>
-        public Dictionary<DateTime, EarningsHistoryData> History { get; set; }
+        public Dictionary<string, EarningsHistoryData> History { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public Dictionary<DateTime, EarningsTrendData> Trend { get; set; }
+        public Dictionary<string, EarningsTrendData> Trend { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public Dictionary<DateTime, EarningsAnnualData> Annual { get; set; }
+        public Dictionary<string, EarningsAnnualData> Annual { get; set; }
     }
 }

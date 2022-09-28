@@ -178,6 +178,6 @@ namespace EOD.Model.Fundamental
         /// <summary>
         /// 
         /// </summary>
-        public long? MarketCapitalization { get; set; }
+        public double? MarketCapitalization { get; set; }
     }
 }

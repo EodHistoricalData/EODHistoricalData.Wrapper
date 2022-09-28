@@ -26,7 +26,7 @@ namespace EOD.Model.Bulks
         /// <summary>
         /// 
         /// </summary>
-        public long? MarketCapitalization { get; set; }
+        public double? MarketCapitalization { get; set; }
         /// <summary>
         /// 
         /// </summary>

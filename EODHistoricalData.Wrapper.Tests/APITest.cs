@@ -1,5 +1,5 @@
 using EOD;
-
+using EODHistoricalData.Wrapper.Utils;
 using NUnit.Framework;
 
 using System;
@@ -44,6 +44,20 @@ namespace EODHistoricalData.Wrapper.NetCore.Tests
         {
             var result = await _api.GetFundamentalDataAsync("0R2T.LSE");
             Assert.IsNotNull(result); // (28.09.2022) ok
+        }
+
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethod()]
+        public async Task GetDivErr()
+        {
+            try
+            {
+                var result = await _api.GetHistoricalDividendsAsync("!BCOMF3T.US", new DateTime(2020, 1, 1), new DateTime(2022, 1, 1));
+                Assert.Fail("No exception was thrown");
+            }
+            catch (HttpRequestExceptionExtended ex)
+            {
+                Assert.AreEqual(System.Net.HttpStatusCode.UnprocessableEntity, ex.StatusCode); // (29.09.2022) ok
+            }
         }
 
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethod()]

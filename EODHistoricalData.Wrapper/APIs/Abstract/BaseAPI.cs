@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using EODHistoricalData.Wrapper.Utils;
+using Newtonsoft.Json;
 
 using System;
 using System.Net;
@@ -58,7 +59,7 @@ namespace EOD.APIs.Abstract
             HttpResponseMessage response = await _httpClient.GetAsync(uri);
             if (!response.IsSuccessStatusCode)
             {
-                throw new HttpRequestException($"There was an error while executing the HTTP query. Reason: {response.ReasonPhrase}");
+                throw new HttpRequestExceptionExtended($"There was an error while executing the HTTP query. Reason: {response.ReasonPhrase}", response.StatusCode);
             }
 
             string content = await response.Content.ReadAsStringAsync();

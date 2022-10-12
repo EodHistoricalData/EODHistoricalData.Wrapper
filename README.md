@@ -2,7 +2,7 @@
 
 Made with Microsoft Visual Studio
 
-[![.NET Version](https://img.shields.io/badge/.NET-6.0+-blue.svg)](https://shields.io/)
+[![.NET Version](https://img.shields.io/badge/.NET%20Standard-2.0-blue)](https://shields.io/)
 
 # Contents
 
@@ -37,6 +37,9 @@ using EOD;
 // create the instance of the SDK
 apiToken = "YOUR_API_KEY_GOES_HERE";
 var _api = new API(apiToken);
+// if you use proxy
+System.Net.WebProxy proxy = new("YOUR_PROXY_SERVER_IP:PORT");
+var _apiProxy = new API(apiKey, proxy);
 ```
 
 ### Historical Prices, Splits and Dividends Data APIs [:arrow_up:](#eodhistoricaldata.wrapper)
@@ -465,8 +468,8 @@ List<FinancialNews> response = await _api.GetFinancialNewsAsync(null, "net incom
 - **Stock Market Screener API**: is a powerful tool that helps you filter out tickers with the given parameters.
 	- Parameters:
 		- ```filters```(List<(Field, Operation, string)>): Optional - Filters out tickers by different fields.
-		- ```signals```(string): Optional - usage: "signal1,signal2,…,signalN". Filter out tickers by signals, the calculated fields.
-		- ```sort```(string): Optional - sorts all fields with type Number in ascending/descending order. Usage: ```field_name.(asc|desc)```.
+		- ```signals```(List<'Signal>): Optional - Filters out tickers by signals, the calculated fields.
+		- ```sort```((Field, Order)): Optional - sorts all fields with type Number in ascending/descending order. Usage: ```field_name.(asc|desc)```.
 		- ```limit```(int): Optional - the number of results should be returned with the query. Default value: 50, minimum value: 1, maximum value: 100.
 		- ```offset```(int): Optional - the offset of the data. Default value: 0, minimum value: 0, maximum value: 100.
 	- Usage:

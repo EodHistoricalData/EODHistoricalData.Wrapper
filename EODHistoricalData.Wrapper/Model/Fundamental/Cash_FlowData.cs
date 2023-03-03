@@ -56,7 +56,7 @@ namespace EOD.Model.Fundamental
         /// <summary>
         /// 
         /// </summary>
-        public double? HangeToOperatingActivities { get; set; }
+        public double? ChangeToOperatingActivities { get; set; }
         /// <summary>
         /// 
         /// </summary>
@@ -64,7 +64,7 @@ namespace EOD.Model.Fundamental
         /// <summary>
         /// 
         /// </summary>
-        public double? HangeInCash { get; set; }
+        public double? ChangeInCash { get; set; }
         /// <summary>
         /// 
         /// </summary>
@@ -133,6 +133,10 @@ namespace EOD.Model.Fundamental
         /// 
         /// </summary>
         public double? ChangeInWorkingCapital { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public double? StockBasedCompensation { get; set; }
         /// <summary>
         /// 
         /// </summary>

@@ -1,6 +1,7 @@
 ﻿using EOD.Utils;
 using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 
 namespace EOD.Model.Fundamental
 {
@@ -49,6 +50,14 @@ namespace EOD.Model.Fundamental
         /// 
         /// </summary>
         public string ISIN { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public string LEI { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public string PrimaryTicker { get; set; }
         /// <summary>
         /// 
         /// </summary>
@@ -126,6 +135,14 @@ namespace EOD.Model.Fundamental
         /// 
         /// </summary>
         public AddressData AddressData { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public Dictionary<int, Listing> Listings { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public Dictionary<int, Officer> Officers { get; set; }
         /// <summary>
         /// 
         /// </summary>

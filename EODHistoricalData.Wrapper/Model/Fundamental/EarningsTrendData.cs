@@ -106,10 +106,10 @@ namespace EOD.Model.Fundamental
         /// <summary>
         /// 
         /// </summary>
-        public double? EpsRevisionsDownLast30days { get; set; }
+        public double? EpsRevisionsDownLast7days { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public double? EpsRevisionsDownLast90days { get; set; }
+        public double? EpsRevisionsDownLast30days { get; set; }
     }
 }

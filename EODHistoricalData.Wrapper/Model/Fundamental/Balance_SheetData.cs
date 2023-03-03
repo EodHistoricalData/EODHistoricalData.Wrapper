@@ -72,6 +72,10 @@ namespace EOD.Model.Fundamental
         /// <summary>
         /// 
         /// </summary>
+        public double? CapitalStock { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
         public double? RetainedEarnings { get; set; }
         /// <summary>
         /// 
@@ -92,7 +96,15 @@ namespace EOD.Model.Fundamental
         /// <summary>
         /// 
         /// </summary>
+        public double? CashAndEquivalents { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
         public double? TotalCurrentLiabilities { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public double? CurrentDeferredRevenue { get; set; }
         /// <summary>
         /// 
         /// </summary>
@@ -245,6 +257,10 @@ namespace EOD.Model.Fundamental
         /// 
         /// </summary>
         public double? PropertyPlantAndEquipmentGross { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public double? PropertyPlantAndEquipmentNet { get; set; }
         /// <summary>
         /// 
         /// </summary>

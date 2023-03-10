@@ -196,5 +196,9 @@ namespace EOD.Model.Fundamental
         /// 
         /// </summary>
         public double? MarketCapitalization { get; set; }
+        /// <summary>
+        /// for Crypto
+        /// </summary>
+        public string Category { get; set; }
     }
 }

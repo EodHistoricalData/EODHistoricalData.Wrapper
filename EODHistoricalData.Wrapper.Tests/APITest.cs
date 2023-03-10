@@ -77,6 +77,14 @@ namespace EODHistoricalData.Wrapper.NetCore.Tests
         }
 
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethod()]
+        public async Task GetFundamentalDataAsyncTest_Crypto()
+        {
+            var result = await _api.GetFundamentalDataAsync("BTC-USD.CC");
+            string doc = result.Statistics.TechnicalDoc;
+            Assert.IsNotNull(doc); // (10.03.2023) ok
+        }
+
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethod()]
         public async Task GetFundamentalDataAsyncTest_BNT()
         {
             var result = await _api.GetFundamentalDataAsync("BNT1.f");

@@ -77,5 +77,9 @@ namespace EOD.Model.Fundamental
         /// 
         /// </summary>
         public Dictionary<int, HistoricalComponent> HistoricalTickerComponents { get; set; }
+        /// <summary>
+        /// for Crypto
+        /// </summary>
+        public Statistics Statistics { get; set; }
     }
 }

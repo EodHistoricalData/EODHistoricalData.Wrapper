@@ -551,5 +551,21 @@ namespace EODHistoricalData.Wrapper.NetCore.Tests
             var result = await _api.GetAmiBrokerDataAsync("AAPL.US", 50, new DateTime(2021, 01, 1), new DateTime(2021, 12, 31));
             Assert.IsNotNull(result); // (07.09.2022) ok
         }
+
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethod()]
+        public async Task GetSentimentsAsyncTest_DEMO()
+        {
+            List<string> symbols = new() { "btc-usd.cc", "aapl" };
+            var result = await _api.GetSentimentsAsync(symbols, new DateTime(2022, 01, 1), new DateTime(2022, 04, 22));
+            Assert.IsNotNull(result); // (07.09.2022) ok
+        }
+
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethod()]
+        public async Task GetTweetsSentimentsAsyncTest_DEMO()
+        {
+            List<string> symbols = new() { "tsla", "aapl" };
+            var result = await _api.GetSentimentsAsync(symbols, new DateTime(2022, 01, 1), new DateTime(2022, 04, 22), true);
+            Assert.IsNotNull(result); // (07.09.2022) ok
+        }
     }
 }

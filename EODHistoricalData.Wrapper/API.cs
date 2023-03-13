@@ -46,6 +46,7 @@ namespace EOD
         private readonly IFinancialNewsAPI financialNewsAPI;
         private readonly IStockMarketScreenerAPI stockMarketScreenerAPI;
         private readonly ITechnicalIndicatorAPI technicalIndicatorAPI;
+        private readonly ISentimentsAPI sentimentsAPI;
 
         #region Enums
 
@@ -280,6 +281,20 @@ namespace EOD
             financialNewsAPI = new FinancialNewsAPI(apiKey, proxy, source);
             stockMarketScreenerAPI = new StockMarketScreenerAPI(apiKey, proxy, source);
             technicalIndicatorAPI = new TechnicalIndicatorAPI(apiKey, proxy, source);
+            sentimentsAPI = new SentimentsApi(apiKey, proxy, source);
+        }
+
+        /// <summary>
+        /// Get Financial News Sentiment Data or Tweets Sentiment Data
+        /// </summary>
+        /// <param name="symbols">[REQUIRED] list os symbols</param>
+        /// <param name="from">[OPTIONAL] date from</param>
+        /// <param name="to">[OPTIONAL] date to</param>
+        /// <param name="tweets">[OPTIONAL] true for Tweets Sentiment Data</param>
+        /// <returns></returns>
+        public async Task<Dictionary<string, List<SentimentsData>>> GetSentimentsAsync(List<string> symbols, DateTime? from = null, DateTime? to = null, bool? tweets = null)
+        {
+            return await sentimentsAPI.GetSentimentsAsync(symbols, from, to, tweets);
         }
 
         /// <summary>

@@ -413,6 +413,20 @@ namespace EODHistoricalData.Wrapper.NetCore.Tests
         }
 
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethod()]
+        public async Task GetBulksAsyncTest_splits()
+        {
+            var result = await _api.GetBulksAsync("US", "splits", null, null);
+            Assert.IsNotNull(result); // (07.09.2022) not ok
+        }
+
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethod()]
+        public async Task GetBulksAsyncTest_dividends()
+        {
+            var result = await _api.GetBulksAsync("US", "dividends", null, null);
+            Assert.IsNotNull(result); // (07.09.2022) not ok
+        }
+
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethod()]
         public async Task GetFinancialNewsAsyncTest_AAPLUS2021Dec()
         {
             var result = await _api.GetFinancialNewsAsync("AAPL.US", null, new DateTime(2021, 12, 1), new DateTime(2021, 12, 31));

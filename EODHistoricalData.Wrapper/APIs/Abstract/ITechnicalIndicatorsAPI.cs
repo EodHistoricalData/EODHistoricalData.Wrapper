@@ -123,5 +123,11 @@ namespace EOD.APIs.Abstract
         /// </summary>
         Task<List<AmiBrokerData>> GetAmiBrokerDataAsync(string ticker, int? period = null, DateTime? from = null, DateTime? to = null,
             string order = null);
+
+        /// <summary>
+        /// This function returns the Bollinger Bands technical indicator. A type of statistical chart characterizing the prices and volatility over time of a financial instrument, using a formulaic method propounded by John Bollinger in the 1980s.
+        /// </summary>
+        Task<List<BollingerBands>> GetBollingerBandsAsync(string ticker, int? period = null, DateTime? from = null,
+            DateTime? to = null, string order = null);
     }
 }

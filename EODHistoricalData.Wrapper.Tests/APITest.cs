@@ -581,5 +581,12 @@ namespace EODHistoricalData.Wrapper.NetCore.Tests
             var result = await _api.GetSentimentsAsync(symbols, new DateTime(2022, 01, 1), new DateTime(2022, 04, 22), true);
             Assert.IsNotNull(result); // (07.09.2022) ok
         }
+
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethod()]
+        public async Task GetBollingerBandsAsyncTest_AAPL()
+        {
+            var result = await _api.GetBollingerBandsAsync("AAPL.US", 50, new DateTime(2021, 01, 1), new DateTime(2021, 12, 31));
+            Assert.IsNotNull(result); // (07.24.2023) ok
+        }
     }
 }

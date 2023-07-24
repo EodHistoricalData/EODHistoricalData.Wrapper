@@ -1527,6 +1527,17 @@ namespace EOD
             return await technicalIndicatorAPI.GetAmiBrokerDataAsync(ticker, period, from, to, orderToString);
         }
 
+        public async Task<List<BollingerBands>> GetBollingerBandsAsync(string ticker, int? period = null, DateTime? from = null,
+            DateTime? to = null, Order? order = null)
+        {
+            CheckTicker(ticker);
+            CheckPeriod(period);
+
+            string orderToString = GetOrderSwitch(order);
+
+            return await technicalIndicatorAPI.GetBollingerBandsAsync(ticker, period, from, to, orderToString);
+        }
+
         /// <summary>
         /// checking the ticker string for emptiness and the presence of a splitter
         /// </summary>
@@ -1560,7 +1571,6 @@ namespace EOD
             if (splitAdjustedOnly != null && (splitAdjustedOnly != 0 & splitAdjustedOnly != 1))
                 throw new ArgumentException("splitAdjustedOnly must be 0 or 1", nameof(splitAdjustedOnly));
         }
-
 
         private string GetOrderSwitch(Order? order)
         {

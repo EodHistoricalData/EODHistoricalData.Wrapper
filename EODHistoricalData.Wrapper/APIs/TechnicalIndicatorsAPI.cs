@@ -351,5 +351,23 @@ namespace EOD.APIs
             string url = string.Format(uri, args);
             return ExecuteQueryAsync<List<AmiBrokerData>>(url);
         }
+
+        public Task<List<BollingerBands>> GetBollingerBandsAsync(string ticker, int? period = null, DateTime? from = null,
+            DateTime? to = null, string order = null)
+        {
+            string uri = source;
+            uri += $"&function=bbands";
+            if (period != null) uri += $"&period={period}";
+            if (from != null) uri += $"&from={from?.ToString("yyyy-MM-dd")}";
+            if (to != null) uri += $"&to={to?.ToString("yyyy-MM-dd")}";
+            if (order != null) uri += $"&order={order}";
+
+            object[] args = new object[]
+            {
+                ticker
+            };
+            string url = string.Format(uri, args);
+            return ExecuteQueryAsync<List<BollingerBands>>(url);
+        }
     }
 }

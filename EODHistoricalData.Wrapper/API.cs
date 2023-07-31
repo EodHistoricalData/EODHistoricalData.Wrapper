@@ -381,8 +381,7 @@ namespace EOD
         /// <summary>
         /// Bulk Fundamentals Output
         /// </summary>
-        /// <param name="ticker">consists of two parts: {SYMBOL_NAME}.{EXCHANGE_ID}, 
-        /// then you can use, for example, AAPL.MX for Mexican Stock Exchange.</param>
+        /// <param name="ticker">{EXCHANGE_ID}, for example, MX for Mexican Stock Exchange.</param>
         /// <param name="offset">The first symbol you will get</param>
         /// <param name="limit">The number of symbols you will get</param>
         /// <param name="symbols">To get the data for several symbols instead of the entire exchange.
@@ -394,6 +393,23 @@ namespace EOD
             if (ticker == string.Empty) throw new ArgumentNullException(nameof(ticker));
 
             return await fundamentalDataAPI.GetBulkFundamentalsDataAsync(ticker, offset, limit, symbols);
+        }
+
+        /// <summary>
+        /// Bulk Fundamentals Extended data
+        /// </summary>
+        /// <param name="ticker">{EXCHANGE_ID}, for example, MX for Mexican Stock Exchange.</param>
+        /// <param name="offset">The first symbol you will get</param>
+        /// <param name="limit">The number of symbols you will get</param>
+        /// <param name="symbols">To get the data for several symbols instead of the entire exchange.
+        /// in this case, the exchange code will be ignored</param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentNullException"></exception>
+        public async Task<List<BulkFundamentalData>> GetBulkFundamentalsExtendedDataAsync(string ticker, int? offset = null, int? limit = null, string symbols = null)
+        {
+            if (ticker == string.Empty) throw new ArgumentNullException(nameof(ticker));
+
+            return await fundamentalDataAPI.GetBulkFundamentalsExtendedDataAsync(ticker, offset, limit, symbols);
         }
 
         /// <summary>

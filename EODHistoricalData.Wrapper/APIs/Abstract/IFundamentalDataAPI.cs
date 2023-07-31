@@ -20,5 +20,12 @@ namespace EOD.APIs.Abstract
         /// </summary>
         Task<Dictionary<string, BulkFundamentalData>> GetBulkFundamentalsDataAsync(string ticker, int? offset = null,
             int? limit = null, string symbols = null);
+
+        /// <summary>
+        /// Bulk Fundamental Extended (ver 1.2)
+        /// </summary>
+        /// <returns></returns>
+        Task<List<BulkFundamentalData>> GetBulkFundamentalsExtendedDataAsync(string ticker, int? offset = null,
+            int? limit = null, string symbols = null);
     }
 }

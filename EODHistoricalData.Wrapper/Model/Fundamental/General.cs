@@ -49,6 +49,10 @@ namespace EOD.Model.Fundamental
         /// <summary>
         /// 
         /// </summary>
+        public string OpenFigi { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
         public string ISIN { get; set; }
         /// <summary>
         /// 

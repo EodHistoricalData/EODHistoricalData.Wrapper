@@ -60,6 +60,10 @@ namespace EOD.Model.BulkFundamental
         /// </summary>
         public double? EPSEstimateNextQuarter { get; set; }
         /// <summary>
+        /// Extended
+        /// </summary>
+        public double? EPSEstimateCurrentQuarter { get; set; }
+        /// <summary>
         /// 
         /// </summary>
         public string MostRecentQuarter { get; set; }

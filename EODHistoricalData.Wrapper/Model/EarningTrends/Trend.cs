@@ -102,6 +102,10 @@ namespace EOD.Model.EarningTrends
         /// <summary>
         /// 
         /// </summary>
+        public double? EpsRevisionsDownLast7days { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
         public double? EpsRevisionsDownLast30days { get; set; }
     }
 }

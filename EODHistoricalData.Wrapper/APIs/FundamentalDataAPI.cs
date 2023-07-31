@@ -28,5 +28,15 @@ namespace EOD.APIs
             if (symbols != null) uri += $"&symbols={symbols}";
             return ExecuteQueryAsync<Dictionary<string, BulkFundamentalData>> (uri);
         }
+
+        private const string bulkFundamentalExtended = @"https://eodhistoricaldata.com/api/bulk-fundamentals/{0}?&fmt=json&version=1.2";
+        public Task<List<BulkFundamentalData>> GetBulkFundamentalsExtendedDataAsync(string ticker, int? offset = null, int? limit = null, string symbols = null)
+        {
+            string uri = string.Format(bulkFundamentalExtended, ticker);
+            if (offset != null) uri += $"&offset={offset}";
+            if (limit != null) uri += $"&limit={limit}";
+            if (symbols != null) uri += $"&symbols={symbols}";
+            return ExecuteQueryAsync<List<BulkFundamentalData>>(uri);
+        }
     }
 }

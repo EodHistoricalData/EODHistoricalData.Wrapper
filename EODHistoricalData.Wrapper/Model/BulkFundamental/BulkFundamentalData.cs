@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using EOD.Model.Fundamental;
+using System.Collections.Generic;
 
 namespace EOD.Model.BulkFundamental
 {
@@ -20,6 +21,10 @@ namespace EOD.Model.BulkFundamental
         /// </summary>
         public Valuation Valuation { get; set; }
         /// <summary>
+        /// Extended
+        /// </summary>
+        public SharesStats SharesStats { get; set; }
+        /// <summary>
         /// 
         /// </summary>
         public Technicals Technicals { get; set; }
@@ -35,6 +40,10 @@ namespace EOD.Model.BulkFundamental
         /// 
         /// </summary>
         public Financials Financials { get; set; }
+        /// <summary>
+        /// Extended
+        /// </summary>
+        public AnalystRatings AnalystRatings { get; set; }
     }
 }
 

@@ -1,5 +1,5 @@
 ﻿using EOD.Model.TechnicalIndicators;
-
+using EODHistoricalData.Wrapper.Model.TechnicalIndicators;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -129,5 +129,8 @@ namespace EOD.APIs.Abstract
         /// </summary>
         Task<List<BollingerBands>> GetBollingerBandsAsync(string ticker, int? period = null, DateTime? from = null,
             DateTime? to = null, string order = null);
+
+        Task<List<TechnicalIndicator>> GetTechnicalIndicatorsAsync(string ticker, DateTime? from = null, DateTime? to = null, string order = null,
+            List<IndicatorParameters> parameters = null);
     }
 }

@@ -1,6 +1,6 @@
 ﻿using EOD.APIs.Abstract;
 using EOD.Model.TechnicalIndicators;
-
+using EODHistoricalData.Wrapper.Model.TechnicalIndicators;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -368,6 +368,29 @@ namespace EOD.APIs
             };
             string url = string.Format(uri, args);
             return ExecuteQueryAsync<List<BollingerBands>>(url);
+        }
+
+        public Task<List<TechnicalIndicator>> GetTechnicalIndicatorsAsync(string ticker, DateTime? from = null, DateTime? to = null, string order = null,
+            List<IndicatorParameters> parameters = null)
+        {
+            string uri = "https://eodhistoricaldata.com/api/technical/{0}?&fmt=json";
+            object[] args = new object[]
+            {
+                ticker
+            };
+            string url = string.Format(uri, args);
+            if (string.IsNullOrEmpty(order)) url += $"&order={order}";
+            if (from != null) url += $"&from={from?.ToString("yyyy-MM-dd")}";
+            if (to != null) url += $"&to={to?.ToString("yyyy-MM-dd")}";
+            foreach (var parameter in parameters)
+            {
+                if (string.IsNullOrEmpty(parameter.Name) || string.IsNullOrEmpty(parameter.Value))
+                {
+                    continue;
+                }
+                url += $"&{parameter.Name}={parameter.Value}";
+            }
+            return ExecuteQueryAsync<List<TechnicalIndicator>>(url);
         }
     }
 }

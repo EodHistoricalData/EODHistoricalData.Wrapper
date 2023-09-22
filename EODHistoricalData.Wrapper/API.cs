@@ -13,7 +13,7 @@ using EOD.Model.Screener;
 using EOD.Model.TechnicalIndicators;
 using EOD.Model.UpcomingEarnings;
 using EOD.Model.UpcomingSplits;
-
+using EODHistoricalData.Wrapper.Model.TechnicalIndicators;
 using System;
 using System.Collections.Generic;
 using System.Net;
@@ -1543,6 +1543,15 @@ namespace EOD
             return await technicalIndicatorAPI.GetAmiBrokerDataAsync(ticker, period, from, to, orderToString);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="ticker"></param>
+        /// <param name="period"></param>
+        /// <param name="from"></param>
+        /// <param name="to"></param>
+        /// <param name="order"></param>
+        /// <returns></returns>
         public async Task<List<BollingerBands>> GetBollingerBandsAsync(string ticker, int? period = null, DateTime? from = null,
             DateTime? to = null, Order? order = null)
         {
@@ -1552,6 +1561,25 @@ namespace EOD
             string orderToString = GetOrderSwitch(order);
 
             return await technicalIndicatorAPI.GetBollingerBandsAsync(ticker, period, from, to, orderToString);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="ticker"></param>
+        /// <param name="from"></param>
+        /// <param name="to"></param>
+        /// <param name="order"></param>
+        /// <param name="parameters"></param>
+        /// <returns></returns>
+        public async Task<List<TechnicalIndicator>> GetTechnicalIndicatorsAsync(string ticker, DateTime? from = null, DateTime? to = null, Order? order = null,
+            List<IndicatorParameters> parameters = null)
+        {
+            CheckTicker(ticker);
+
+            string orderToString = GetOrderSwitch(order);
+
+            return await technicalIndicatorAPI.GetTechnicalIndicatorsAsync(ticker, from, to, orderToString, parameters);
         }
 
         /// <summary>

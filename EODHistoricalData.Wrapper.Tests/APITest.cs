@@ -1,4 +1,5 @@
 using EOD;
+using EODHistoricalData.Wrapper.Model.TechnicalIndicators;
 using EODHistoricalData.Wrapper.Utils;
 using NUnit.Framework;
 
@@ -37,6 +38,17 @@ namespace EODHistoricalData.Wrapper.NetCore.Tests
             _api = new API(apiKey);
             _apiProxy = new API(apiKey, proxy);
             _apiSource = new API(apiKey, null, "EODHistoricalData.Downloader");
+        }
+
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethod()]
+        public async Task GetTechnicalsDataAsyncTest()
+        {
+            var param = new List<IndicatorParameters>()
+            {
+                new IndicatorParameters("function", "bbands")
+            };
+            var result = await _api.GetTechnicalIndicatorsAsync("AAPL.US", new DateTime(2023,1,1), new DateTime(2023, 6, 1), Order.Descending, param);
+            Assert.IsNotNull(result); // (22.09.2023) ok
         }
 
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethod()]

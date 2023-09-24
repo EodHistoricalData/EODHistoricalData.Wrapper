@@ -22,6 +22,10 @@
         /// </summary>
         public double? PriceBookMRQ { get; set; }
         /// <summary>
+        /// Extended
+        /// </summary>
+        public double? EnterpriseValue { get; set; }
+        /// <summary>
         /// 
         /// </summary>
         public double? EnterpriseValueRevenue { get; set; }

@@ -13,7 +13,7 @@ using EOD.Model.Screener;
 using EOD.Model.TechnicalIndicators;
 using EOD.Model.UpcomingEarnings;
 using EOD.Model.UpcomingSplits;
-
+using EODHistoricalData.Wrapper.Model.TechnicalIndicators;
 using System;
 using System.Collections.Generic;
 using System.Net;
@@ -381,8 +381,7 @@ namespace EOD
         /// <summary>
         /// Bulk Fundamentals Output
         /// </summary>
-        /// <param name="ticker">consists of two parts: {SYMBOL_NAME}.{EXCHANGE_ID}, 
-        /// then you can use, for example, AAPL.MX for Mexican Stock Exchange.</param>
+        /// <param name="ticker">{EXCHANGE_ID}, for example, MX for Mexican Stock Exchange.</param>
         /// <param name="offset">The first symbol you will get</param>
         /// <param name="limit">The number of symbols you will get</param>
         /// <param name="symbols">To get the data for several symbols instead of the entire exchange.
@@ -394,6 +393,23 @@ namespace EOD
             if (ticker == string.Empty) throw new ArgumentNullException(nameof(ticker));
 
             return await fundamentalDataAPI.GetBulkFundamentalsDataAsync(ticker, offset, limit, symbols);
+        }
+
+        /// <summary>
+        /// Bulk Fundamentals Extended data
+        /// </summary>
+        /// <param name="ticker">{EXCHANGE_ID}, for example, MX for Mexican Stock Exchange.</param>
+        /// <param name="offset">The first symbol you will get</param>
+        /// <param name="limit">The number of symbols you will get</param>
+        /// <param name="symbols">To get the data for several symbols instead of the entire exchange.
+        /// in this case, the exchange code will be ignored</param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentNullException"></exception>
+        public async Task<List<BulkFundamentalData>> GetBulkFundamentalsExtendedDataAsync(string ticker, int? offset = null, int? limit = null, string symbols = null)
+        {
+            if (ticker == string.Empty) throw new ArgumentNullException(nameof(ticker));
+
+            return await fundamentalDataAPI.GetBulkFundamentalsExtendedDataAsync(ticker, offset, limit, symbols);
         }
 
         /// <summary>
@@ -1527,6 +1543,15 @@ namespace EOD
             return await technicalIndicatorAPI.GetAmiBrokerDataAsync(ticker, period, from, to, orderToString);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="ticker"></param>
+        /// <param name="period"></param>
+        /// <param name="from"></param>
+        /// <param name="to"></param>
+        /// <param name="order"></param>
+        /// <returns></returns>
         public async Task<List<BollingerBands>> GetBollingerBandsAsync(string ticker, int? period = null, DateTime? from = null,
             DateTime? to = null, Order? order = null)
         {
@@ -1536,6 +1561,25 @@ namespace EOD
             string orderToString = GetOrderSwitch(order);
 
             return await technicalIndicatorAPI.GetBollingerBandsAsync(ticker, period, from, to, orderToString);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="ticker"></param>
+        /// <param name="from"></param>
+        /// <param name="to"></param>
+        /// <param name="order"></param>
+        /// <param name="parameters"></param>
+        /// <returns></returns>
+        public async Task<List<TechnicalIndicator>> GetTechnicalIndicatorsAsync(string ticker, DateTime? from = null, DateTime? to = null, Order? order = null,
+            List<IndicatorParameters> parameters = null)
+        {
+            CheckTicker(ticker);
+
+            string orderToString = GetOrderSwitch(order);
+
+            return await technicalIndicatorAPI.GetTechnicalIndicatorsAsync(ticker, from, to, orderToString, parameters);
         }
 
         /// <summary>

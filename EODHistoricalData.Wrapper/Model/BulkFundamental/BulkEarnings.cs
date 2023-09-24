@@ -1,4 +1,6 @@
-﻿using System;
+﻿using EOD.Model.EarningTrends;
+using System;
+using System.Collections.Generic;
 
 namespace EOD.Model.BulkFundamental
 {
@@ -27,6 +29,10 @@ namespace EOD.Model.BulkFundamental
         /// 
         /// </summary>
         public double? SurprisePercent { get; set; }
+        /// <summary>
+        /// Extended (date-values)
+        /// </summary>
+        public Dictionary<string, Trend> Trend { get; set; }
     }
 }
 

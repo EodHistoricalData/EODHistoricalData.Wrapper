@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 
 namespace EOD.Model.BulkFundamental
 {
@@ -16,6 +17,11 @@ namespace EOD.Model.BulkFundamental
         /// </summary>
         public string Filing_date { get; set; }
         /// <summary>
+        /// Extended
+        /// </summary>
+        [JsonProperty("currency_symbol")]
+        public string CurrencySymbol { get; set; }
+        /// <summary>
         /// 
         /// </summary>
         public double? TotalAssets { get; set; }
@@ -23,6 +29,10 @@ namespace EOD.Model.BulkFundamental
         /// 
         /// </summary>
         public double? IntangibleAssets { get; set; }
+        /// <summary>
+        /// Extended
+        /// </summary>
+        public double? EarningAssets { get; set; }
         /// <summary>
         /// 
         /// </summary>
@@ -48,6 +58,10 @@ namespace EOD.Model.BulkFundamental
         /// </summary>
         public double? CommonStock { get; set; }
         /// <summary>
+        /// Extended
+        /// </summary>
+        public double? CapitalStock { get; set; }
+        /// <summary>
         /// 
         /// </summary>
         public double? RetainedEarnings { get; set; }
@@ -68,13 +82,33 @@ namespace EOD.Model.BulkFundamental
         /// </summary>
         public double? Cash { get; set; }
         /// <summary>
+        /// Extended
+        /// </summary>
+        public double? СashAndEquivalents { get; set; }
+        /// <summary>
         /// 
         /// </summary>
         public double? TotalCurrentLiabilities { get; set; }
         /// <summary>
+        /// Extended
+        /// </summary>
+        public double? CurrentDeferredRevenue { get; set; }
+        /// <summary>
+        /// Extended
+        /// </summary>
+        public double? NetDebt { get; set; }
+        /// <summary>
+        /// Extended
+        /// </summary>
+        public double? ShortTermDebt { get; set; }
+        /// <summary>
         /// 
         /// </summary>
         public double? ShortLongTermDebt { get; set; }
+        /// <summary>
+        /// Extended
+        /// </summary>
+        public double? ShortLongTermDebtTotal { get; set; }
         /// <summary>
         /// 
         /// </summary>
@@ -115,5 +149,121 @@ namespace EOD.Model.BulkFundamental
         /// 
         /// </summary>
         public double? AccountsPayable { get; set; }
+        /// <summary>
+        /// Extended
+        /// </summary>
+        public double? TotalPermanentEquity { get; set; }
+        /// <summary>
+        /// Extended
+        /// </summary>
+        public double? NoncontrollingInterestInConsolidatedEntity { get; set; }
+        /// <summary>
+        /// Extended
+        /// </summary>
+        public double? TemporaryEquityRedeemableNoncontrollingInterests { get; set; }
+        /// <summary>
+        /// Extended
+        /// </summary>
+        public double? AccumulatedOtherComprehensiveIncome { get; set; }
+        /// <summary>
+        /// Extended
+        /// </summary>
+        public double? AdditionalPaidInCapital { get; set; }
+        /// <summary>
+        /// Extended
+        /// </summary>
+        public double? CommonStockTotalEquity { get; set; }
+        /// <summary>
+        /// Extended
+        /// </summary>
+        public double? PreferredStockTotalEquity { get; set; }
+        /// <summary>
+        /// Extended
+        /// </summary>
+        public double? RetainedEarningsTotalEquity { get; set; }
+        /// <summary>
+        /// Extended
+        /// </summary>
+        public double? TreasuryStock { get; set; }
+        /// <summary>
+        /// Extended
+        /// </summary>
+        public double? AccumulatedAmortization { get; set; }
+        /// <summary>
+        /// Extended
+        /// </summary>
+        public double? NonCurrrentAssetsOther { get; set; }
+        /// <summary>
+        /// Extended
+        /// </summary>
+        public double? DeferredLongTermAssetCharges { get; set; }
+        /// <summary>
+        /// Extended
+        /// </summary>
+        public double? NonCurrentAssetsTotal { get; set; }
+        /// <summary>
+        /// Extended
+        /// </summary>
+        public double? CapitalLeaseObligations { get; set; }
+        /// <summary>
+        /// Extended
+        /// </summary>
+        public double? LongTermDebtTotal { get; set; }
+        /// <summary>
+        /// Extended
+        /// </summary>
+        public double? NonCurrentLiabilitiesOther { get; set; }
+        /// <summary>
+        /// Extended
+        /// </summary>
+        public double? NonCurrentLiabilitiesTotal { get; set; }
+        /// <summary>
+        /// Extended
+        /// </summary>
+        public double? NegativeGoodwill { get; set; }
+        /// <summary>
+        /// Extended
+        /// </summary>
+        public double? Warrants { get; set; }
+        /// <summary>
+        /// Extended
+        /// </summary>
+        public double? PreferredStockRedeemable { get; set; }
+        /// <summary>
+        /// Extended
+        /// </summary>
+        public double? CapitalSurpluse { get; set; }
+        /// <summary>
+        /// Extended
+        /// </summary>
+        public double? LiabilitiesAndStockholdersEquity { get; set; }
+        /// <summary>
+        /// Extended
+        /// </summary>
+        public double? CashAndShortTermInvestments { get; set; }
+        /// <summary>
+        /// Extended
+        /// </summary>
+        public double? PropertyPlantAndEquipmentGross { get; set; }
+        /// <summary>
+        /// Extended
+        /// </summary>
+        public double? PropertyPlantAndEquipmentNet { get; set; }
+        /// <summary>
+        /// Extended
+        /// </summary>
+        public double? AccumulatedDepreciation { get; set; }
+        /// <summary>
+        /// Extended
+        /// </summary>
+        public double? NetWorkingCapital { get; set; }
+        /// <summary>
+        /// Extended
+        /// </summary>
+        public double? NetInvestedCapital { get; set; }
+        /// <summary>
+        /// Extended
+        /// </summary>
+        public double? CommonStockSharesOutstanding { get; set; }
     }
 }

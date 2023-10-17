@@ -479,7 +479,7 @@ namespace EOD
         /// <param name="to">end search period</param>
         /// <returns></returns>
         /// <exception cref="ArgumentException"></exception>
-        public async Task<List<HistoricalDividend>> GetHistoricalDividendsAsync(string ticker, DateTime from, DateTime to)
+        public async Task<List<HistoricalDividend>> GetHistoricalDividendsAsync(string ticker, DateTime? from, DateTime? to)
         {
             CheckTicker(ticker);
 

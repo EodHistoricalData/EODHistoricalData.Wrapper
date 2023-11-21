@@ -73,6 +73,14 @@ namespace EODHistoricalData.Wrapper.NetCore.Tests
         }
 
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethod()]
+        public async Task GetETFDataAsyncTest()
+        {
+            var result = await _api.GetFundamentalDataAsync("VTI.US");
+            var susratio = result.ETF_Data.MorningStar.Sustainability_Ratio;
+            Assert.IsNotNull(result); // (19.09.2022) ok
+        }
+
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethod()]
         public async Task GetFundamentalDataAsyncTest()
         {
             var result = await _api.GetFundamentalDataAsync("AAPL.US");
@@ -210,6 +218,13 @@ namespace EODHistoricalData.Wrapper.NetCore.Tests
         public async Task GetEndOfDayDataAsyncTest_1d()
         {
             var result = await _api.GetEndOfDayHistoricalStockPriceAsync("AAPL.US", new DateTime(2021, 1, 10), new DateTime(2021, 12, 11), HistoricalPeriod.Daily);
+            Assert.IsNotNull(result);
+        }
+
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethod()]
+        public async Task GetEndOfDayDataAsyncTest_INDVLSE()
+        {
+            var result = await _api.GetEndOfDayHistoricalStockPriceAsync("INDV.LSE", new DateTime(2021, 12, 20), new DateTime(2022, 3, 11), HistoricalPeriod.Daily);
             Assert.IsNotNull(result);
         }
 

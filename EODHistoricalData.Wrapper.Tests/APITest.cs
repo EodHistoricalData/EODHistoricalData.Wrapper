@@ -47,7 +47,7 @@ namespace EODHistoricalData.Wrapper.NetCore.Tests
             {
                 new IndicatorParameters("function", "bbands")
             };
-            var result = await _api.GetTechnicalIndicatorsAsync("AAPL.US", new DateTime(2023,1,1), new DateTime(2023, 6, 1), Order.Descending, param);
+            var result = await _api.GetTechnicalIndicatorsAsync("AAPL.US", new DateTime(2023, 1, 1), new DateTime(2023, 6, 1), Order.Descending, param);
             Assert.IsNotNull(result); // (22.09.2023) ok
         }
 
@@ -70,6 +70,14 @@ namespace EODHistoricalData.Wrapper.NetCore.Tests
             {
                 Assert.AreEqual(System.Net.HttpStatusCode.UnprocessableEntity, ex.StatusCode); // (29.09.2022) ok
             }
+        }
+
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethod()]
+        public async Task GetETFDataAsyncTest()
+        {
+            var result = await _api.GetFundamentalDataAsync("VTI.US");
+            var susratio = result.ETF_Data.MorningStar.Sustainability_Ratio;
+            Assert.IsNotNull(result); // (19.09.2022) ok
         }
 
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethod()]
@@ -213,6 +221,13 @@ namespace EODHistoricalData.Wrapper.NetCore.Tests
             Assert.IsNotNull(result);
         }
 
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethod()]
+        public async Task GetEndOfDayDataAsyncTest_INDVLSE()
+        {
+            var result = await _api.GetEndOfDayHistoricalStockPriceAsync("INDV.LSE", new DateTime(2021, 12, 20), new DateTime(2022, 3, 11), HistoricalPeriod.Daily);
+            Assert.IsNotNull(result);
+        }
+
         //[Microsoft.VisualStudio.TestTools.UnitTesting.TestMethod()]
         //public async Task GetEndOfDayDataAsyncTest_Proxy()
         //{
@@ -288,6 +303,13 @@ namespace EODHistoricalData.Wrapper.NetCore.Tests
         public async Task GetLiveStockPricesAsyncTest()
         {
             var result = await _api.GetLiveStockPricesAsync("AAPL.US");
+            Assert.IsNotNull(result); // (07.09.2022) ok
+        }
+
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethod()]
+        public async Task GetManyLiveStockPricesAsyncTest()
+        {
+            var result = await _api.GetLiveStockPricesAsync("AAPL.US", new List<string> { "VTI", "EUR.FOREX" });
             Assert.IsNotNull(result); // (07.09.2022) ok
         }
 

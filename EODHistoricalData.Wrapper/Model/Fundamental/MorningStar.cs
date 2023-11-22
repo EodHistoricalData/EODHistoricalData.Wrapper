@@ -1,4 +1,6 @@
-﻿namespace EOD.Model.Fundamental
+﻿using Newtonsoft.Json;
+
+namespace EOD.Model.Fundamental
 {
     /// <summary>
     /// 
@@ -16,7 +18,21 @@
         /// <summary>
         /// 
         /// </summary>
-        public double? Sustainability_Ratio { get; set; }
+        [JsonProperty("none")]
+        public double? Sustainability_Ratio
+        {
+            get
+            {
+                return double.TryParse(Sustainability_Ratio_String, out double result) ? result : 0;
+            }
+            set
+            {
+
+            }
+        }
+
+        [JsonProperty("Sustainability_Ratio")]
+        private string Sustainability_Ratio_String { get; set; }
     }
 }
 

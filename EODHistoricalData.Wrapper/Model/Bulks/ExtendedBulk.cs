@@ -87,7 +87,7 @@ namespace EOD.Model.Bulks
         /// <summary>
         /// 
         /// </summary>
-        public string Change_P { get; set; }
+        public string Change_p { get; set; }
         /// <summary>
         /// 
         /// </summary>

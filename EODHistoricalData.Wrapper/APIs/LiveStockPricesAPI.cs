@@ -1,6 +1,6 @@
 ﻿using EOD.APIs.Abstract;
 using EOD.Model;
-
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace EOD.APIs
@@ -17,6 +17,20 @@ namespace EOD.APIs
             };
             string uri = string.Format(source, args);
             return await ExecuteQueryAsync<LiveStockPrice>(uri);
+        }
+
+        public async Task<List<LiveStockPrice>> GetManyLiveStockPricesAsync(string ticker, List<string> symbols)
+        {
+            object[] args = new object[]
+            {
+                ticker
+            };
+            string uri = string.Format(source, args);
+            if (symbols.Count > 0)
+            {
+                uri += "&s=" + string.Join(",", symbols);
+            }
+            return await ExecuteQueryAsync<List<LiveStockPrice>>(uri);
         }
     }
 }

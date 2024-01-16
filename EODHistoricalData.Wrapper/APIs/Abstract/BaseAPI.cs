@@ -15,7 +15,6 @@ namespace EOD.APIs.Abstract
         private readonly string _apiToken;
         private readonly HttpClient _httpClient;
 
-
         public BaseAPI(string apiToken, IWebProxy proxy = null, string source = null)
         {
             _apiToken = apiToken;
@@ -53,7 +52,6 @@ namespace EOD.APIs.Abstract
                 {
                     uri += $"?api_token={_apiToken}";
                 }
-
             }
 
             HttpResponseMessage response = await _httpClient.GetAsync(uri);

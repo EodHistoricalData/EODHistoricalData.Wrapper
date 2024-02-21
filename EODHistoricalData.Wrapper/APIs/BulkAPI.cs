@@ -18,7 +18,7 @@ namespace EOD.APIs
             string uri = source;
             if (type != null) uri += $"&type={type}";
             if (date != null) uri += $"&date={date?.ToString("yyyy-MM-dd")}";
-            if (symbols != null) uri += $"&symbols={symbols}";
+            if (!string.IsNullOrEmpty(symbols)) uri += $"&symbols={symbols}";
 
             object[] args = new object[]
             {
@@ -35,7 +35,7 @@ namespace EOD.APIs
             uri += "&filter=extended";
             if (type != null) uri += $"&type={type}";
             if (date != null) uri += $"&date={date?.ToString("yyyy-MM-dd")}";
-            if (symbols != null) uri += $"&symbols={symbols}";
+            if (!string.IsNullOrEmpty(symbols)) uri += $"&symbols={symbols}";
 
             object[] args = new object[]
             {

@@ -442,28 +442,35 @@ namespace EODHistoricalData.Wrapper.NetCore.Tests
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethod()]
         public async Task GetBulksAsyncTest_USAPPLMSFT()
         {
-            var result = await _api.GetBulksAsync("US", null, null, "MSFT, AAPL");
+            var result = await _api.GetBulksAsync("US",  Model.Bulks.BulkQueryTypes.EndOfDay, null, "MSFT, AAPL");
             Assert.IsNotNull(result); // (07.09.2022) ok
         }
 
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethod()]
         public async Task GetExtendedBulksAsyncTest_USAPPLMSFT()
         {
-            var result = await _api.GetExtendedBulksAsync("US", null, null, "MSFT, AAPL");
+            var result = await _api.GetExtendedBulksAsync("US", Model.Bulks.BulkQueryTypes.EndOfDay, null, "MSFT, AAPL");
             Assert.IsNotNull(result); // (07.09.2022) ok
+        }
+
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethod()]
+        public async Task GetBulksAsyncTest_standart()
+        {
+            var result = await _api.GetBulksAsync("BA", Model.Bulks.BulkQueryTypes.EndOfDay, new DateTime(2024,2,14), "LOMA.BA");
+            Assert.IsNotNull(result); 
         }
 
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethod()]
         public async Task GetBulksAsyncTest_splits()
         {
-            var result = await _api.GetBulksAsync("US", "splits", null, null);
+            var result = await _api.GetBulksAsync("US",  Model.Bulks.BulkQueryTypes.Splits, null, null);
             Assert.IsNotNull(result); // (07.09.2022) not ok
         }
 
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethod()]
         public async Task GetBulksAsyncTest_dividends()
         {
-            var result = await _api.GetBulksAsync("US", "dividends", null, null);
+            var result = await _api.GetBulksAsync("US",  Model.Bulks.BulkQueryTypes.Dividents, null, null);
             Assert.IsNotNull(result); // (07.09.2022) not ok
         }
 

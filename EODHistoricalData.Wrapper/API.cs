@@ -13,6 +13,8 @@ using EOD.Model.Screener;
 using EOD.Model.TechnicalIndicators;
 using EOD.Model.UpcomingEarnings;
 using EOD.Model.UpcomingSplits;
+
+using EODHistoricalData.Wrapper.Model.Bulks;
 using EODHistoricalData.Wrapper.Model.TechnicalIndicators;
 using System;
 using System.Collections.Generic;
@@ -721,7 +723,7 @@ namespace EOD
         /// <param name="date">if you need any specific date</param>
         /// <param name="symbols">To download last day data for several symbols, for example, for MSFT and AAPL</param>
         /// <returns></returns>
-        public async Task<List<Bulk>> GetBulksAsync(string code, string type, DateTime? date, string symbols)
+        public async Task<List<Bulk>> GetBulksAsync(string code, BulkQueryTypes type, DateTime? date, string symbols)
         {
             return await bulkAPI.GetBulksAsync(code, type, date, symbols);
         }
@@ -734,7 +736,7 @@ namespace EOD
         /// <param name="date">if you need any specific date</param>
         /// <param name="symbols">To download last day data for several symbols (example: MSFT,AAPL,BMW.XETRA,SAP.F)</param>
         /// <returns></returns>
-        public async Task<List<ExtendedBulk>> GetExtendedBulksAsync(string code, string type, DateTime? date, string symbols)
+        public async Task<List<ExtendedBulk>> GetExtendedBulksAsync(string code, BulkQueryTypes type, DateTime? date, string symbols)
         {
             return await bulkAPI.GetExtendedBulksAsync(code, type, date, symbols);
         }

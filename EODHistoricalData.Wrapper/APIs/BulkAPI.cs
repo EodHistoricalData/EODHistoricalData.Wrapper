@@ -1,6 +1,8 @@
 ﻿using EOD.APIs.Abstract;
 using EOD.Model.Bulks;
 
+using EODHistoricalData.Wrapper.Model.Bulks;
+
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -13,10 +15,11 @@ namespace EOD.APIs
 
         public BulkAPI(string apiKey, System.Net.IWebProxy proxy, string source) : base(apiKey, proxy, source) { }
 
-        public async Task<List<Bulk>> GetBulksAsync(string code, string type, DateTime? date, string symbols)
+        public async Task<List<Bulk>> GetBulksAsync(string code, BulkQueryTypes type, DateTime? date, string symbols)
         {
             string uri = source;
-            if (type != null) uri += $"&type={type}";
+
+            uri += GetTypeUrlString(type);
             if (date != null) uri += $"&date={date?.ToString("yyyy-MM-dd")}";
             if (!string.IsNullOrEmpty(symbols)) uri += $"&symbols={symbols}";
 
@@ -29,11 +32,11 @@ namespace EOD.APIs
             return await ExecuteQueryAsync<List<Bulk>>(url);
         }
 
-        public async Task<List<ExtendedBulk>> GetExtendedBulksAsync(string code, string type, DateTime? date, string symbols)
+        public async Task<List<ExtendedBulk>> GetExtendedBulksAsync(string code, BulkQueryTypes type, DateTime? date, string symbols)
         {
             string uri = source;
             uri += "&filter=extended";
-            if (type != null) uri += $"&type={type}";
+            uri += GetTypeUrlString(type);
             if (date != null) uri += $"&date={date?.ToString("yyyy-MM-dd")}";
             if (!string.IsNullOrEmpty(symbols)) uri += $"&symbols={symbols}";
 
@@ -44,6 +47,22 @@ namespace EOD.APIs
             };
             string url = string.Format(uri, args);
             return await ExecuteQueryAsync<List<ExtendedBulk>>(url);
+        }
+
+        private string GetTypeUrlString(BulkQueryTypes type)
+        {
+            switch (type)
+            {
+                case BulkQueryTypes.EndOfDay:
+                    return "";
+                case BulkQueryTypes.Splits:
+                    return $"&type=splits";
+                    
+                case BulkQueryTypes.Dividents:
+                    return $"&type=dividends";
+                default:
+                    return "";
+            }
         }
     }
 }

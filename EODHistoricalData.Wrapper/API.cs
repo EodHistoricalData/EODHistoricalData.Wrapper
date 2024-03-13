@@ -442,7 +442,6 @@ namespace EOD
         /// </summary>
         /// <param name="ticker">consists of two parts: {SYMBOL_NAME}.{EXCHANGE_ID}, then you can use,
         /// for example, AAPL.MX for Mexican Stock Exchange. Or AAPL.US for NASDAQ.</param>
-        /// <param name="tickers">to get data for multiple tickers at one request</param>
         /// <returns></returns>
         /// <exception cref="ArgumentException"></exception>
         public async Task<LiveStockPrice> GetLiveStockPricesAsync(string ticker)
@@ -497,7 +496,7 @@ namespace EOD
         /// <param name="to">end search period</param>
         /// <returns></returns>
         /// <exception cref="ArgumentException"></exception>
-        public async Task<List<HistoricalDividend>> GetHistoricalDividendsAsync(string ticker, DateTime from, DateTime to)
+        public async Task<List<HistoricalDividend>> GetHistoricalDividendsAsync(string ticker, DateTime? from, DateTime? to)
         {
             CheckTicker(ticker);
 

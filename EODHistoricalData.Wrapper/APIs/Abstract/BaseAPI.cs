@@ -30,6 +30,8 @@ namespace EOD.APIs.Abstract
                 _httpClient = new HttpClient();
             }
 
+            _httpClient.Timeout = TimeSpan.FromMinutes(10);
+
             if (String.IsNullOrEmpty(source))
             {
                 _httpClient.DefaultRequestHeaders.Add("User-Agent", "eodhistoricaldata.wrapper");

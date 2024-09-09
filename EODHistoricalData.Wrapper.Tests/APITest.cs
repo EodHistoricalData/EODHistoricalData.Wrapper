@@ -302,7 +302,7 @@ namespace EODHistoricalData.Wrapper.NetCore.Tests
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethod()]
         public async Task GetLiveStockPricesAsyncTest()
         {
-            var result = await _api.GetLiveStockPricesAsync("AAPL.US");
+            var result = await _api.GetLiveStockPricesAsync("APETNQ.JSE");
             Assert.IsNotNull(result); // (07.09.2022) ok
         }
 

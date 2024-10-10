@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 
 namespace EOD.Model.Fundamental
@@ -71,7 +72,14 @@ namespace EOD.Model.Fundamental
         /// <summary>
         /// 
         /// </summary>
-        public decimal? Average_Mkt_Cap_Mil { get; set; }
+        [JsonProperty("none")]
+        public decimal? Average_Mkt_Cap_Mil
+        {
+            get => decimal.TryParse(Average_Mkt_Cap_Mil_String, out decimal result) ? result : 0;
+            set { }
+        }
+        [JsonProperty("Average_Mkt_Cap_Mil")]
+        private string Average_Mkt_Cap_Mil_String { get; set; }
         /// <summary>
         /// 
         /// </summary>

@@ -1,4 +1,6 @@
-﻿namespace EOD.Model.Fundamental
+﻿using Newtonsoft.Json;
+
+namespace EOD.Model.Fundamental
 {
     /// <summary>
     /// 
@@ -8,23 +10,58 @@
         /// <summary>
         /// 
         /// </summary>
-        public double? Mega { get; set; }
+        [JsonProperty("none0")]
+        public double? Mega
+        {
+            get => double.TryParse(Mega_String, out double result) ? result : 0;
+            set { }
+        }
+        [JsonProperty("Mega")]
+        private string Mega_String { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public double? Big { get; set; }
+        [JsonProperty("none1")]
+        public double? Big
+        {
+            get => double.TryParse(Big_String, out double result) ? result : 0;
+            set { }
+        }
+        [JsonProperty("Big")]
+        private string Big_String { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public double? Medium { get; set; }
+        [JsonProperty("none2")]
+        public double? Medium
+        {
+            get => double.TryParse(Medium_String, out double result) ? result : 0;
+            set { }
+        }
+        [JsonProperty("Medium")]
+        private string Medium_String { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public double? Small { get; set; }
+        [JsonProperty("none3")]
+        public double? Small
+        {
+            get => double.TryParse(Small_String, out double result) ? result : 0;
+            set { }
+        }
+        [JsonProperty("Small")]
+        private string Small_String { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public double? Micro { get; set; }
+        [JsonProperty("none4")]
+        public double? Micro
+        {
+            get => double.TryParse(Micro_String, out double result) ? result : 0;
+            set { }
+        }
+        [JsonProperty("Micro")]
+        private string Micro_String { get; set; }
     }
 }
 

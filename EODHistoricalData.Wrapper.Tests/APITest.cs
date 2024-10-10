@@ -81,6 +81,13 @@ namespace EODHistoricalData.Wrapper.NetCore.Tests
         }
 
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethod()]
+        public async Task GetETFDataAsyncTest_BIS()
+        {
+            var result = await _api.GetFundamentalDataAsync("BIS.US");
+            Assert.IsNotNull(result); // (10.10.2024) ok
+        }
+
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethod()]
         public async Task GetFundamentalDataAsyncTest()
         {
             var result = await _api.GetFundamentalDataAsync("AAPL.US");

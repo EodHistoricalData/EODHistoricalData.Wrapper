@@ -10,27 +10,112 @@ namespace EOD.Model.Fundamental
         /// <summary>
         /// 
         /// </summary>
+        [JsonProperty("none0")]
+        public double? LongTermProjectedEarningsGrowth
+        {
+            get
+            {
+                if (double.TryParse(_LongTermProjectedEarningsGrowth, out double result))
+                {
+                    return result;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            set { }
+        }
+
         [JsonProperty("Long-Term Projected Earnings Growth")]
-        public double? LongTermProjectedEarningsGrowth { get; set; }
+        private string _LongTermProjectedEarningsGrowth { set; get; }
         /// <summary>
         /// 
         /// </summary>
+        [JsonProperty("none1")]
+        public double? HistoricalEarningsGrowth
+        {
+            get
+            {
+                if (double.TryParse(_HistoricalEarningsGrowth, out double result))
+                {
+                    return result;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            set { }
+        }
+
         [JsonProperty("Historical Earnings Growth")]
-        public double? HistoricalEarningsGrowth { get; set; }
+        private string _HistoricalEarningsGrowth { get; set; }
         /// <summary>
         /// 
         /// </summary>
+        [JsonProperty("none2")]
+        public double? SalesGrowth
+        {
+            get
+            {
+                if (double.TryParse(_SalesGrowth, out double result))
+                {
+                    return result;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            set { }
+        }
+
         [JsonProperty("Sales Growth")]
-        public double? SalesGrowth { get; set; }
+        private string _SalesGrowth { get; set; }
         /// <summary>
         /// 
         /// </summary>
+        [JsonProperty("none3")]
+        public double? CashFlowGrowth
+        {
+            get
+            {
+                if (double.TryParse(_CashFlowGrowth, out double result))
+                {
+                    return result;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            set { }
+        }
+
         [JsonProperty("Cash-Flow Growth")]
-        public double? CashFlowGrowth { get; set; }
+        private string _CashFlowGrowth { get; set; }
         /// <summary>
         /// 
         /// </summary>
+        [JsonProperty("none4")]
+        public double? BookValueGrowth
+        {
+            get
+            {
+                if (double.TryParse(_BookValueGrowth, out double result))
+                {
+                    return result;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            set { }
+        }
+
         [JsonProperty("Book-Value Growth")]
-        public double? BookValueGrowth { get; set; }
+        private string _BookValueGrowth { get; set; }
     }
 }

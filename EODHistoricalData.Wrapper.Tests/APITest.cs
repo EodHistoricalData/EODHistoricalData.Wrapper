@@ -81,6 +81,28 @@ namespace EODHistoricalData.Wrapper.NetCore.Tests
         }
 
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethod()]
+        public async Task GetETFDataAsyncTest_BIS()
+        {
+            var result = await _api.GetFundamentalDataAsync("BIS.US");
+            Assert.IsNotNull(result); // (10.10.2024) ok
+        }
+
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethod()]
+        public async Task GetETFDataAsyncTest_CMDT()
+        {
+            var result = await _api.GetFundamentalDataAsync("CMDT.US");
+            Assert.IsNotNull(result); // (10.10.2024) ok
+        }
+
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethod()]
+        public async Task GetMutualFundDataAsyncTest_AAIDX()
+        {
+            var result = await _api.GetFundamentalDataAsync("AAIDX.US");
+            double? percentage = result.MutualFund_Data.Top_Holdings[0].Weight;
+            Assert.IsNotNull(result); // (18.10.2024) ok
+        }
+
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethod()]
         public async Task GetFundamentalDataAsyncTest()
         {
             var result = await _api.GetFundamentalDataAsync("AAPL.US");
@@ -302,7 +324,7 @@ namespace EODHistoricalData.Wrapper.NetCore.Tests
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethod()]
         public async Task GetLiveStockPricesAsyncTest()
         {
-            var result = await _api.GetLiveStockPricesAsync("AAPL.US");
+            var result = await _api.GetLiveStockPricesAsync("APETNQ.JSE");
             Assert.IsNotNull(result); // (07.09.2022) ok
         }
 

@@ -1,4 +1,8 @@
-﻿namespace EOD.Model.Fundamental
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System.Globalization;
+
+namespace EOD.Model.Fundamental
 {
     /// <summary>
     /// 
@@ -20,6 +24,26 @@
         /// <summary>
         /// 
         /// </summary>
-        public double? Weight { get; set; }
+        [JsonProperty("none")]
+        public double? Weight
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(_weight))
+                {
+                    return null;
+                }
+                else
+                {
+                    return double.Parse(_weight.Replace("%", ""), CultureInfo.InvariantCulture) / 100.0;
+                }
+            }
+            set
+            {
+
+            }
+        }
+        [JsonProperty("Weight")]
+        private string _weight { get; set; }
     }
 }

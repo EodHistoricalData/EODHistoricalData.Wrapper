@@ -5,11 +5,11 @@ using System.Threading.Tasks;
 
 namespace EOD.APIs.Abstract
 {
-    internal interface IExchangeDetailsAPI
-    {
-        /// <summary>
-        /// To get details on each exchange
-        /// </summary>
-        Task<ExchangeDetail> GetExchangeDetailsAsync(string code, DateTime? from = null, DateTime? to = null);
-    }
+	internal interface IExchangeDetailsAPI
+	{
+		/// <summary>
+		/// To get details on each exchange
+		/// </summary>
+		Task<ExchangeDetail> GetExchangeDetailsAsync(string code, DateTime? from = null, DateTime? to = null);
+	}
 }

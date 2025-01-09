@@ -25,6 +25,16 @@ namespace EOD.Model.Fundamental
         /// <summary>
         /// 
         /// </summary>
+        [JsonProperty("Real Estate")]
+        public WorldData RealEstate{ get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        [JsonProperty("Communication Services")]
+        public WorldData CommunicationServices { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
         public WorldData Energy { get; set; }
         /// <summary>
         /// 

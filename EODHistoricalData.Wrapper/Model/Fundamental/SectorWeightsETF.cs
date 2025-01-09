@@ -16,7 +16,7 @@ namespace EOD.Model.Fundamental
         /// 
         /// </summary>
         [JsonProperty("Consumer Cyclicals")]
-        public WorldData ConsumerCyclisials { get; set; }
+        public WorldData ConsumerCyclicals { get; set; }
         /// <summary>
         /// 
         /// </summary>

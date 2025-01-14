@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using EODHistoricalData.Wrapper.Utils;
 
 namespace EOD.Model
 {
@@ -44,7 +45,7 @@ namespace EOD.Model
         {
             get
             {
-                return double.TryParse(Open_String, out double result) ? result : 0;
+                return GetDouble.ParseDouble(Open_String, 0);
             }
             set
             {
@@ -63,7 +64,7 @@ namespace EOD.Model
         {
             get
             {
-                return double.TryParse(High_String, out double result) ? result : 0;
+                return GetDouble.ParseDouble(High_String, 0);
             }
             set
             {
@@ -82,7 +83,7 @@ namespace EOD.Model
         {
             get
             {
-                return double.TryParse(Low_String, out double result) ? result : 0;
+                return GetDouble.ParseDouble(Low_String, 0);
             }
             set
             {
@@ -101,7 +102,7 @@ namespace EOD.Model
         {
             get
             {
-                return double.TryParse(Close_String, out double result) ? result : 0;
+                return GetDouble.ParseDouble(Close_String, 0);
             }
             set
             {
@@ -120,7 +121,7 @@ namespace EOD.Model
         {
             get
             {
-                return double.TryParse(Volume_String, out double result) ? result : 0;
+                return GetDouble.ParseDouble(Volume_String, 0);
             }
             set
             {
@@ -139,7 +140,7 @@ namespace EOD.Model
         {
             get
             {
-                return double.TryParse(PreviousClose_String, out double result) ? result : 0;
+                return GetDouble.ParseDouble(PreviousClose_String, 0);
             }
             set
             {
@@ -158,7 +159,7 @@ namespace EOD.Model
         {
             get
             {
-                return double.TryParse(Change_String, out double result) ? result : 0;
+                return GetDouble.ParseDouble(Change_String, 0);
             }
             set
             {
@@ -177,7 +178,7 @@ namespace EOD.Model
         {
             get
             {
-                return double.TryParse(Change_p_String, out double result) ? result : 0;
+                return GetDouble.ParseDouble(Change_p_String, 0);
             }
             set
             {

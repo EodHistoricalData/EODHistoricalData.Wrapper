@@ -329,6 +329,13 @@ namespace EODHistoricalData.Wrapper.NetCore.Tests
         }
 
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethod()]
+        public async Task GetLiveStockPricesAsyncTest_XETRA()
+        {
+            var result = await _api.GetLiveStockPricesAsync("NA9.XETRA");
+            Assert.IsNotNull(result); // 14.01.2025 ok
+        }
+
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethod()]
         public async Task GetManyLiveStockPricesAsyncTest()
         {
             var result = await _api.GetLiveStockPricesAsync("AAPL.US", new List<string> { "VTI", "EUR.FOREX" });

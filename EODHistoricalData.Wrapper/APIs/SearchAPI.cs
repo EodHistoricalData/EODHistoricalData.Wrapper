@@ -9,10 +9,17 @@ namespace EOD.APIs
     internal class SearchAPI : BaseAPI, ISearchAPI
     {
         private const string sourceQuerySearchExtended = @"https://eodhistoricaldata.com/api/query-search-extended/?q={0}";
+        private const string sourceQuerySearch = @"https://eodhistoricaldata.com/api/search/{0}";
         public SearchAPI(string apiToken, System.Net.IWebProxy proxy, string source) : base(apiToken, proxy, source) { }
-        public async Task<List<SearchResult>> GetQuerySearchExtendedAsync(string searchString)
+        public async Task<List<SearchExtendedResult>> GetQuerySearchExtendedAsync(string searchString)
         {
             string uri = string.Format(sourceQuerySearchExtended, searchString);
+            return await ExecuteQueryAsync<List<SearchExtendedResult>>(uri);
+        }
+
+        public async Task<List<SearchResult>> GetQuerySearchAsync(string searchString) 
+        {
+            string uri = string.Format(sourceQuerySearch, searchString);
             return await ExecuteQueryAsync<List<SearchResult>>(uri);
         }
 

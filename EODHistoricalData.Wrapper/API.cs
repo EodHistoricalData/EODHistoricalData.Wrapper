@@ -430,7 +430,7 @@ namespace EOD
         /// There are no limitations to a minimum number of symbols in the query string</param>
         /// <returns></returns>
         /// <exception cref="ArgumentNullException"></exception>
-        public async Task<List<SearchResult>> GetSearchResultAsync(string searchString)
+        public async Task<List<SearchExtendedResult>> GetSearchExtendedResultAsync(string searchString)
         {
             if (searchString == string.Empty) throw new ArgumentNullException(nameof(searchString));
 
@@ -438,11 +438,25 @@ namespace EOD
         }
 
         /// <summary>
+        /// Search API for Stocks, ETFs, Mutual Funds, and Indices
+        /// </summary>
+        /// <param name="searchString">String. REQUIRED. Could be any string with a ticker code or company name. 
+        /// Examples: ‘AAPL’, ‘Apple Inc’, ‘Apple’. You can also use ISINs for the search: US0378331005. 
+        /// There are no limitations to a minimum number of symbols in the query string</param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentNullException"></exception>
+        public async Task<List<SearchResult>> GetSearchResultAsync(string searchString) 
+        {
+            if (searchString == string.Empty) throw new ArgumentNullException(nameof(searchString));
+
+            return await searchAPI.GetQuerySearchAsync(searchString);
+        }
+
+        /// <summary>
         /// Get live stock prices data
         /// </summary>
         /// <param name="ticker">consists of two parts: {SYMBOL_NAME}.{EXCHANGE_ID}, then you can use,
         /// for example, AAPL.MX for Mexican Stock Exchange. Or AAPL.US for NASDAQ.</param>
-        /// <param name="tickers">to get data for multiple tickers at one request</param>
         /// <returns></returns>
         /// <exception cref="ArgumentException"></exception>
         public async Task<LiveStockPrice> GetLiveStockPricesAsync(string ticker)

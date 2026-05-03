@@ -14,27 +14,27 @@ namespace EOD.Model
         /// <summary>
         /// 
         /// </summary>
-        public double? Open { get; set; }
+        public decimal? Open { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public double? High { get; set; }
+        public decimal? High { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public double? Low { get; set; }
+        public decimal? Low { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public double? Close { get; set; }
+        public decimal? Close { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public double? Adjusted_close { get; set; }
+        public decimal? Adjusted_close { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public double? Adjusted_low
+        public decimal? Adjusted_low
         {
             get
             {
@@ -46,7 +46,7 @@ namespace EOD.Model
         /// <summary>
         /// 
         /// </summary>
-        public double? Adjusted_high
+        public decimal? Adjusted_high
         {
             get
             {
@@ -58,7 +58,7 @@ namespace EOD.Model
         /// <summary>
         /// 
         /// </summary>
-        public double? Adjusted_open
+        public decimal? Adjusted_open
         {
             get
             {
@@ -72,7 +72,7 @@ namespace EOD.Model
         /// </summary>
         public long? Volume { get; set; }
 
-        private double? _k;
+        private decimal? _k;
 
         private void SetK()
         {

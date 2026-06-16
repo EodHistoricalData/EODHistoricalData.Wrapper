@@ -16,6 +16,7 @@ using EOD.Model.UpcomingSplits;
 
 using EODHistoricalData.Wrapper.Model.Bulks;
 using EODHistoricalData.Wrapper.Model.TechnicalIndicators;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Net;
@@ -372,12 +373,54 @@ namespace EOD
         /// <param name="ticker">consists of two parts: {SYMBOL_NAME}.{EXCHANGE_ID}, then you can use, for example, AAPL.MX for Mexican Stock Exchange. Or AAPL.US for NASDAQ.</param>
         /// <param name="filters">supports several, comma-separated, filters (for example: filter=Financials::Balance_Sheet::yearly or filter=General::Code,General,Earnings)</param>
         /// <returns></returns>
+        /// <remarks>
+        /// NOTE: when a filter narrows the response below the top level (e.g. "Financials"
+        /// or "General"), the API returns that inner object/array/value rather than the full
+        /// FundamentalData shape, so the returned <see cref="FundamentalData"/> would be empty.
+        /// For such filters use <see cref="GetFundamentalDataAsync{T}"/> or
+        /// <see cref="GetFundamentalDataRawAsync"/> instead. The strongly typed overload maps
+        /// cleanly only for unfiltered requests or comma-separated top-level sections
+        /// (e.g. "General,Highlights").
+        /// </remarks>
         /// <exception cref="ArgumentException"></exception>
         public async Task<FundamentalData> GetFundamentalDataAsync(string ticker, string filters = null)
         {
             CheckTicker(ticker);
 
             return await fundamentalDataAPI.GetFundamentalsDataAsync(ticker, filters);
+        }
+
+        /// <summary>
+        /// Get fundamental data feed deserialized into a caller-supplied type.
+        /// Use this when a filter narrows the response below the top level (e.g.
+        /// "Financials" or "General"), because the API then returns the inner
+        /// object/array/value rather than the full FundamentalData shape.
+        /// </summary>
+        /// <typeparam name="T">The type to deserialize the (possibly filtered) response into.</typeparam>
+        /// <param name="ticker">consists of two parts: {SYMBOL_NAME}.{EXCHANGE_ID}, for example AAPL.US.</param>
+        /// <param name="filters">comma-separated filters, for example: Financials or General::Code</param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentException"></exception>
+        public async Task<T> GetFundamentalDataAsync<T>(string ticker, string filters = null)
+        {
+            CheckTicker(ticker);
+
+            return await fundamentalDataAPI.GetFundamentalsDataAsync<T>(ticker, filters);
+        }
+
+        /// <summary>
+        /// Get the raw fundamental data feed as a JToken. Handles any filter shape
+        /// (object, array or scalar) without mapping to FundamentalData.
+        /// </summary>
+        /// <param name="ticker">consists of two parts: {SYMBOL_NAME}.{EXCHANGE_ID}, for example AAPL.US.</param>
+        /// <param name="filters">comma-separated filters, for example: Financials or General::Code</param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentException"></exception>
+        public async Task<JToken> GetFundamentalDataRawAsync(string ticker, string filters = null)
+        {
+            CheckTicker(ticker);
+
+            return await fundamentalDataAPI.GetFundamentalsDataRawAsync(ticker, filters);
         }
 
         /// <summary>

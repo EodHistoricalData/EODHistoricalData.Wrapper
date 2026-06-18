@@ -400,6 +400,13 @@ namespace EOD
         /// <param name="ticker">consists of two parts: {SYMBOL_NAME}.{EXCHANGE_ID}, for example AAPL.US.</param>
         /// <param name="filters">comma-separated filters, for example: Financials or General::Code</param>
         /// <returns></returns>
+        /// <remarks>
+        /// <typeparamref name="T"/> must match the JSON shape the API returns for the
+        /// given filter, otherwise deserialization throws. The filter depth drives the
+        /// shape: a section (e.g. "Financials") returns an object, "General::Code"
+        /// returns a scalar string, etc. When the shape is unknown or varies, prefer
+        /// <see cref="GetFundamentalDataRawAsync"/> and inspect the JToken.
+        /// </remarks>
         /// <exception cref="ArgumentException"></exception>
         public async Task<T> GetFundamentalDataAsync<T>(string ticker, string filters = null)
         {

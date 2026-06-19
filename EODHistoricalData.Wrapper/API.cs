@@ -16,6 +16,7 @@ using EOD.Model.UpcomingSplits;
 
 using EODHistoricalData.Wrapper.Model.Bulks;
 using EODHistoricalData.Wrapper.Model.TechnicalIndicators;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Net;
@@ -49,6 +50,7 @@ namespace EOD
         private readonly IStockMarketScreenerAPI stockMarketScreenerAPI;
         private readonly ITechnicalIndicatorAPI technicalIndicatorAPI;
         private readonly ISentimentsAPI sentimentsAPI;
+        private readonly IHistoricalMarketCapAPI historicalMarketCapAPI;
 
         #region Enums
 
@@ -284,6 +286,7 @@ namespace EOD
             stockMarketScreenerAPI = new StockMarketScreenerAPI(apiKey, proxy, source);
             technicalIndicatorAPI = new TechnicalIndicatorAPI(apiKey, proxy, source);
             sentimentsAPI = new SentimentsApi(apiKey, proxy, source);
+            historicalMarketCapAPI = new HistoricalMarketCapAPI(apiKey, proxy, source);
         }
 
         /// <summary>
@@ -1598,6 +1601,21 @@ namespace EOD
             string orderToString = GetOrderSwitch(order);
 
             return await technicalIndicatorAPI.GetTechnicalIndicatorsAsync(ticker, from, to, orderToString, parameters);
+        }
+
+        /// <summary>
+        /// Get  historical market capitalization with weekly frequency
+        /// </summary>
+        /// <param name="ticker">ticker consists of two parts: {SYMBOL_NAME}.{EXCHANGE_ID}, then you can use, for example, AAPL.MX for Mexican Stock Exchange. or AAPL.US for NASDAQ.</param>
+        /// <param name="from">start search period</param>
+        /// <param name="to">end search period</param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentException"></exception>
+        public async Task<List<MarketCapPoint>> GetHistoricalMarketCapAsync(string ticker, DateTime from, DateTime to)
+        {
+            CheckTicker(ticker);
+
+            return await historicalMarketCapAPI.GetDataAsync(ticker, from, to);
         }
 
         /// <summary>

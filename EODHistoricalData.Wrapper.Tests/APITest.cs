@@ -272,6 +272,20 @@ namespace EODHistoricalData.Wrapper.NetCore.Tests
         }
 
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethod()]
+        public async Task GetHistoricalMarketCapAsyncTest_AAPL()
+        {
+            var result = await _api.GetHistoricalMarketCapAsync("AAPL.US", new DateTime(2021, 1, 10), new DateTime(2021, 12, 11));
+            Assert.IsNotNull(result);
+        }
+
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethod()]
+        public async Task GetHistoricalMarketCapAsyncTest_Source()
+        {
+            var result = await _apiSource.GetHistoricalMarketCapAsync("AAPL.US", new DateTime(2021, 1, 10), new DateTime(2021, 12, 11));
+            Assert.IsNotNull(result);
+        }
+
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethod()]
         public async Task GetEndOfDayDataAsyncTest_1m()
         {
             var result = await _api.GetEndOfDayHistoricalStockPriceAsync("AAPL.US", new DateTime(2021, 1, 10), new DateTime(2021, 12, 11), API.HistoricalPeriod.Monthly);

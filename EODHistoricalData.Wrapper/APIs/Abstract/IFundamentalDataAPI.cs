@@ -1,5 +1,6 @@
 ﻿using EOD.Model.BulkFundamental;
 using EOD.Model.Fundamental;
+using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -14,6 +15,20 @@ namespace EOD.APIs.Abstract
         /// To get fundamental data feed
         /// </summary>
         Task<FundamentalData> GetFundamentalsDataAsync(string ticker, string filters = null);
+
+        /// <summary>
+        /// To get fundamental data feed deserialized into a caller-supplied type.
+        /// Use this when a filter narrows the response below the top level (e.g.
+        /// "Financials" or "General"), because the API then returns the inner
+        /// object/array/value rather than the full FundamentalData shape.
+        /// </summary>
+        Task<T> GetFundamentalsDataAsync<T>(string ticker, string filters = null);
+
+        /// <summary>
+        /// To get the raw fundamental data feed as a JToken. Handles any filter
+        /// shape (object, array or scalar) without mapping to FundamentalData.
+        /// </summary>
+        Task<JToken> GetFundamentalsDataRawAsync(string ticker, string filters = null);
 
         /// <summary>
         /// Bulk Fundamentals Output

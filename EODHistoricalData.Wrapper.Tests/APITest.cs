@@ -111,6 +111,25 @@ namespace EODHistoricalData.Wrapper.NetCore.Tests
         }
 
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethod()]
+        public async Task GetFundamentalDataRawAsyncTest_WithFilter()
+        {
+            // A narrowing filter ("Financials") returns the inner object, not the full
+            // FundamentalData shape. The raw method must still return populated data (#57).
+            var result = await _api.GetFundamentalDataRawAsync("AAPL.US", "Financials");
+            Assert.IsNotNull(result);
+            Assert.IsNotNull(result["Balance_Sheet"]);
+            Assert.IsNotNull(result["Income_Statement"]);
+        }
+
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethod()]
+        public async Task GetFundamentalDataAsyncGenericTest_ScalarFilter()
+        {
+            // "General::Code" narrows to a scalar string value (#57).
+            var code = await _api.GetFundamentalDataAsync<string>("AAPL.US", "General::Code");
+            Assert.AreEqual("AAPL", code);
+        }
+
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethod()]
         public async Task GetFundamentalDataAsyncTest_GN()
         {
             var result = await _api.GetFundamentalDataAsync("GN1.IR");

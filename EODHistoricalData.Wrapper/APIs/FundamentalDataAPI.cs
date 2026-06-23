@@ -1,6 +1,7 @@
 ﻿using EOD.APIs.Abstract;
 using EOD.Model.BulkFundamental;
 using EOD.Model.Fundamental;
+using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -12,11 +13,26 @@ namespace EOD.APIs
 
         public FundamentalDataAPI(string apiKey, System.Net.IWebProxy proxy, string source) : base(apiKey, proxy, source) { }
 
-        public Task<FundamentalData> GetFundamentalsDataAsync(string ticker, string filters = null)
+        private static string BuildFundamentalsUri(string ticker, string filters)
         {
             string uri = string.Format(sourceFundamental, ticker);
             if (filters != null) uri += $"&filter={filters}";
-            return ExecuteQueryAsync<FundamentalData>(uri);
+            return uri;
+        }
+
+        public Task<FundamentalData> GetFundamentalsDataAsync(string ticker, string filters = null)
+        {
+            return ExecuteQueryAsync<FundamentalData>(BuildFundamentalsUri(ticker, filters));
+        }
+
+        public Task<T> GetFundamentalsDataAsync<T>(string ticker, string filters = null)
+        {
+            return ExecuteQueryAsync<T>(BuildFundamentalsUri(ticker, filters));
+        }
+
+        public Task<JToken> GetFundamentalsDataRawAsync(string ticker, string filters = null)
+        {
+            return ExecuteQueryAsync<JToken>(BuildFundamentalsUri(ticker, filters));
         }
 
         private const string bulkFundamental = @"https://eodhistoricaldata.com/api/bulk-fundamentals/{0}?&fmt=json";

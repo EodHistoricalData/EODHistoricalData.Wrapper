@@ -10,7 +10,8 @@ namespace EOD.APIs.Abstract
     /// </summary>
     internal interface ISearchAPI
     {
-        Task<List<SearchResult>> GetQuerySearchExtendedAsync(string searchString);
+        Task<List<SearchExtendedResult>> GetQuerySearchExtendedAsync(string searchString);
+        Task<List<SearchResult>> GetQuerySearchAsync(string searchString);
 
     }
 }

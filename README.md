@@ -347,6 +347,15 @@ FundamentalData? response = await _api.GetFundamentalDataAsync("AAPL.US", "Gener
 // An example of ETFs data for VTI.US
 FundamentalData? response = await _api.GetFundamentalDataAsync("VTI.US");
 ```
+- **Historical Market Capitalization API**: Get historical market capitalization data with weekly frequency.
+	- Parameters:
+		- ```ticker```(string): Required - ticker consists of two parts: {SYMBOL_NAME}.{EXCHANGE_ID}, then you can use, for example, AAPL.MX for Mexican Stock Exchange. or AAPL.US for NASDAQ.
+		- ```from```(DateTime) and ```to```(DateTime): Required - the beginning and end of the desired dates.
+	- Usage:
+```c#
+// An example of historical market capitalization data for AAPL (Apple Inc)
+List<MarketCapPoint>? response = await _api.GetHistoricalMarketCapAsync("AAPL.US", new DateTime(2021, 01, 1), new DateTime(2021, 12, 31));
+```
 - Bulk fundamentals API
 	- Parameters (Bulk fundamentals):
 		- ```ticker```(string): Required - consists of two parts: {SYMBOL_NAME}.{EXCHANGE_ID}, then you can use, for example, AAPL.MX for Mexican Stock Exchange.

@@ -76,7 +76,6 @@ namespace EODHistoricalData.Wrapper.NetCore.Tests
         public async Task GetETFDataAsyncTest()
         {
             var result = await _api.GetFundamentalDataAsync("VTI.US");
-            var susratio = result.ETF_Data.MorningStar.Sustainability_Ratio;
             Assert.IsNotNull(result); // (19.09.2022) ok
         }
 

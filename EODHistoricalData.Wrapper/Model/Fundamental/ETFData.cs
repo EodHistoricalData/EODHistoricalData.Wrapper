@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 
 namespace EOD.Model.Fundamental
@@ -111,7 +111,6 @@ namespace EOD.Model.Fundamental
         /// <summary>
         /// 
         /// </summary>
-        public MorningStar MorningStar { get; set; }
         /// <summary>
         /// 
         /// </summary>

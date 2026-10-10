@@ -1,4 +1,4 @@
-﻿namespace EOD.Model.Fundamental
+namespace EOD.Model.Fundamental
 {
     /// <summary>
     /// 
@@ -9,10 +9,6 @@
         /// 
         /// </summary>
         public string Size { get; set; }
-        /// <summary>
-        /// 
-        /// </summary>
-        public double? Category_Average { get; set; }
         /// <summary>
         /// 
         /// </summary>

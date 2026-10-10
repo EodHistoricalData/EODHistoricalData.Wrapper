@@ -1,4 +1,4 @@
-﻿namespace EOD.Model.Fundamental
+namespace EOD.Model.Fundamental
 {
     /// <summary>
     /// 
@@ -108,7 +108,6 @@
         /// <summary>
         /// 
         /// </summary>
-        public MorningStar? MorningStar { get; set; }
         /// <summary>
         /// 
         /// </summary>

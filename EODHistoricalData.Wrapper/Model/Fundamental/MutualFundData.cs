@@ -40,18 +40,6 @@ namespace EOD.Model.Fundamental
         /// <summary>
         /// 
         /// </summary>
-        public double? Morning_Star_Rating { get; set; }
-        /// <summary>
-        /// 
-        /// </summary>
-        public double? Morning_Star_Risk_Rating { get; set; }
-        /// <summary>
-        /// 
-        /// </summary>
-        public double? Morning_Star_Category { get; set; }
-        /// <summary>
-        /// 
-        /// </summary>
         public string Inception_Date { get; set; }
         /// <summary>
         /// 

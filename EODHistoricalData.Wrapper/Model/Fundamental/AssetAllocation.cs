@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+using Newtonsoft.Json;
 using System.Collections.Generic;
 
 namespace EOD.Model.Fundamental
@@ -28,11 +28,6 @@ namespace EOD.Model.Fundamental
         /// </summary>
         [JsonProperty("Short_%")]
         public string ShortPercentage { get; set; }
-        /// <summary>
-        /// 
-        /// </summary>
-        [JsonProperty("Category_Average")]
-        public string Category_Average { get; set; }
         /// <summary>
         /// 
         /// </summary>

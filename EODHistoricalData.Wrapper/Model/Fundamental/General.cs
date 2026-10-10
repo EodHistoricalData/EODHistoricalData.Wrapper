@@ -187,14 +187,6 @@ namespace EOD.Model.Fundamental
         /// <summary>
         /// 
         /// </summary>
-        public string Fund_Category { get; set; }
-        /// <summary>
-        /// 
-        /// </summary>
-        public string Fund_Style { get; set; }
-        /// <summary>
-        /// 
-        /// </summary>
         public string Fiscal_Year_End { get; set; }
         /// <summary>
         /// 

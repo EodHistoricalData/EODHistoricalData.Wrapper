@@ -12,14 +12,6 @@ namespace EOD.Model.Fundamental
         /// <summary>
         /// 
         /// </summary>
-        public string Fund_Category { get; set; }
-        /// <summary>
-        /// 
-        /// </summary>
-        public string Fund_Style { get; set; }
-        /// <summary>
-        /// 
-        /// </summary>
         public double? Nav { get; set; }
         /// <summary>
         /// 
